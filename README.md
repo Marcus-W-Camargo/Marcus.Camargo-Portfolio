@@ -19,30 +19,9 @@
 
 ## Sobre o projeto
 
-**Marcus Camargo — Portfólio** é meu site profissional e o ponto central de apresentação dos projetos que desenvolvo.
+O **Marcus Camargo — Portfólio** é meu ponto central de apresentação profissional. Ele reúne uma página comercial para serviços e contato, uma área dedicada a recrutadores e estudos de caso dos projetos que já atingiram nível de apresentação pública.
 
-A página foi criada com dois objetivos complementares:
-
-- **comercial:** apresentar serviços, projetos publicados e canais de contato para pessoas e negócios que precisam de soluções digitais;
-- **técnico:** oferecer a recrutadores e profissionais de tecnologia uma visão mais clara sobre os projetos, decisões, dificuldades e aprendizados que fazem parte da minha evolução como desenvolvedor.
-
-O portfólio não funciona apenas como uma coleção de links. Os projetos recebem apresentações próprias, previews visuais e contexto suficiente para que o visitante entenda o problema resolvido antes de abrir a aplicação real.
-
----
-
-## 🎯 Objetivos
-
-O projeto foi estruturado para:
-
-- apresentar minha identidade profissional;
-- comunicar as áreas em que atuo;
-- reunir projetos publicados em um único ponto;
-- demonstrar frontend, responsividade, integração e experiência de produto;
-- direcionar visitantes para aplicações reais em produção;
-- facilitar o contato profissional;
-- oferecer acesso ao GitHub;
-- servir como material complementar em processos seletivos;
-- acompanhar minha evolução à medida que novos projetos atingem nível de apresentação pública.
+A proposta é mostrar não apenas o resultado visual, mas também contexto, decisões de produto, desafios técnicos, integrações, responsividade, segurança, deploy e evolução de arquitetura.
 
 ---
 
@@ -53,207 +32,112 @@ O projeto foi estruturado para:
 A página principal apresenta:
 
 - identidade e posicionamento profissional;
-- serviços;
-- projetos em destaque;
-- previews responsivos das aplicações;
-- apresentação sobre meu trabalho;
-- GitHub;
-- WhatsApp Business;
-- Instagram;
-- acesso dedicado à área para recrutadores.
-
-A navegação foi pensada para permitir que públicos diferentes encontrem rapidamente o que procuram: contratação, projetos, informações profissionais ou análise técnica.
+- serviços de desenvolvimento e automação;
+- carrossel de projetos em destaque;
+- previews próprios e responsivos;
+- apresentação sobre o trabalho;
+- canais de contato;
+- acesso direto à área para recrutadores.
 
 ### Área para recrutadores
 
-A rota:
+A rota `/recrutadores` concentra estudos de caso técnicos com:
 
-```text
-/recrutadores
-```
-
-possui uma experiência própria focada em avaliação técnica.
-
-Em vez de apenas listar tecnologias, a página apresenta os projetos como estudos de caso, incluindo:
-
-- problema;
-- motivação;
-- evolução;
-- dificuldades técnicas;
+- problema e motivação;
+- evolução da solução;
 - stack principal;
+- dificuldades que exigiram investigação;
 - aprendizados;
-- links para aplicação publicada;
-- links para o repositório.
-
-A seção também explicita princípios que passaram a fazer parte da minha definição de qualidade, como segurança, isolamento de dados, deploy previsível, responsividade e documentação.
+- links para aplicação e repositório quando disponíveis.
 
 ### Política de Privacidade
 
-A rota:
+A rota `/privacidade` mantém a página dedicada às informações de privacidade do site.
 
-```text
-/privacidade
-```
-
-mantém uma página dedicada às informações de privacidade do site.
-
-O roteamento das páginas institucionais é intencionalmente leve e não adiciona uma biblioteca de roteamento apenas para esse fluxo.
+O roteamento institucional permanece leve e sem React Router: as rotas são selecionadas diretamente no ponto de entrada da aplicação.
 
 ---
 
 ## 🚀 Projetos em destaque
 
-Os projetos atualmente apresentados diretamente no portfólio são:
-
 ### 🎬 Letreiro
 
-Jogo diário de descoberta de filmes com:
-
-- desafio automático diário;
-- calendário de partidas anteriores;
-- dicas progressivas;
-- persistência local;
-- integração com Supabase;
-- integração com TMDB;
-- automação por GitHub Actions.
+Jogo diário de descoberta de filmes com desafio automático, dicas progressivas, calendário de partidas anteriores, persistência local, integração com Supabase e TMDB e automação por GitHub Actions.
 
 🌐 https://letreiro-cine-puzzle.vercel.app/pt-br  
 📦 https://github.com/Marcus-W-Camargo/Letreiro
 
 ### 🛒 Liste & Compre
 
-Aplicação para acompanhar uma compra do planejamento à conclusão, com:
-
-- contas individuais;
-- criação e gerenciamento de listas;
-- quantidades por unidade ou quilograma;
-- acompanhamento de preços;
-- histórico;
-- sincronização com Supabase;
-- experiência adaptada para desktop e celular.
+Aplicação web para acompanhar uma compra do planejamento à conclusão, com contas individuais, listas sincronizadas, quantidades por unidade ou quilograma, acompanhamento de preços, histórico e reutilização de compras anteriores.
 
 🌐 https://listeecompre.vercel.app/  
 📦 https://github.com/Marcus-W-Camargo/liste-e-compre
+
+### 📱 Liste & Compre App
+
+Aplicativo Android independente do ecossistema Liste & Compre, criado em React Native + Expo e integrado ao mesmo backend Supabase da versão web. A experiência mobile possui navegação própria, compra em andamento persistida no aparelho, histórico, autenticação, perfil e tratamento específico para safe areas, gestos, câmera e galeria.
+
+No momento, o projeto é apresentado pelo repositório enquanto a distribuição pública do aplicativo não está documentada.
+
+📦 https://github.com/Marcus-W-Camargo/Liste-Compre-APP
 
 ---
 
 ## 🖼️ Previews dos projetos
 
-Os previews exibidos no portfólio não carregam uma segunda instância das aplicações.
+Os previews do portfólio não executam os projetos reais em iframes. São representações visuais construídas no próprio frontend para manter desempenho, preservar a identidade do portfólio e apresentar rapidamente cada solução antes de o visitante abrir a aplicação real.
 
-Eles são representações visuais construídas no próprio frontend para:
-
-- manter o desempenho da página;
-- preservar a identidade do portfólio;
-- apresentar rapidamente a proposta de cada projeto;
-- adaptar a demonstração a desktop e mobile;
-- evitar dependência de iframes ou execução interna do sistema real.
-
-Essa abordagem permite que o visitante tenha contexto visual antes de acessar a aplicação publicada.
+O preview do Liste & Compre App reproduz a linguagem visual do aplicativo e atualmente destaca a tela de histórico em um mockup de celular.
 
 ---
 
 ## 🎨 Identidade visual
 
-O portfólio utiliza uma identidade dark/neon voltada a tecnologia, com:
+O portfólio utiliza uma identidade dark/neon com fundo escuro, rosa e magenta como acentos, gradientes, glow, cards arredondados e animações. A mesma linguagem é mantida na página comercial e na área para recrutadores.
 
-- fundo escuro;
-- acentos em rosa e magenta;
-- gradientes;
-- elementos luminosos;
-- cards arredondados;
-- animações;
-- componentes de apresentação próprios.
-
-A identidade é aplicada tanto à página comercial quanto à área de recrutadores, mantendo unidade visual entre apresentação, projetos e conteúdo profissional.
-
----
-
-## 🌀 Hero e animações
-
-O hero utiliza elementos visuais animados ao redor da identidade principal.
-
-Entre os refinamentos do projeto estão:
-
-- ícones em órbitas ovais;
-- trajetórias independentes;
-- transições de profundidade por opacidade;
-- comportamento contínuo;
-- adaptação a diferentes larguras de tela;
-- preservação da leitura e dos CTAs durante as animações.
-
-As animações são usadas como parte da identidade, sem substituir a hierarquia do conteúdo.
+O hero usa elementos animados em órbitas ovais ao redor da identidade principal, com trajetórias e opacidade ajustadas para desktop e mobile.
 
 ---
 
 ## 📱 Experiência e responsividade
 
-O projeto possui tratamentos específicos para desktop e mobile.
+O layout possui tratamentos específicos para:
 
-### Desktop
+- desktop largo;
+- desktop estreito e janelas divididas;
+- tablets e larguras intermediárias;
+- celulares.
 
-- composições horizontais;
-- maior área para previews;
-- grids com múltiplas colunas;
-- navegação completa;
-- maior presença das animações de identidade.
-
-### Mobile
-
-- cabeçalho compacto;
-- reorganização vertical das seções;
-- botões adaptados a toque;
-- previews convertidos para proporções compatíveis com celular;
-- espaçamentos e tipografia recalibrados;
-- órbitas e elementos decorativos reduzidos;
-- preservação dos CTAs prioritários.
-
-A proposta não é apenas reduzir o desktop, mas reorganizar a experiência de acordo com o espaço disponível.
+O header possui um estado intermediário próprio para reduzir colisões em janelas estreitas antes de chegar ao layout mobile completo. Projetos, grids, CTAs, tipografia e animações também recebem ajustes por breakpoint.
 
 ---
 
 ## 🧠 Decisões de implementação
 
-### Roteamento institucional leve
+### Dados dos projetos centralizados
 
-O projeto não depende de React Router.
-
-A seleção das páginas `/`, `/privacidade` e `/recrutadores` é feita de forma direta no ponto de entrada, mantendo a arquitetura proporcional ao tamanho da aplicação.
-
-### Dados dos projetos separados da apresentação
-
-Os principais metadados de projetos ficam centralizados em:
+Os metadados dos projetos apresentados na página comercial ficam em:
 
 ```text
 src/data/projects.ts
 ```
 
-Isso reduz duplicação e facilita adicionar ou atualizar projetos sem espalhar URLs e descrições pela interface.
-
 ### Componentes reutilizáveis
 
-Elementos como cabeçalho, títulos de seção e previews são separados em componentes próprios para manter consistência e reduzir repetição.
+Cabeçalho, títulos de seção e previews são separados em componentes próprios para reduzir repetição e manter consistência.
+
+### Roteamento institucional leve
+
+As páginas `/`, `/privacidade` e `/recrutadores` são selecionadas diretamente em `src/main.tsx`, mantendo a arquitetura proporcional ao tamanho do projeto.
 
 ---
 
 ## ☁️ Infraestrutura
 
-A publicação atual utiliza **Cloudflare Workers** com assets estáticos.
+A publicação atual utiliza **Cloudflare Workers** com assets estáticos. O `wrangler.jsonc` aponta para `dist`, habilita URLs de preview e usa fallback de SPA para as rotas institucionais.
 
-O arquivo:
-
-```text
-wrangler.jsonc
-```
-
-configura:
-
-- `dist` como diretório de publicação;
-- URLs de preview;
-- tratamento de rotas não encontradas como SPA;
-- deploy via Workers.
-
-O repositório ainda preserva configuração histórica de Vercel, mas a documentação principal considera o **Cloudflare Workers como infraestrutura atual de publicação**.
+O deploy é integrado ao GitHub e novos commits na branch de produção são acompanhados pelo pipeline do Cloudflare.
 
 ---
 
@@ -265,9 +149,9 @@ O repositório ainda preserva configuração histórica de Vercel, mas a documen
 | Linguagem | TypeScript 5.8 | Tipagem e manutenção |
 | Build | Vite 7.1 | Desenvolvimento e bundle |
 | Estilização | CSS | Layout, animações e responsividade |
-| Ícones | Lucide React | Elementos visuais da interface |
-| Hospedagem atual | Cloudflare Workers | Publicação dos assets |
-| Configuração de deploy | Wrangler | Build estático e SPA fallback |
+| Ícones | Lucide React | Elementos visuais |
+| Hospedagem | Cloudflare Workers | Publicação dos assets |
+| Deploy | Wrangler + GitHub | Build, preview e publicação |
 
 ---
 
@@ -277,19 +161,17 @@ O repositório ainda preserva configuração histórica de Vercel, mas a documen
 .
 ├── public/
 │   └── favicon.svg
-│
 ├── src/
-│   ├── assets/                 # Identidade visual e imagens
-│   ├── components/             # Componentes reutilizáveis
+│   ├── assets/
+│   ├── components/
 │   ├── data/
-│   │   └── projects.ts         # Projetos apresentados
-│   ├── App.tsx                 # Página comercial
-│   ├── RecruiterPage.tsx       # Área para recrutadores
-│   ├── PrivacyPage.tsx         # Política de Privacidade
-│   ├── main.tsx                # Entrada e seleção de rota
-│   └── *.css                   # Estilos e refinamentos visuais
-│
-├── wrangler.jsonc              # Deploy Cloudflare Workers
+│   │   └── projects.ts
+│   ├── App.tsx
+│   ├── RecruiterPage.tsx
+│   ├── PrivacyPage.tsx
+│   ├── main.tsx
+│   └── *.css
+├── wrangler.jsonc
 ├── vite.config.ts
 ├── package.json
 └── README.md
@@ -299,33 +181,21 @@ O repositório ainda preserva configuração histórica de Vercel, mas a documen
 
 ## ⚙️ Execução local
 
-### Requisitos
-
-- Node.js;
-- npm.
-
-### Instalação
-
 ```bash
 git clone https://github.com/Marcus-W-Camargo/Marcus.Camargo-Portfolio.git
 cd Marcus.Camargo-Portfolio
 npm install
-```
-
-### Desenvolvimento
-
-```bash
 npm run dev
 ```
 
-### Validação
+Validação:
 
 ```bash
 npm run lint
 npm run build
 ```
 
-### Preview do build
+Preview local do build:
 
 ```bash
 npm run preview
@@ -333,36 +203,13 @@ npm run preview
 
 ---
 
-## 🔄 Evolução contínua
-
-O portfólio foi criado para acompanhar os projetos que atinjam estado adequado para apresentação pública.
-
-Novas inclusões devem, quando aplicável, trazer:
-
-- propósito;
-- contexto do problema;
-- tecnologias;
-- representação visual;
-- link de produção;
-- repositório;
-- principais decisões ou aprendizados.
-
-O objetivo é manter o portfólio como uma representação atual do meu trabalho, e não como uma página estática criada uma única vez.
-
----
-
 ## 👨‍💻 Autor
 
 Desenvolvido por **Marcus Camargo**.
 
-**GitHub:**  
-https://github.com/Marcus-W-Camargo
-
-**Portfólio:**  
-https://marcuscamargo-portfolio.mcpt.workers.dev/
-
-**Área para recrutadores:**  
-https://marcuscamargo-portfolio.mcpt.workers.dev/recrutadores
+**GitHub:** https://github.com/Marcus-W-Camargo  
+**Portfólio:** https://marcuscamargo-portfolio.mcpt.workers.dev/  
+**Área para recrutadores:** https://marcuscamargo-portfolio.mcpt.workers.dev/recrutadores
 
 ---
 

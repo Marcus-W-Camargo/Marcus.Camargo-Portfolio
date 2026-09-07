@@ -192,16 +192,22 @@ function App() {
           <article className={`project-card project-${activeProject.variant} commercial-project-slide`} key={activeProject.title}>
             <div className="project-preview"><ProjectPreview variant={activeProject.variant} /></div>
             <div className="project-content">
-              <span className="commercial-project-label">Solução publicada</span>
+              <span className="commercial-project-label">{activeProject.variant === 'lista-app' ? 'Aplicativo Android' : 'Solução publicada'}</span>
               <h3>{activeProject.title}</h3>
               <p>{activeProject.variant === 'letreiro'
                 ? 'Transformei a rotina de descobrir um filme em uma experiência diária: simples de começar, curiosa o suficiente para voltar no dia seguinte e com uma identidade própria.'
-                : 'Nasceu de uma situação cotidiana: fazer compras sem perder controle do que falta, do que já foi colocado no carrinho e de quanto está sendo gasto ao longo do processo.'}
+                : activeProject.variant === 'lista-app'
+                  ? 'Levei o Liste & Compre para uma experiência realmente mobile: um aplicativo próprio para acompanhar a compra com toque, gestos, persistência local da sessão e integração com os mesmos dados da conta usados na versão web.'
+                  : 'Nasceu de uma situação cotidiana: fazer compras sem perder controle do que falta, do que já foi colocado no carrinho e de quanto está sendo gasto ao longo do processo.'}
               </p>
               <div className="commercial-project-outcomes">
-                {activeProject.variant === 'letreiro' ? <><span>Desafio diário</span><span>Retenção por hábito</span><span>Experiência responsiva</span></> : <><span>Organização prática</span><span>Controle durante a compra</span><span>Histórico reutilizável</span></>}
+                {activeProject.variant === 'letreiro'
+                  ? <><span>Desafio diário</span><span>Retenção por hábito</span><span>Experiência responsiva</span></>
+                  : activeProject.variant === 'lista-app'
+                    ? <><span>Experiência mobile nativa</span><span>Dados integrados ao web</span><span>Compra persistida no aparelho</span></>
+                    : <><span>Organização prática</span><span>Controle durante a compra</span><span>Histórico reutilizável</span></>}
               </div>
-              <a href={activeProject.liveUrl} target="_blank" rel="noreferrer">Conhecer o projeto <ArrowUpRight size={16} /></a>
+              <a href={activeProject.liveUrl} target="_blank" rel="noreferrer">{activeProject.variant === 'lista-app' ? 'Ver aplicativo no GitHub' : 'Conhecer o projeto'} <ArrowUpRight size={16} /></a>
             </div>
           </article>
         </section>

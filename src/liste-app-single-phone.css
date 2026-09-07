@@ -1,0 +1,15 @@
+.project-lista-app .liste-app-phone-front {
+  display: none;
+}
+
+.project-lista-app .liste-app-phone-back {
+  z-index: 2;
+  transform: none;
+  opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .project-lista-app .liste-app-phone-back {
+    transform: scale(.86);
+  }
+}

@@ -1,0 +1,375 @@
+.project-lista-app .project-preview {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, .24), transparent 25%),
+    linear-gradient(145deg, #789bd0 0%, #95b6e5 55%, #d6e5fb 100%);
+  overflow: hidden;
+}
+
+.liste-app-preview-scene {
+  width: 100%;
+  min-height: 430px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 28px 18px;
+}
+
+.liste-app-phone {
+  position: absolute;
+  width: 238px;
+  height: 470px;
+  padding: 7px;
+  border: 3px solid #18263b;
+  border-radius: 34px;
+  background: #18263b;
+  box-shadow: 0 24px 48px rgba(24, 38, 59, .28);
+}
+
+.liste-app-phone::before {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  top: 7px;
+  left: 50%;
+  width: 74px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 0 0 13px 13px;
+  background: #18263b;
+}
+
+.liste-app-phone-front {
+  z-index: 2;
+  transform: translateX(-34px) rotate(-2.3deg);
+}
+
+.liste-app-phone-back {
+  z-index: 1;
+  transform: translate(118px, 22px) rotate(6deg) scale(.86);
+  opacity: .92;
+}
+
+.liste-app-phone-screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #f7f9fc;
+  color: #1b2a40;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.liste-app-statusbar {
+  height: 25px;
+  padding: 7px 13px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #2d3f59;
+  font-size: 7px;
+  font-weight: 800;
+}
+
+.liste-app-topbar {
+  display: grid;
+  grid-template-columns: 34px 1fr 31px;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 10px;
+  border-bottom: 1px solid #dce5f1;
+  background: #fff;
+}
+
+.liste-app-topbar img {
+  width: 29px;
+  height: 29px;
+  object-fit: contain;
+}
+
+.liste-app-topbar div {
+  min-width: 0;
+}
+
+.liste-app-topbar small,
+.liste-app-topbar strong {
+  display: block;
+}
+
+.liste-app-topbar small {
+  margin-bottom: 2px;
+  color: #72819a;
+  font-size: 7px;
+}
+
+.liste-app-topbar strong {
+  overflow: hidden;
+  color: #1a263b;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.liste-app-avatar {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #1a263b;
+  color: #fff;
+  font-size: 7px;
+  font-weight: 900;
+}
+
+.liste-app-progress-card,
+.liste-app-total-card {
+  margin: 10px 11px 0;
+  border: 1px solid #c9d9ee;
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 5px 12px rgba(43, 65, 95, .07);
+}
+
+.liste-app-progress-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px;
+  padding: 10px;
+}
+
+.liste-app-progress-card small,
+.liste-app-progress-card strong {
+  display: block;
+}
+
+.liste-app-progress-card small {
+  color: #75849a;
+  font-size: 6.5px;
+}
+
+.liste-app-progress-card strong {
+  margin-top: 2px;
+  font-size: 9px;
+}
+
+.liste-app-progress-card > span {
+  align-self: center;
+  color: #f4511e;
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.liste-app-progress {
+  grid-column: 1 / -1;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e7edf5;
+}
+
+.liste-app-progress i {
+  display: block;
+  width: 50%;
+  height: 100%;
+  border-radius: inherit;
+  background: #f4511e;
+}
+
+.liste-app-total-card {
+  padding: 11px;
+  background: linear-gradient(145deg, #1c2b42, #2d4568);
+  color: #fff;
+}
+
+.liste-app-total-card small,
+.liste-app-total-card strong,
+.liste-app-total-card span {
+  display: block;
+}
+
+.liste-app-total-card small {
+  font-size: 6.5px;
+  opacity: .7;
+}
+
+.liste-app-total-card strong {
+  margin: 2px 0 1px;
+  font-size: 18px;
+}
+
+.liste-app-total-card span {
+  font-size: 6px;
+  opacity: .68;
+}
+
+.liste-app-items {
+  display: grid;
+  gap: 6px;
+  padding: 10px 11px 0;
+}
+
+.liste-app-item {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 7px;
+  padding: 8px;
+  border: 1px solid #dce5f1;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.liste-app-item.is-checked {
+  background: #f2f7fc;
+}
+
+.liste-app-check {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #f4511e;
+  border-radius: 6px;
+  color: #fff;
+  background: #f4511e;
+  font-size: 9px;
+  font-weight: 900;
+}
+
+.liste-app-item:not(.is-checked) .liste-app-check {
+  background: #fff;
+}
+
+.liste-app-item > span:nth-child(2) strong,
+.liste-app-item > span:nth-child(2) small {
+  display: block;
+}
+
+.liste-app-item > span:nth-child(2) strong {
+  font-size: 8px;
+}
+
+.liste-app-item > span:nth-child(2) small {
+  margin-top: 2px;
+  color: #7a8799;
+  font-size: 6px;
+}
+
+.liste-app-item > b {
+  font-size: 7px;
+}
+
+.liste-app-extra {
+  width: calc(100% - 22px);
+  margin: 9px 11px 56px;
+  padding: 8px;
+  border: 1px dashed #f4511e;
+  border-radius: 9px;
+  background: #fff5f1;
+  color: #d94417;
+  font-size: 7px;
+  font-weight: 800;
+  opacity: 1;
+}
+
+.liste-app-nav {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #dce5f1;
+  background: rgba(255, 255, 255, .97);
+}
+
+.liste-app-nav span {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 1px;
+  color: #8996a8;
+  font-size: 10px;
+}
+
+.liste-app-nav small {
+  font-size: 5.5px;
+  font-weight: 700;
+}
+
+.liste-app-nav .active {
+  color: #f4511e;
+}
+
+.liste-app-history-screen {
+  padding-top: 3px;
+  background: #eef4fb;
+}
+
+.liste-app-mini-header {
+  padding: 24px 15px 12px;
+  background: #fff;
+}
+
+.liste-app-mini-header strong,
+.liste-app-mini-header span {
+  display: block;
+}
+
+.liste-app-mini-header strong {
+  font-size: 12px;
+}
+
+.liste-app-mini-header span {
+  margin-top: 2px;
+  color: #74829a;
+  font-size: 6px;
+}
+
+.liste-app-history-card {
+  margin: 10px;
+  padding: 12px;
+  border: 1px solid #cfdbeb;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.liste-app-history-card small,
+.liste-app-history-card strong,
+.liste-app-history-card span {
+  display: block;
+}
+
+.liste-app-history-card small {
+  color: #73829a;
+  font-size: 6px;
+}
+
+.liste-app-history-card strong {
+  margin: 5px 0 3px;
+  color: #1a263b;
+  font-size: 13px;
+}
+
+.liste-app-history-card span {
+  color: #8190a4;
+  font-size: 5.5px;
+}
+
+@media (max-width: 760px) {
+  .liste-app-preview-scene {
+    min-height: 360px;
+    padding: 18px 8px;
+    transform: scale(.86);
+    transform-origin: center;
+  }
+
+  .liste-app-phone-back {
+    transform: translate(88px, 22px) rotate(6deg) scale(.78);
+  }
+
+  .liste-app-phone-front {
+    transform: translateX(-18px) rotate(-2deg) scale(.86);
+  }
+}

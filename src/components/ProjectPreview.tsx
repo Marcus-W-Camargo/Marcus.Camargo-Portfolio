@@ -61,6 +61,69 @@ export function ProjectPreview({ variant }: Props) {
     )
   }
 
+  if (variant === 'lista-app') {
+    const appItems = [
+      ['Arroz', '2 un.', 'R$ 14,98', true],
+      ['Feijão', '0,500 kg', 'R$ 4,75', true],
+      ['Leite', '2 un.', 'R$ 9,98', false],
+    ]
+
+    return (
+      <div className="liste-app-preview-scene">
+        <div className="liste-app-phone liste-app-phone-back" aria-hidden="true">
+          <div className="liste-app-phone-screen liste-app-history-screen">
+            <div className="liste-app-statusbar"><span>9:41</span><span>● ● ●</span></div>
+            <div className="liste-app-mini-header"><strong>Histórico</strong><span>3 compras</span></div>
+            <div className="liste-app-history-card"><small>Final de Semana</small><strong>R$ 128,42</strong><span>18 itens · 05/09/2026</span></div>
+            <div className="liste-app-history-card"><small>Compra do mês</small><strong>R$ 286,10</strong><span>31 itens · 29/08/2026</span></div>
+          </div>
+        </div>
+
+        <div className="liste-app-phone liste-app-phone-front">
+          <div className="liste-app-phone-screen">
+            <div className="liste-app-statusbar"><span>9:41</span><span>● ● ●</span></div>
+            <div className="liste-app-topbar">
+              <img src={listeIcon} alt="" />
+              <div><small>Compra em andamento</small><strong>Final de Semana</strong></div>
+              <span className="liste-app-avatar">MC</span>
+            </div>
+
+            <div className="liste-app-progress-card">
+              <div><small>Progresso</small><strong>2 de 4 itens</strong></div>
+              <span>50%</span>
+              <div className="liste-app-progress"><i /></div>
+            </div>
+
+            <div className="liste-app-total-card">
+              <small>Total parcial</small>
+              <strong>R$ 19,73</strong>
+              <span>Atualizado durante a compra</span>
+            </div>
+
+            <div className="liste-app-items">
+              {appItems.map(([name, quantity, price, checked]) => (
+                <div className={`liste-app-item ${checked ? 'is-checked' : ''}`} key={String(name)}>
+                  <span className="liste-app-check">{checked ? '✓' : ''}</span>
+                  <span><strong>{name}</strong><small>{quantity}</small></span>
+                  <b>{price}</b>
+                </div>
+              ))}
+            </div>
+
+            <button type="button" className="liste-app-extra" disabled>+ Adicionar item extra</button>
+
+            <div className="liste-app-nav">
+              <span>⌂<small>Início</small></span>
+              <span>☷<small>Listas</small></span>
+              <span className="active">🛒<small>Comprar</small></span>
+              <span>◷<small>Histórico</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const items = [
     ['Arroz', '🟨 Mercearia', '2', '📦'],
     ['Feijão', '🟨 Mercearia', '0,500', '⚖️'],

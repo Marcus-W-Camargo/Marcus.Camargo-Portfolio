@@ -5,6 +5,8 @@ const listeLogo =
   'https://raw.githubusercontent.com/Marcus-W-Camargo/liste-e-compre/main/src/assets/liste-%26-compre.png'
 const listeIcon =
   'https://raw.githubusercontent.com/Marcus-W-Camargo/liste-e-compre/main/src/assets/Liste.png'
+const listeAppLogo =
+  'https://raw.githubusercontent.com/Marcus-W-Camargo/Liste-Compre-APP/main/src/assets/ListeLogo.png'
 
 type Props = {
   variant: Project['variant']
@@ -54,6 +56,104 @@ export function ProjectPreview({ variant }: Props) {
             </div>
             <div className="mini-keyboard-row row-enter">
               <b className="key-enter">ENTER</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (variant === 'lista-app') {
+    const purchaseItems = [
+      { name: 'Arroz', category: 'Mercearia', price: '14,98', quantity: '2', measure: 'un', checked: true },
+      { name: 'Feijão', category: 'Mercearia', price: '4,75', quantity: '0,500', measure: 'Kg', checked: true },
+      { name: 'Leite', category: 'Laticínios', price: '0,00', quantity: '2', measure: 'un', checked: false },
+    ]
+
+    return (
+      <div className="liste-app-preview-scene">
+        <div className="liste-app-phone liste-app-phone-back" aria-hidden="true">
+          <div className="liste-app-phone-screen liste-app-history-screen">
+            <div className="liste-app-statusbar"><span>9:41</span><span>● ● ●</span></div>
+            <div className="liste-app-screen-decor liste-app-decor-one" />
+            <div className="liste-app-screen-decor liste-app-decor-two" />
+
+            <div className="liste-app-tab-topbar">
+              <img src={listeAppLogo} alt="" />
+              <span className="liste-app-account">👤</span>
+            </div>
+
+            <div className="liste-app-history-content">
+              <header className="liste-app-page-header compact">
+                <strong>Histórico</strong>
+                <small>Compras finalizadas, da mais recente para a mais antiga.</small>
+              </header>
+
+              <div className="liste-app-history-total">
+                <small>Total gasto</small>
+                <strong>R$ 414,52</strong>
+              </div>
+
+              <div className="liste-app-history-row">
+                <span><strong>Final de Semana</strong><small>05/09/2026 19:42</small><small>18 itens · Extras: R$ 12,90</small></span>
+                <b>R$ 128,42</b>
+              </div>
+              <div className="liste-app-history-row">
+                <span><strong>Compra do mês</strong><small>29/08/2026 18:10</small><small>31 itens · Extras: R$ 8,50</small></span>
+                <b>R$ 286,10</b>
+              </div>
+            </div>
+
+            <div className="liste-app-nav">
+              <span>⌂<small>Início</small></span>
+              <span>☷<small>Listas</small></span>
+              <span>$<small>Comprar</small></span>
+              <span className="active">◷<small>Histórico</small></span>
+            </div>
+          </div>
+        </div>
+
+        <div className="liste-app-phone liste-app-phone-front">
+          <div className="liste-app-phone-screen liste-app-purchase-screen">
+            <div className="liste-app-statusbar"><span>9:41</span><span>● ● ●</span></div>
+            <div className="liste-app-screen-decor liste-app-decor-one" />
+            <div className="liste-app-screen-decor liste-app-decor-two" />
+
+            <div className="liste-app-purchase-content">
+              <header className="liste-app-page-header">
+                <span className="liste-app-back">‹</span>
+                <strong>Final de Semana</strong>
+                <small>Compra em andamento neste aparelho</small>
+              </header>
+
+              <div className="liste-app-summary-card">
+                <span><strong>50% concluída</strong><small>2/4 itens</small></span>
+                <b>R$ 19,73</b>
+              </div>
+
+              <div className="liste-app-purchase-items">
+                {purchaseItems.map((item) => (
+                  <div className={`liste-app-purchase-row ${item.checked ? 'is-done' : ''}`} key={item.name}>
+                    <span className={`liste-app-round-check ${item.checked ? 'is-checked' : ''}`}>{item.checked ? '✓' : ''}</span>
+                    <div className="liste-app-row-body">
+                      <div className="liste-app-row-heading">
+                        <span><strong>{item.name}</strong><small>{item.category}</small></span>
+                        <b>×</b>
+                      </div>
+                      <div className="liste-app-row-inputs">
+                        <label><small>Preço unitário</small><span className="liste-app-money">R$ <b>{item.price}</b></span></label>
+                        <label><small>Quantidade</small><span>{item.quantity}</span></label>
+                        <label><small>Medida</small><span className="liste-app-measure"><i className={item.measure === 'un' ? 'active' : ''}>un</i><i className={item.measure === 'Kg' ? 'active' : ''}>Kg</i></span></label>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="liste-app-actions">
+                <button type="button" disabled>+ Adicionar item extra</button>
+                <button type="button" disabled>Finalizar compra</button>
+              </div>
             </div>
           </div>
         </div>

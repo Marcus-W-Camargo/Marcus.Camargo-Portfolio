@@ -1,0 +1,507 @@
+.project-lista-app .project-preview {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, .22), transparent 25%),
+    linear-gradient(145deg, #7B9FD6 0%, #8EAFDD 55%, #DCE7F7 100%);
+  overflow: hidden;
+}
+
+.liste-app-preview-scene {
+  width: 100%;
+  min-height: 430px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 28px 18px;
+}
+
+.liste-app-phone {
+  position: absolute;
+  width: 238px;
+  height: 470px;
+  padding: 7px;
+  border: 3px solid #1A263B;
+  border-radius: 34px;
+  background: #1A263B;
+  box-shadow: 0 24px 48px rgba(11, 20, 36, .28);
+}
+
+.liste-app-phone::before {
+  content: '';
+  position: absolute;
+  z-index: 6;
+  top: 7px;
+  left: 50%;
+  width: 74px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 0 0 13px 13px;
+  background: #1A263B;
+}
+
+/* O primeiro aparelho no JSX contém o Histórico: ele passa a ser o destaque frontal. */
+.liste-app-phone-back {
+  z-index: 3;
+  transform: translateX(-34px) rotate(-2.1deg);
+  opacity: 1;
+}
+
+/* O segundo aparelho contém a Compra em andamento e fica parcialmente atrás. */
+.liste-app-phone-front {
+  z-index: 1;
+  transform: translate(120px, 22px) rotate(6deg) scale(.87);
+  opacity: .95;
+}
+
+.liste-app-phone-screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #7B9FD6;
+  color: #1A263B;
+  font-family: Poppins, Inter, system-ui, sans-serif;
+}
+
+.liste-app-statusbar {
+  position: relative;
+  z-index: 5;
+  height: 25px;
+  padding: 7px 13px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #1A263B;
+  font-size: 7px;
+  font-weight: 800;
+}
+
+.liste-app-screen-decor {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.liste-app-decor-one {
+  width: 132px;
+  height: 132px;
+  top: -48px;
+  right: -46px;
+  background: rgba(255, 255, 255, .10);
+}
+
+.liste-app-decor-two {
+  width: 104px;
+  height: 104px;
+  bottom: 70px;
+  left: -52px;
+  background: rgba(247, 80, 27, .10);
+}
+
+.liste-app-purchase-content,
+.liste-app-history-content {
+  position: relative;
+  z-index: 2;
+  padding: 8px 12px 16px;
+}
+
+.liste-app-page-header {
+  margin-bottom: 10px;
+}
+
+.liste-app-page-header > strong,
+.liste-app-page-header > small {
+  display: block;
+}
+
+.liste-app-back {
+  width: 29px;
+  height: 29px;
+  margin-bottom: 4px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #1A263B;
+  border-radius: 50%;
+  background: #FFFFFF;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.liste-app-page-header > strong {
+  font-size: 17px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.liste-app-page-header > small {
+  margin-top: 2px;
+  color: #5E6F89;
+  font-size: 6.8px;
+  font-weight: 500;
+}
+
+.liste-app-page-header.compact {
+  margin-bottom: 9px;
+}
+
+.liste-app-page-header.compact > strong {
+  font-size: 18px;
+}
+
+.liste-app-summary-card,
+.liste-app-purchase-row,
+.liste-app-history-total,
+.liste-app-history-row {
+  border: 2px solid #1A263B;
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 6px 14px rgba(11, 20, 36, .10);
+}
+
+.liste-app-summary-card {
+  min-height: 58px;
+  margin-bottom: 8px;
+  padding: 10px 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 17px;
+  background: #FFEBDB;
+}
+
+.liste-app-summary-card span strong,
+.liste-app-summary-card span small {
+  display: block;
+}
+
+.liste-app-summary-card span strong {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.liste-app-summary-card span small {
+  margin-top: 1px;
+  color: #5E6F89;
+  font-size: 6px;
+}
+
+.liste-app-summary-card > b {
+  color: #E04312;
+  font-size: 15px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.liste-app-purchase-items {
+  display: grid;
+  gap: 6px;
+}
+
+.liste-app-purchase-row {
+  display: flex;
+  gap: 7px;
+  padding: 8px;
+  border-radius: 17px;
+}
+
+.liste-app-purchase-row.is-done {
+  background: #F2FBF6;
+  opacity: .78;
+}
+
+.liste-app-round-check {
+  flex: 0 0 auto;
+  width: 27px;
+  height: 27px;
+  margin-top: 1px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #1A263B;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.liste-app-round-check.is-checked {
+  background: #1F7A4D;
+}
+
+.liste-app-row-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.liste-app-row-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.liste-app-row-heading span strong,
+.liste-app-row-heading span small {
+  display: block;
+}
+
+.liste-app-row-heading span strong {
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.liste-app-row-heading span small {
+  margin-top: 1px;
+  color: #5E6F89;
+  font-size: 5px;
+}
+
+.liste-app-row-heading > b {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #1A263B;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.liste-app-row-inputs {
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: 1.18fr .82fr .9fr;
+  gap: 4px;
+}
+
+.liste-app-row-inputs label > small {
+  display: block;
+  margin-bottom: 2px;
+  color: #5E6F89;
+  font-size: 4.6px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.liste-app-row-inputs label > span {
+  min-height: 22px;
+  padding: 4px 5px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #D4DCE8;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #1A263B;
+  font-size: 6px;
+  font-weight: 600;
+}
+
+.liste-app-money {
+  gap: 2px;
+}
+
+.liste-app-money b {
+  font-size: 6px;
+}
+
+.liste-app-row-inputs label > span.liste-app-measure {
+  padding: 2px;
+  gap: 2px;
+}
+
+.liste-app-measure i {
+  flex: 1;
+  min-width: 0;
+  padding: 3px 2px;
+  border-radius: 6px;
+  font-style: normal;
+  text-align: center;
+  color: #5E6F89;
+  font-size: 5px;
+}
+
+.liste-app-measure i.active {
+  background: #1A263B;
+  color: #FFFFFF;
+}
+
+/* O app real exibe este auxílio quando o item já pode ser marcado e ainda não foi pego. */
+.liste-app-purchase-row:not(.is-done) .liste-app-row-body::after {
+  content: 'Toque no círculo para marcar como colocado no carrinho.';
+  display: block;
+  margin-top: 4px;
+  color: #5E6F89;
+  font-size: 4.5px;
+  line-height: 1.25;
+}
+
+.liste-app-actions {
+  margin-top: 8px;
+  display: grid;
+  gap: 6px;
+}
+
+.liste-app-actions button {
+  min-height: 29px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 6.5px;
+  font-weight: 700;
+  opacity: 1;
+}
+
+.liste-app-actions button:first-child {
+  border: 2px solid #1A263B;
+  background: #FFFFFF;
+  color: #1A263B;
+}
+
+.liste-app-actions button:last-child {
+  border: 2px solid #F7501B;
+  background: #F7501B;
+  color: #FFFFFF;
+}
+
+.liste-app-tab-topbar {
+  position: relative;
+  z-index: 3;
+  height: 67px;
+  padding: 4px 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.liste-app-tab-topbar img {
+  width: 91px;
+  height: 51px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.liste-app-account {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #1A263B;
+  border-radius: 50%;
+  background: #FFF4E7;
+  font-size: 13px;
+}
+
+.liste-app-history-content {
+  padding-top: 0;
+  padding-bottom: 56px;
+}
+
+.liste-app-history-total {
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 17px;
+  background: #FFEBDB;
+}
+
+.liste-app-history-total small,
+.liste-app-history-total strong {
+  display: block;
+}
+
+.liste-app-history-total small {
+  color: #5E6F89;
+  font-size: 6px;
+  font-weight: 600;
+}
+
+.liste-app-history-total strong {
+  margin-top: 2px;
+  color: #E04312;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.liste-app-history-row {
+  margin-bottom: 7px;
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 17px;
+}
+
+.liste-app-history-row > span {
+  min-width: 0;
+  flex: 1;
+}
+
+.liste-app-history-row span strong,
+.liste-app-history-row span small {
+  display: block;
+}
+
+.liste-app-history-row span strong {
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.liste-app-history-row span small {
+  margin-top: 1px;
+  color: #5E6F89;
+  font-size: 4.8px;
+}
+
+.liste-app-history-row > b {
+  color: #E04312;
+  font-size: 8px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.liste-app-nav {
+  position: absolute;
+  z-index: 4;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 51px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 2px solid #1A263B;
+  background: #FFFFFF;
+}
+
+.liste-app-nav span {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 1px;
+  color: #5E6F89;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.liste-app-nav small {
+  font-size: 5.4px;
+  font-weight: 600;
+}
+
+.liste-app-nav .active {
+  color: #F7501B;
+}
+
+@media (max-width: 760px) {
+  .liste-app-preview-scene {
+    min-height: 360px;
+    padding: 18px 8px;
+    transform: scale(.86);
+    transform-origin: center;
+  }
+
+  .liste-app-phone-back {
+    transform: translateX(-18px) rotate(-2deg) scale(.86);
+  }
+
+  .liste-app-phone-front {
+    transform: translate(90px, 22px) rotate(6deg) scale(.79);
+  }
+}

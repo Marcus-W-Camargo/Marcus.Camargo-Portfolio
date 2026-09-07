@@ -18,6 +18,7 @@ const cases = [
     stack: ['React', 'TypeScript', 'Vite', 'Supabase', 'TMDB', 'GitHub Actions', 'Vercel'],
     learning: 'O projeto reforçou a importância de separar automação, dados e interface, além de tratar deploy e observabilidade como parte do produto — não como etapa posterior.',
     liveUrl: 'https://letreiro-cine-puzzle.vercel.app/pt-br',
+    liveLabel: 'Projeto publicado',
     repoUrl: 'https://github.com/Marcus-W-Camargo/Letreiro',
   },
   {
@@ -35,7 +36,26 @@ const cases = [
     stack: ['React', 'TypeScript', 'Vite', 'Supabase Auth', 'PostgreSQL', 'Storage', 'Vercel Functions'],
     learning: 'Esse projeto aprofundou decisões de arquitetura, segurança por usuário, sincronização e desenho de estados. A principal evolução foi aprender a escolher onde cada dado deve viver em vez de simplesmente colocar tudo no banco.',
     liveUrl: 'https://listeecompre.vercel.app/',
+    liveLabel: 'Projeto publicado',
     repoUrl: 'https://github.com/Marcus-W-Camargo/liste-e-compre',
+  },
+  {
+    title: 'Liste & Compre App',
+    subtitle: 'Aplicativo Android independente e integrado ao ecossistema Liste & Compre',
+    problem: 'A versão web funciona no celular, mas acompanhar uma compra dentro do mercado pede outra ergonomia: toque, gestos, teclado numérico contextual, estado persistente no aparelho e navegação pensada para uma tela que está sempre na mão.',
+    motivation: 'Em vez de transformar o site em um WebView, a decisão foi criar uma aplicação mobile própria que compartilha conta e dados com o serviço web, mas pode evoluir com fluxos e comportamentos específicos de aplicativo.',
+    evolution: 'A V1 passou a reunir listas, compra em andamento, valores e pesos, itens extras, histórico, perfil com câmera ou galeria, autenticação completa e navegação horizontal por gestos, mantendo a sessão de compra local e os dados da conta sincronizados.',
+    challenges: [
+      'Construir uma base React Native + Expo separada da aplicação web sem quebrar a integração com o mesmo backend Supabase.',
+      'Persistir a compra em andamento por usuário no dispositivo e sincronizar somente os dados que realmente pertencem à conta remota.',
+      'Tratar conflitos de sincronização por revisão para evitar sobrescrever silenciosamente alterações mais recentes feitas em outro dispositivo.',
+      'Adaptar a interface Android a safe areas, teclado numérico, câmera, galeria, gestos e diferentes formas de navegação do sistema.',
+    ],
+    stack: ['React Native', 'Expo', 'TypeScript', 'Expo Router', 'Supabase Auth', 'PostgreSQL', 'Storage', 'Android'],
+    learning: 'O aplicativo reforçou que compartilhar produto e backend não significa compartilhar interface. Separar responsabilidades entre web, mobile, estado local e sincronização tornou o ecossistema mais coerente e criou espaço para evoluir cada plataforma de acordo com seu contexto de uso.',
+    liveUrl: null,
+    liveLabel: 'Aplicativo Android',
+    repoUrl: 'https://github.com/Marcus-W-Camargo/Liste-Compre-APP',
   },
 ]
 
@@ -78,7 +98,7 @@ export function RecruiterPage() {
             <p>Esta área concentra contexto, decisões, dificuldades e aprendizados dos projetos. O objetivo é facilitar uma avaliação técnica mais honesta do meu momento como desenvolvedor júnior e da direção em que estou evoluindo.</p>
           </div>
           <div className="recruiter-snapshot">
-            <div><strong>02</strong><span>projetos publicados em destaque</span></div>
+            <div><strong>03</strong><span>projetos publicados ou consolidados em destaque</span></div>
             <div><strong>Produto + código</strong><span>decisões guiadas por problema real</span></div>
             <div><strong>Aprendizado contínuo</strong><span>arquitetura, segurança, deploy e UX</span></div>
           </div>
@@ -131,7 +151,7 @@ export function RecruiterPage() {
                   <div><small>Stack principal</small><div className="recruiter-stack">{item.stack.map((tech) => <span key={tech}>{tech}</span>)}</div></div>
                   <div><small>Dificuldades que exigiram mais investigação</small><ul>{item.challenges.map((challenge) => <li key={challenge}>{challenge}</li>)}</ul></div>
                   <div className="recruiter-links">
-                    <a href={item.liveUrl} target="_blank" rel="noreferrer">Projeto publicado <ArrowUpRight size={15} /></a>
+                    {item.liveUrl && <a href={item.liveUrl} target="_blank" rel="noreferrer">{item.liveLabel} <ArrowUpRight size={15} /></a>}
                     <a href={item.repoUrl} target="_blank" rel="noreferrer">Repositório <Github size={15} /></a>
                   </div>
                 </aside>

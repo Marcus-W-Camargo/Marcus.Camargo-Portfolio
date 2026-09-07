@@ -1,7 +1,7 @@
 .project-lista-app .project-preview {
   background:
-    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, .24), transparent 25%),
-    linear-gradient(145deg, #789bd0 0%, #95b6e5 55%, #d6e5fb 100%);
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, .22), transparent 25%),
+    linear-gradient(145deg, #7B9FD6 0%, #8EAFDD 55%, #DCE7F7 100%);
   overflow: hidden;
 }
 
@@ -19,23 +19,23 @@
   width: 238px;
   height: 470px;
   padding: 7px;
-  border: 3px solid #18263b;
+  border: 3px solid #1A263B;
   border-radius: 34px;
-  background: #18263b;
-  box-shadow: 0 24px 48px rgba(24, 38, 59, .28);
+  background: #1A263B;
+  box-shadow: 0 24px 48px rgba(11, 20, 36, .28);
 }
 
 .liste-app-phone::before {
   content: '';
   position: absolute;
-  z-index: 3;
+  z-index: 6;
   top: 7px;
   left: 50%;
   width: 74px;
   height: 18px;
   transform: translateX(-50%);
   border-radius: 0 0 13px 13px;
-  background: #18263b;
+  background: #1A263B;
 }
 
 .liste-app-phone-front {
@@ -46,7 +46,7 @@
 .liste-app-phone-back {
   z-index: 1;
   transform: translate(118px, 22px) rotate(6deg) scale(.86);
-  opacity: .92;
+  opacity: .94;
 }
 
 .liste-app-phone-screen {
@@ -54,234 +54,402 @@
   height: 100%;
   overflow: hidden;
   border-radius: 26px;
-  background: #f7f9fc;
-  color: #1b2a40;
-  font-family: Inter, system-ui, sans-serif;
+  background: #7B9FD6;
+  color: #1A263B;
+  font-family: Poppins, Inter, system-ui, sans-serif;
 }
 
 .liste-app-statusbar {
+  position: relative;
+  z-index: 5;
   height: 25px;
   padding: 7px 13px 0;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  color: #2d3f59;
+  color: #1A263B;
   font-size: 7px;
   font-weight: 800;
 }
 
-.liste-app-topbar {
-  display: grid;
-  grid-template-columns: 34px 1fr 31px;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 12px 10px;
-  border-bottom: 1px solid #dce5f1;
-  background: #fff;
+.liste-app-screen-decor {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
 }
 
-.liste-app-topbar img {
+.liste-app-decor-one {
+  width: 132px;
+  height: 132px;
+  top: -48px;
+  right: -46px;
+  background: rgba(255, 255, 255, .10);
+}
+
+.liste-app-decor-two {
+  width: 104px;
+  height: 104px;
+  bottom: 70px;
+  left: -52px;
+  background: rgba(247, 80, 27, .10);
+}
+
+.liste-app-purchase-content,
+.liste-app-history-content {
+  position: relative;
+  z-index: 2;
+  padding: 8px 12px 16px;
+}
+
+.liste-app-page-header {
+  margin-bottom: 10px;
+}
+
+.liste-app-page-header > strong,
+.liste-app-page-header > small {
+  display: block;
+}
+
+.liste-app-back {
   width: 29px;
   height: 29px;
-  object-fit: contain;
-}
-
-.liste-app-topbar div {
-  min-width: 0;
-}
-
-.liste-app-topbar small,
-.liste-app-topbar strong {
-  display: block;
-}
-
-.liste-app-topbar small {
-  margin-bottom: 2px;
-  color: #72819a;
-  font-size: 7px;
-}
-
-.liste-app-topbar strong {
-  overflow: hidden;
-  color: #1a263b;
-  font-size: 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.liste-app-avatar {
-  width: 27px;
-  height: 27px;
+  margin-bottom: 4px;
   display: grid;
   place-items: center;
+  border: 2px solid #1A263B;
   border-radius: 50%;
-  background: #1a263b;
-  color: #fff;
-  font-size: 7px;
+  background: #FFFFFF;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.liste-app-page-header > strong {
+  font-size: 17px;
+  line-height: 1.15;
   font-weight: 900;
 }
 
-.liste-app-progress-card,
-.liste-app-total-card {
-  margin: 10px 11px 0;
-  border: 1px solid #c9d9ee;
-  border-radius: 13px;
-  background: #fff;
-  box-shadow: 0 5px 12px rgba(43, 65, 95, .07);
-}
-
-.liste-app-progress-card {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 7px;
-  padding: 10px;
-}
-
-.liste-app-progress-card small,
-.liste-app-progress-card strong {
-  display: block;
-}
-
-.liste-app-progress-card small {
-  color: #75849a;
-  font-size: 6.5px;
-}
-
-.liste-app-progress-card strong {
+.liste-app-page-header > small {
   margin-top: 2px;
-  font-size: 9px;
+  color: #465A79;
+  font-size: 6.8px;
+  font-weight: 500;
 }
 
-.liste-app-progress-card > span {
-  align-self: center;
-  color: #f4511e;
-  font-size: 8px;
-  font-weight: 900;
+.liste-app-page-header.compact {
+  margin-bottom: 9px;
 }
 
-.liste-app-progress {
-  grid-column: 1 / -1;
-  height: 5px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: #e7edf5;
-}
-
-.liste-app-progress i {
-  display: block;
-  width: 50%;
-  height: 100%;
-  border-radius: inherit;
-  background: #f4511e;
-}
-
-.liste-app-total-card {
-  padding: 11px;
-  background: linear-gradient(145deg, #1c2b42, #2d4568);
-  color: #fff;
-}
-
-.liste-app-total-card small,
-.liste-app-total-card strong,
-.liste-app-total-card span {
-  display: block;
-}
-
-.liste-app-total-card small {
-  font-size: 6.5px;
-  opacity: .7;
-}
-
-.liste-app-total-card strong {
-  margin: 2px 0 1px;
+.liste-app-page-header.compact > strong {
   font-size: 18px;
 }
 
-.liste-app-total-card span {
-  font-size: 6px;
-  opacity: .68;
+.liste-app-summary-card,
+.liste-app-purchase-row,
+.liste-app-history-total,
+.liste-app-history-row {
+  border: 2px solid #1A263B;
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 6px 14px rgba(11, 20, 36, .10);
 }
 
-.liste-app-items {
-  display: grid;
-  gap: 6px;
-  padding: 10px 11px 0;
-}
-
-.liste-app-item {
-  display: grid;
-  grid-template-columns: 20px 1fr auto;
+.liste-app-summary-card {
+  min-height: 58px;
+  margin-bottom: 8px;
+  padding: 10px 11px;
+  display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px;
-  border: 1px solid #dce5f1;
-  border-radius: 10px;
-  background: #fff;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 17px;
+  background: #FFEBDB;
 }
 
-.liste-app-item.is-checked {
-  background: #f2f7fc;
-}
-
-.liste-app-check {
-  width: 18px;
-  height: 18px;
-  display: grid;
-  place-items: center;
-  border: 1.5px solid #f4511e;
-  border-radius: 6px;
-  color: #fff;
-  background: #f4511e;
-  font-size: 9px;
-  font-weight: 900;
-}
-
-.liste-app-item:not(.is-checked) .liste-app-check {
-  background: #fff;
-}
-
-.liste-app-item > span:nth-child(2) strong,
-.liste-app-item > span:nth-child(2) small {
+.liste-app-summary-card span strong,
+.liste-app-summary-card span small {
   display: block;
 }
 
-.liste-app-item > span:nth-child(2) strong {
-  font-size: 8px;
+.liste-app-summary-card span strong {
+  font-size: 10px;
+  font-weight: 700;
 }
 
-.liste-app-item > span:nth-child(2) small {
-  margin-top: 2px;
-  color: #7a8799;
+.liste-app-summary-card span small {
+  margin-top: 1px;
+  color: #5E6F89;
   font-size: 6px;
 }
 
-.liste-app-item > b {
-  font-size: 7px;
+.liste-app-summary-card > b {
+  color: #E04312;
+  font-size: 15px;
+  font-weight: 900;
+  white-space: nowrap;
 }
 
-.liste-app-extra {
-  width: calc(100% - 22px);
-  margin: 9px 11px 56px;
+.liste-app-purchase-items {
+  display: grid;
+  gap: 6px;
+}
+
+.liste-app-purchase-row {
+  display: flex;
+  gap: 7px;
   padding: 8px;
-  border: 1px dashed #f4511e;
-  border-radius: 9px;
-  background: #fff5f1;
-  color: #d94417;
-  font-size: 7px;
-  font-weight: 800;
+  border-radius: 17px;
+}
+
+.liste-app-purchase-row.is-done {
+  background: #F2FBF6;
+  opacity: .82;
+}
+
+.liste-app-round-check {
+  flex: 0 0 auto;
+  width: 27px;
+  height: 27px;
+  margin-top: 1px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #1A263B;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.liste-app-round-check.is-checked {
+  background: #1F7A4D;
+}
+
+.liste-app-row-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.liste-app-row-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.liste-app-row-heading span strong,
+.liste-app-row-heading span small {
+  display: block;
+}
+
+.liste-app-row-heading span strong {
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.liste-app-row-heading span small {
+  margin-top: 1px;
+  color: #5E6F89;
+  font-size: 5px;
+}
+
+.liste-app-row-heading > b {
+  color: #1A263B;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.liste-app-row-inputs {
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: 1.18fr .82fr .9fr;
+  gap: 4px;
+}
+
+.liste-app-row-inputs label > small {
+  display: block;
+  margin-bottom: 2px;
+  color: #5E6F89;
+  font-size: 4.6px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.liste-app-row-inputs label > span {
+  min-height: 22px;
+  padding: 4px 5px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #D4DCE8;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #1A263B;
+  font-size: 6px;
+  font-weight: 600;
+}
+
+.liste-app-money {
+  gap: 2px;
+}
+
+.liste-app-money b {
+  font-size: 6px;
+}
+
+.liste-app-row-inputs label > span.liste-app-measure {
+  padding: 2px;
+  gap: 2px;
+}
+
+.liste-app-measure i {
+  flex: 1;
+  min-width: 0;
+  padding: 3px 2px;
+  border-radius: 6px;
+  font-style: normal;
+  text-align: center;
+  color: #5E6F89;
+  font-size: 5px;
+}
+
+.liste-app-measure i.active {
+  background: #1A263B;
+  color: #FFFFFF;
+}
+
+.liste-app-actions {
+  margin-top: 8px;
+  display: grid;
+  gap: 6px;
+}
+
+.liste-app-actions button {
+  min-height: 29px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 6.5px;
+  font-weight: 700;
   opacity: 1;
+}
+
+.liste-app-actions button:first-child {
+  border: 2px solid #1A263B;
+  background: #FFFFFF;
+  color: #1A263B;
+}
+
+.liste-app-actions button:last-child {
+  border: 2px solid #F7501B;
+  background: #F7501B;
+  color: #FFFFFF;
+}
+
+.liste-app-tab-topbar {
+  position: relative;
+  z-index: 3;
+  height: 67px;
+  padding: 4px 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.liste-app-tab-topbar img {
+  width: 91px;
+  height: 51px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.liste-app-account {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #1A263B;
+  border-radius: 50%;
+  background: #FFF4E7;
+  font-size: 13px;
+}
+
+.liste-app-history-content {
+  padding-top: 0;
+  padding-bottom: 56px;
+}
+
+.liste-app-history-total {
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 17px;
+  background: #FFEBDB;
+}
+
+.liste-app-history-total small,
+.liste-app-history-total strong {
+  display: block;
+}
+
+.liste-app-history-total small {
+  color: #5E6F89;
+  font-size: 6px;
+  font-weight: 600;
+}
+
+.liste-app-history-total strong {
+  margin-top: 2px;
+  color: #E04312;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.liste-app-history-row {
+  margin-bottom: 7px;
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 17px;
+}
+
+.liste-app-history-row > span {
+  min-width: 0;
+  flex: 1;
+}
+
+.liste-app-history-row span strong,
+.liste-app-history-row span small {
+  display: block;
+}
+
+.liste-app-history-row span strong {
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.liste-app-history-row span small {
+  margin-top: 1px;
+  color: #5E6F89;
+  font-size: 4.8px;
+}
+
+.liste-app-history-row > b {
+  color: #E04312;
+  font-size: 8px;
+  font-weight: 900;
+  white-space: nowrap;
 }
 
 .liste-app-nav {
   position: absolute;
+  z-index: 4;
   right: 0;
   bottom: 0;
   left: 0;
-  height: 48px;
+  height: 51px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid #dce5f1;
-  background: rgba(255, 255, 255, .97);
+  border-top: 2px solid #1A263B;
+  background: #FFFFFF;
 }
 
 .liste-app-nav span {
@@ -289,72 +457,18 @@
   place-items: center;
   align-content: center;
   gap: 1px;
-  color: #8996a8;
-  font-size: 10px;
-}
-
-.liste-app-nav small {
-  font-size: 5.5px;
+  color: #5E6F89;
+  font-size: 12px;
   font-weight: 700;
 }
 
+.liste-app-nav small {
+  font-size: 5.4px;
+  font-weight: 600;
+}
+
 .liste-app-nav .active {
-  color: #f4511e;
-}
-
-.liste-app-history-screen {
-  padding-top: 3px;
-  background: #eef4fb;
-}
-
-.liste-app-mini-header {
-  padding: 24px 15px 12px;
-  background: #fff;
-}
-
-.liste-app-mini-header strong,
-.liste-app-mini-header span {
-  display: block;
-}
-
-.liste-app-mini-header strong {
-  font-size: 12px;
-}
-
-.liste-app-mini-header span {
-  margin-top: 2px;
-  color: #74829a;
-  font-size: 6px;
-}
-
-.liste-app-history-card {
-  margin: 10px;
-  padding: 12px;
-  border: 1px solid #cfdbeb;
-  border-radius: 12px;
-  background: #fff;
-}
-
-.liste-app-history-card small,
-.liste-app-history-card strong,
-.liste-app-history-card span {
-  display: block;
-}
-
-.liste-app-history-card small {
-  color: #73829a;
-  font-size: 6px;
-}
-
-.liste-app-history-card strong {
-  margin: 5px 0 3px;
-  color: #1a263b;
-  font-size: 13px;
-}
-
-.liste-app-history-card span {
-  color: #8190a4;
-  font-size: 5.5px;
+  color: #F7501B;
 }
 
 @media (max-width: 760px) {

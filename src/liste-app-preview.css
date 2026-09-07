@@ -38,15 +38,18 @@
   background: #1A263B;
 }
 
-.liste-app-phone-front {
-  z-index: 2;
-  transform: translateX(-34px) rotate(-2.3deg);
+/* O primeiro aparelho no JSX contém o Histórico: ele passa a ser o destaque frontal. */
+.liste-app-phone-back {
+  z-index: 3;
+  transform: translateX(-34px) rotate(-2.1deg);
+  opacity: 1;
 }
 
-.liste-app-phone-back {
+/* O segundo aparelho contém a Compra em andamento e fica parcialmente atrás. */
+.liste-app-phone-front {
   z-index: 1;
-  transform: translate(118px, 22px) rotate(6deg) scale(.86);
-  opacity: .94;
+  transform: translate(120px, 22px) rotate(6deg) scale(.87);
+  opacity: .95;
 }
 
 .liste-app-phone-screen {
@@ -132,7 +135,7 @@
 
 .liste-app-page-header > small {
   margin-top: 2px;
-  color: #465A79;
+  color: #5E6F89;
   font-size: 6.8px;
   font-weight: 500;
 }
@@ -203,7 +206,7 @@
 
 .liste-app-purchase-row.is-done {
   background: #F2FBF6;
-  opacity: .82;
+  opacity: .78;
 }
 
 .liste-app-round-check {
@@ -254,6 +257,11 @@
 }
 
 .liste-app-row-heading > b {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
   color: #1A263B;
   font-size: 13px;
   line-height: 1;
@@ -315,6 +323,16 @@
 .liste-app-measure i.active {
   background: #1A263B;
   color: #FFFFFF;
+}
+
+/* O app real exibe este auxílio quando o item já pode ser marcado e ainda não foi pego. */
+.liste-app-purchase-row:not(.is-done) .liste-app-row-body::after {
+  content: 'Toque no círculo para marcar como colocado no carrinho.';
+  display: block;
+  margin-top: 4px;
+  color: #5E6F89;
+  font-size: 4.5px;
+  line-height: 1.25;
 }
 
 .liste-app-actions {
@@ -480,10 +498,10 @@
   }
 
   .liste-app-phone-back {
-    transform: translate(88px, 22px) rotate(6deg) scale(.78);
+    transform: translateX(-18px) rotate(-2deg) scale(.86);
   }
 
   .liste-app-phone-front {
-    transform: translateX(-18px) rotate(-2deg) scale(.86);
+    transform: translate(90px, 22px) rotate(6deg) scale(.79);
   }
 }

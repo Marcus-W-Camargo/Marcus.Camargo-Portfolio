@@ -12,7 +12,7 @@ export const projects: Project[] = [
     description:
       'Jogo diário de descoberta de filmes com desafios automáticos, calendário de partidas anteriores, dicas progressivas, persistência local e automação diária integrada ao GitHub Actions.',
     technologies: ['React', 'TypeScript', 'Supabase', 'TMDB'],
-    liveUrl: 'https://letreiro-cine-puzzle.vercel.app/pt-br',
+    liveUrl: 'https://letreiro.marcuscamargo-portfolio.com.br',
     variant: 'letreiro',
   },
   {

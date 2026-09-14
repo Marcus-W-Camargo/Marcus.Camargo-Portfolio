@@ -22,12 +22,20 @@ import './commercial-recruiter.css'
 import './commercial-recruiter-refinements.css'
 import './commercial-recruiter-visual-fixes.css'
 import './hero-orbit-icons.css'
+import './apoie.css'
 import App from './App'
+import { ApoiePage } from './ApoiePage'
 import { PrivacyPage } from './PrivacyPage'
 import { RecruiterPage } from './RecruiterPage'
 
 const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
-const Page = pathname === '/privacidade' ? PrivacyPage : pathname === '/recrutadores' ? RecruiterPage : App
+const Page = pathname === '/privacidade'
+  ? PrivacyPage
+  : pathname === '/recrutadores'
+    ? RecruiterPage
+    : pathname === '/apoie'
+      ? ApoiePage
+      : App
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

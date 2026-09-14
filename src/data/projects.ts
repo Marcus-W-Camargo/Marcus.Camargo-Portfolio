@@ -28,7 +28,7 @@ export const projects: Project[] = [
     description:
       'Aplicativo Android nativo do ecossistema Liste & Compre, criado em React Native e Expo para levar planejamento, compra em andamento, histórico e conta a uma experiência mobile própria, integrada aos mesmos dados do serviço web.',
     technologies: ['React Native', 'Expo', 'TypeScript', 'Supabase'],
-    liveUrl: 'https://github.com/Marcus-W-Camargo/Liste-Compre-APP',
+    liveUrl: 'https://listeecompre.marcuscamargo-portfolio.com.br/aplicativo',
     variant: 'lista-app',
   },
 ]

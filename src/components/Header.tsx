@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BriefcaseBusiness, Heart } from 'lucide-react'
+import { BriefcaseBusiness } from 'lucide-react'
 import profile from '../assets/Perfil Marcus Camargo - Portifolio.png'
 
 const links = [
@@ -42,7 +42,6 @@ export function Header() {
           </a>
         ))}
         <a href="/apoie" onClick={closeMenu}>
-          <Heart size={15} />
           Apoie
         </a>
         <a className="nav-recruiter" href="/recrutadores" onClick={closeMenu}>

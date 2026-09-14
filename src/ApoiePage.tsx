@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowLeft, Check, Copy, Heart, ServerCog, Sparkles } from 'lucide-react'
+import { ArrowLeft, Check, Copy, ServerCog, Sparkles } from 'lucide-react'
 import logo from './assets/Marcus-Camargo-Logo-Transparente.png'
 
 const PIX_KEY = 'marcuscamargo.portifolio@gmail.com'
@@ -120,7 +120,6 @@ export function ApoiePage() {
 
         <section className="support-grid">
           <div className="support-story-card">
-            <div className="support-heart"><Heart size={30} fill="currentColor" /></div>
             <span className="support-label">Por que apoiar?</span>
             <h2>Mais tempo para construir, melhorar e publicar boas ideias.</h2>
             <p>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { ArrowUpRight } from 'lucide-react'
 import { Header } from './components/Header'
 import { ProjectPreview } from './components/ProjectPreview'
 import { projects } from './data/projects'
@@ -19,27 +18,17 @@ export function ProjectsPage() {
         return
       }
 
-      const rows = Array.from(
-        document.querySelectorAll<HTMLElement>('[data-project-slug]'),
-      )
-
+      const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-project-slug]'))
       const carousel = document.querySelector<HTMLElement>('.editorial-mobile-carousel')
-      const selectionBottom = carousel
-        ? carousel.getBoundingClientRect().top - 12
-        : window.innerHeight
+      const selectionBottom = carousel ? carousel.getBoundingClientRect().top - 10 : window.innerHeight
 
       const visibleRows = rows.filter((row) => {
         const rect = row.getBoundingClientRect()
         return rect.bottom > 0 && rect.top < selectionBottom
       })
 
-      const lastVisible = visibleRows.at(-1)
-      const fallback = rows[0]
-      const selected = lastVisible ?? fallback
-
-      if (selected) {
-        setMobileSlug(selected.dataset.projectSlug ?? null)
-      }
+      const selected = visibleRows.at(-1) ?? rows[0]
+      if (selected) setMobileSlug(selected.dataset.projectSlug ?? null)
     }
 
     updateMobileProject()
@@ -60,10 +49,8 @@ export function ProjectsPage() {
 
       <main className="editorial-projects-main">
         <div className="editorial-projects-intro">
-          <span>Projetos selecionados</span>
-          <p>
-            Passe pelos projetos para revelar cada experiência. O site oficial aparece apenas dentro do case.
-          </p>
+          <span>Selected work / 2026</span>
+          <h1>Projetos</h1>
         </div>
 
         <section className="editorial-projects-stage" aria-label="Projetos de Marcus Camargo">
@@ -75,7 +62,7 @@ export function ProjectsPage() {
                 </div>
                 <div className="editorial-preview-caption">
                   <span>{activeProject.category}</span>
-                  <strong>{activeProject.title}</strong>
+                  <strong>{activeProject.year}</strong>
                 </div>
               </div>
             )}
@@ -84,7 +71,7 @@ export function ProjectsPage() {
           <div className="editorial-project-list" onMouseLeave={() => setActiveSlug(null)}>
             {projects.map((project, index) => (
               <article
-                className={`editorial-project-row ${activeSlug === project.slug ? 'is-active' : ''}`}
+                className={`editorial-project-row editorial-project-row-${index + 1} ${(activeSlug === project.slug || mobileSlug === project.slug) ? 'is-active' : ''}`}
                 key={project.slug}
                 data-project-slug={project.slug}
                 onMouseEnter={() => setActiveSlug(project.slug)}
@@ -94,10 +81,9 @@ export function ProjectsPage() {
                   onFocus={() => setActiveSlug(project.slug)}
                   onBlur={() => setActiveSlug(null)}
                 >
-                  <span className="editorial-project-number">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="editorial-project-marker">{project.year} / {String(index + 1).padStart(2, '0')}</span>
                   <span className="editorial-project-title">{project.title}</span>
-                  <span className="editorial-project-meta">{project.category} · {project.year}</span>
-                  <ArrowUpRight className="editorial-project-arrow" size={24} />
+                  <span className="editorial-project-slash" aria-hidden="true">/</span>
                 </a>
               </article>
             ))}

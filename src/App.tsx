@@ -7,7 +7,6 @@ import {
   Globe2,
   Instagram,
   PanelsTopLeft,
-  Sparkles,
   Workflow,
 } from 'lucide-react'
 import logo from './assets/Marcus-Camargo-Logo-Transparente.png'
@@ -94,18 +93,17 @@ function App() {
           <AmbientHeroField />
 
           <div className="hero-copy" data-reveal>
-            <div className="eyebrow"><span />Soluções digitais pensadas para resolver, não apenas aparecer</div>
+            <div className="eyebrow"><span />Desenvolvimento & soluções digitais</div>
             <h1>
-              Sua ideia pode virar uma experiência que
-              <span>transmite confiança e gera resultado.</span>
+              Ideias que viram
+              <span>experiências digitais reais.</span>
             </h1>
             <p className="hero-text">
-              Eu transformo necessidades reais em páginas, sistemas e automações claras, modernas e fáceis de usar. Com atenção ao que o seu cliente precisa sentir, entender e fazer.
+              Sites, sistemas e automações construídos para funcionar, comunicar e evoluir.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="/projetos">Explorar projetos <ArrowUpRight size={18} /></a>
-              <a className="button button-secondary button-contact-animated" href="#contato">Quero conversar</a>
-              <a className="button button-github" href="/recrutadores"><Sparkles size={18} /> Para recrutadores</a>
+              <a className="button button-secondary button-contact-animated" href="#contato">Contato</a>
             </div>
           </div>
 
@@ -137,12 +135,6 @@ function App() {
               </div>
             </div>
           </div>
-        </section>
-
-        <section className="commercial-value-band" data-reveal>
-          <div><Globe2 size={20} /><strong>Presença</strong><span>Uma página que explica seu valor rapidamente.</span></div>
-          <div><Database size={20} /><strong>Organização</strong><span>Sistemas que deixam a rotina mais simples.</span></div>
-          <div><Bot size={20} /><strong>Agilidade</strong><span>Automação para reduzir tarefas repetitivas.</span></div>
         </section>
 
         <section className="section services-section" id="servicos" data-reveal>

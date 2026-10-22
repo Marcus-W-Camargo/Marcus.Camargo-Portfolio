@@ -5,7 +5,6 @@ import logo from '../assets/Marcus-Camargo-Logo-Transparente.png'
 const links = [
   ['Início', '/'],
   ['Projetos', '/projetos'],
-  ['Sobre', '/#sobre'],
 ]
 
 function WhatsAppIcon({ size = 18 }: { size?: number }) {
@@ -72,8 +71,6 @@ export function Header() {
 
         <div
           className={`nav-contact-menu ${contactOpen ? 'is-open' : ''}`}
-          onMouseEnter={() => setContactOpen(true)}
-          onMouseLeave={() => setContactOpen(false)}
           onFocus={() => setContactOpen(true)}
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {

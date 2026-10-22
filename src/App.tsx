@@ -9,6 +9,7 @@ import {
   Workflow,
 } from 'lucide-react'
 import logo from './assets/Marcus-Camargo-Logo-Transparente.png'
+import profile from './assets/Perfil Marcus Camargo - Portifolio.png'
 import { Header } from './components/Header'
 import { AmbientHeroField } from './components/AmbientHeroField'
 
@@ -70,12 +71,11 @@ function App() {
     <>
       <div className="page-glow page-glow-one" aria-hidden="true" />
       <div className="page-glow page-glow-two" aria-hidden="true" />
-      <Header />
+      <div className="home-intro-shell">
+        <AmbientHeroField />
+        <Header />
 
-      <main>
         <section className="hero section commercial-hero" id="inicio">
-          <AmbientHeroField />
-
           <div className="commercial-hero-inner">
             <div className="hero-copy" data-reveal>
               <div className="eyebrow"><span />Desenvolvimento & soluções digitais</div>
@@ -107,8 +107,8 @@ function App() {
                   ))}
                 </div>
 
-                <div className="hero-profile-card hero-logo-card">
-                  <img className="hero-logo-image" src={logo} alt="Logomarca Marcus Camargo Portfólio" />
+                <div className="hero-profile-card hero-photo-card">
+                  <img className="hero-photo-image" src={profile} alt="Foto de Marcus Camargo" />
                 </div>
 
                 <div className="hero-orbit-layer hero-orbit-layer-front" aria-hidden="true">
@@ -122,7 +122,9 @@ function App() {
             </div>
           </div>
         </section>
+      </div>
 
+      <main>
         <section className="home-project-gateway" data-reveal>
           <div className="home-project-gateway-card">
             <div className="home-project-gateway-copy">

@@ -1,4 +1,4 @@
-export type ProjectVariant = 'letreiro' | 'lista' | 'lista-app'
+export type ProjectVariant = 'letreiro' | 'lista' | 'lista-app' | 'coming-soon'
 
 export type Project = {
   slug: string
@@ -9,9 +9,10 @@ export type Project = {
   description: string
   story: string
   technologies: string[]
-  liveUrl: string
-  liveLabel: string
+  liveUrl?: string
+  liveLabel?: string
   variant: ProjectVariant
+  comingSoon?: boolean
 }
 
 export const projects: Project[] = [
@@ -59,6 +60,42 @@ export const projects: Project[] = [
     liveUrl: 'https://listeecompre.marcuscamargo-portfolio.com.br/aplicativo',
     liveLabel: 'Conhecer o aplicativo',
     variant: 'lista-app',
+  },
+  {
+    slug: 'spaco-liss',
+    title: 'Spaço Liss',
+    eyebrow: 'Case em preparação',
+    category: 'Site & sistema',
+    year: '2026',
+    description: 'O case completo do Spaço Liss será apresentado em breve.',
+    story: '',
+    technologies: [],
+    variant: 'coming-soon',
+    comingSoon: true,
+  },
+  {
+    slug: 'mexe-pilates',
+    title: 'Mexe_Pilates',
+    eyebrow: 'Case em preparação',
+    category: 'Site & agendamento',
+    year: '2026',
+    description: 'O case completo do Mexe Pilates será apresentado em breve.',
+    story: '',
+    technologies: [],
+    variant: 'coming-soon',
+    comingSoon: true,
+  },
+  {
+    slug: 'nuvem-agendas',
+    title: 'Nuvem Agendas',
+    eyebrow: 'Case em preparação',
+    category: 'Produto digital',
+    year: '2026',
+    description: 'O case completo do Nuvem Agendas será apresentado em breve.',
+    story: '',
+    technologies: [],
+    variant: 'coming-soon',
+    comingSoon: true,
   },
 ]
 

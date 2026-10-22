@@ -19,11 +19,17 @@
 .home-intro-shell > .site-header,
 .home-intro-shell > .commercial-hero {
   position: relative;
-  z-index: 2;
+}
+
+.home-intro-shell > .commercial-hero {
+  z-index: 1;
 }
 
 .home-intro-shell > .site-header {
   position: sticky;
+  z-index: 200;
+  overflow: visible;
+  isolation: isolate;
   top: 16px;
   background: rgba(13, 9, 21, .56);
   border-color: rgba(255,255,255,.10);
@@ -119,10 +125,23 @@
 }
 
 /* Header contact popover */
+.site-header {
+  z-index: 200;
+  overflow: visible;
+}
+
+.main-nav {
+  position: relative;
+  z-index: 210;
+  overflow: visible;
+}
+
 .nav-contact-menu {
   position: relative;
+  z-index: 220;
   display: flex;
   align-items: center;
+  overflow: visible;
 }
 
 .nav-contact-trigger {
@@ -149,7 +168,7 @@
 
 .nav-contact-popover {
   position: absolute;
-  z-index: 60;
+  z-index: 230;
   top: 100%;
   right: 0;
   width: 270px;
@@ -166,6 +185,9 @@
 }
 
 .nav-contact-popover-panel {
+  position: relative;
+  z-index: 231;
+  pointer-events: auto;
   padding: 8px;
   display: grid;
   gap: 4px;

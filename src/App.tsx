@@ -76,46 +76,48 @@ function App() {
         <section className="hero section commercial-hero" id="inicio">
           <AmbientHeroField />
 
-          <div className="hero-copy" data-reveal>
-            <div className="eyebrow"><span />Desenvolvimento & soluções digitais</div>
-            <h1>
-              Ideias que viram
-              <span>experiências digitais reais.</span>
-            </h1>
-            <p className="hero-text">
-              Sites, sistemas e automações construídos para funcionar, comunicar e evoluir.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="/projetos">Explorar projetos <ArrowUpRight size={18} /></a>
-              <a className="button button-secondary button-contact-animated" href="#contato">Contato</a>
+          <div className="commercial-hero-inner">
+            <div className="hero-copy" data-reveal>
+              <div className="eyebrow"><span />Desenvolvimento & soluções digitais</div>
+              <h1>
+                Ideias que viram
+                <span>experiências digitais reais.</span>
+              </h1>
+              <p className="hero-text">
+                Sites, sistemas e automações construídos para funcionar, comunicar e evoluir.
+              </p>
+              <div className="hero-actions">
+                <a className="button button-primary" href="/projetos">Explorar projetos <ArrowUpRight size={18} /></a>
+                <a className="button button-secondary button-contact-animated" href="#contato">Contato</a>
+              </div>
             </div>
-          </div>
 
-          <div className="hero-visual" data-reveal>
-            <div className="profile-orbit commercial-orbit">
-              <div className="orbit orbit-one" />
-              <div className="orbit orbit-two" />
-              <div className="orbit-dot dot-one" />
-              <div className="orbit-dot dot-two" />
+            <div className="hero-visual" data-reveal>
+              <div className="profile-orbit commercial-orbit">
+                <div className="orbit orbit-one" />
+                <div className="orbit orbit-two" />
+                <div className="orbit-dot dot-one" />
+                <div className="orbit-dot dot-two" />
 
-              <div className="hero-orbit-layer hero-orbit-layer-back" aria-hidden="true">
-                {orbitIcons.map(({ icon: Icon, label, className }) => (
-                  <div className={`hero-orbit-bubble hero-orbit-bubble-back ${className}`} key={`back-${label}`}>
-                    <span><Icon size={20} strokeWidth={1.8} /></span>
-                  </div>
-                ))}
-              </div>
+                <div className="hero-orbit-layer hero-orbit-layer-back" aria-hidden="true">
+                  {orbitIcons.map(({ icon: Icon, label, className }) => (
+                    <div className={`hero-orbit-bubble hero-orbit-bubble-back ${className}`} key={`back-${label}`}>
+                      <span><Icon size={20} strokeWidth={1.8} /></span>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="hero-profile-card hero-logo-card">
-                <img className="hero-logo-image" src={logo} alt="Logomarca Marcus Camargo Portfólio" />
-              </div>
+                <div className="hero-profile-card hero-logo-card">
+                  <img className="hero-logo-image" src={logo} alt="Logomarca Marcus Camargo Portfólio" />
+                </div>
 
-              <div className="hero-orbit-layer hero-orbit-layer-front" aria-hidden="true">
-                {orbitIcons.map(({ icon: Icon, label, className }) => (
-                  <div className={`hero-orbit-bubble hero-orbit-bubble-front ${className}`} key={`front-${label}`}>
-                    <span><Icon size={20} strokeWidth={1.8} /></span>
-                  </div>
-                ))}
+                <div className="hero-orbit-layer hero-orbit-layer-front" aria-hidden="true">
+                  {orbitIcons.map(({ icon: Icon, label, className }) => (
+                    <div className={`hero-orbit-bubble hero-orbit-bubble-front ${className}`} key={`front-${label}`}>
+                      <span><Icon size={20} strokeWidth={1.8} /></span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

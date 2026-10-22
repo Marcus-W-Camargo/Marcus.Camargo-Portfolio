@@ -1,0 +1,110 @@
+.editorial-mobile-carousel {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .editorial-projects-page {
+    padding-bottom: min(48dvh, 420px);
+  }
+
+  .editorial-project-list {
+    padding-bottom: min(46dvh, 400px);
+  }
+
+  .editorial-mobile-preview {
+    display: none !important;
+  }
+
+  .editorial-mobile-carousel {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 24;
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .24s ease, transform .28s ease;
+  }
+
+  .editorial-mobile-carousel.is-active {
+    opacity: 1;
+    transform: none;
+  }
+
+  .editorial-mobile-carousel-shell {
+    width: min(100%, 520px);
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 28px;
+    background: rgba(10,7,16,.9);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 24px 70px rgba(0,0,0,.42);
+  }
+
+  .editorial-mobile-carousel .editorial-preview {
+    min-height: 0;
+    height: min(34dvh, 300px);
+    padding: 12px 10px;
+    border-radius: 20px;
+    box-shadow: none;
+  }
+
+  .editorial-mobile-carousel .editorial-preview-caption {
+    padding: 10px 4px 2px;
+  }
+
+  .editorial-mobile-carousel .editorial-preview-caption span,
+  .editorial-mobile-carousel .editorial-preview-caption strong {
+    font-size: 10px;
+  }
+
+  .editorial-mobile-carousel .mock-browser-letreiro,
+  .editorial-mobile-carousel .lista-real-preview {
+    width: min(100%, 290px);
+    max-width: 290px;
+    height: 100%;
+    max-height: 250px;
+    aspect-ratio: auto;
+  }
+
+  .editorial-mobile-carousel .liste-app-preview-scene {
+    max-height: 250px;
+    transform: scale(.82);
+    transform-origin: center;
+  }
+
+  .editorial-project-row > a {
+    position: relative;
+    z-index: 1;
+  }
+
+  .editorial-project-row:last-child {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 390px) {
+  .editorial-mobile-carousel {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .editorial-mobile-carousel-shell {
+    padding: 8px;
+    border-radius: 24px;
+  }
+
+  .editorial-mobile-carousel .editorial-preview {
+    height: min(32dvh, 260px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-mobile-carousel {
+    transition: none;
+  }
+}

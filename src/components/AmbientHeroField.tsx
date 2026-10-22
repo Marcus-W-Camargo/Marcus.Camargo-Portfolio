@@ -134,14 +134,20 @@ export function AmbientHeroField() {
       drawGlow(lightX, lightY, glowRadius, pointer.active ? .42 : .31)
 
       // Secondary ambient light deliberately lives behind the logo/orbit region.
+      const heroRect = hero?.getBoundingClientRect()
+      const visualRect = hero?.querySelector<HTMLElement>('.hero-visual')?.getBoundingClientRect()
       const isMobile = width <= 760
-      const logoGlowX = width * (isMobile ? .68 : .76)
-      const logoGlowY = height * (
-        isMobile
-          ? .7 + scrollProgress * .08
-          : .46 + scrollProgress * .12
-      )
-      const logoGlowRadius = Math.max(200, Math.min(width, height) * .43)
+
+      const logoGlowX = visualRect && heroRect
+        ? visualRect.left - heroRect.left + visualRect.width / 2
+        : width * (isMobile ? .68 : .72)
+
+      const logoGlowYBase = visualRect && heroRect
+        ? visualRect.top - heroRect.top + visualRect.height / 2
+        : height * (isMobile ? .7 : .48)
+
+      const logoGlowY = logoGlowYBase + height * scrollProgress * (isMobile ? .05 : .08)
+      const logoGlowRadius = Math.max(220, Math.min(width, height) * .46)
       drawGlow(
         logoGlowX,
         logoGlowY,

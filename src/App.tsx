@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import {
   ArrowUpRight,
   Bot,
-  Braces,
   Database,
   Globe2,
   Instagram,
@@ -12,30 +11,6 @@ import {
 import logo from './assets/Marcus-Camargo-Logo-Transparente.png'
 import { Header } from './components/Header'
 import { AmbientHeroField } from './components/AmbientHeroField'
-import { SectionHeading } from './components/SectionHeading'
-
-const services = [
-  {
-    icon: Braces,
-    title: 'Sites que apresentam e convencem',
-    text: 'Páginas profissionais criadas para transmitir confiança, organizar sua mensagem e transformar visitas em oportunidades reais de contato.',
-  },
-  {
-    icon: PanelsTopLeft,
-    title: 'Sistemas que simplificam rotinas',
-    text: 'Ferramentas digitais sob medida para organizar processos, centralizar informações e reduzir etapas que hoje dependem de trabalho manual.',
-  },
-  {
-    icon: Workflow,
-    title: 'Integrações que economizam tempo',
-    text: 'Conexões entre serviços e automações pensadas para eliminar repetições, reduzir erros e deixar o fluxo do negócio mais eficiente.',
-  },
-  {
-    icon: Bot,
-    title: 'Atendimento mais ágil',
-    text: 'Chatbots e fluxos automatizados para responder melhor, fazer triagens e manter o atendimento disponível mesmo quando você está ocupado.',
-  },
-]
 
 const orbitIcons = [
   { icon: Globe2, label: 'Presença', className: 'orbit-bubble-one' },
@@ -48,15 +23,6 @@ const orbitIcons = [
 const contactLinks = {
   whatsapp: 'https://wa.me/message/S2FPE7ASPUHHM1',
   instagram: 'https://www.instagram.com/marcus.camargo_portifolio?igsi=ZmdpOTdzNmIzY25p',
-}
-
-function WhatsAppBusinessIcon() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M16 3.5C9.1 3.5 3.5 8.85 3.5 15.45c0 2.36.72 4.56 1.96 6.42L4.1 28.5l6.96-1.25a13.1 13.1 0 0 0 4.94.95c6.9 0 12.5-5.35 12.5-11.95S22.9 3.5 16 3.5Z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
-      <path d="M12.2 9.8h4.75c2.35 0 3.75 1.15 3.75 3 0 1.1-.55 1.95-1.55 2.45 1.35.45 2.1 1.45 2.1 2.85 0 2.2-1.65 3.55-4.35 3.55h-4.7V9.8Zm4.35 4.75c1.15 0 1.8-.5 1.8-1.4 0-.85-.65-1.35-1.8-1.35h-1.95v2.75h1.95Zm.25 5.05c1.35 0 2.05-.55 2.05-1.55s-.7-1.55-2.05-1.55h-2.2v3.1h2.2Z" fill="currentColor" />
-    </svg>
-  )
 }
 
 function App() {
@@ -137,19 +103,6 @@ function App() {
           </div>
         </section>
 
-        <section className="section services-section" id="servicos" data-reveal>
-          <SectionHeading kicker="Como posso ajudar" title="Menos tecnologia na conversa. Mais clareza sobre o resultado." text="Cada solução parte de uma necessidade concreta: apresentar melhor, organizar, agilizar, vender, atender ou eliminar trabalho repetitivo." />
-          <div className="service-grid">
-            {services.map(({ icon: Icon, title, text }, index) => (
-              <article className="service-card commercial-service-card" key={title}>
-                <span className="service-index">0{index + 1}</span>
-                <div className="service-icon"><Icon size={22} strokeWidth={1.8} /></div>
-                <h3>{title}</h3><p>{text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section className="home-project-gateway" data-reveal>
           <div className="home-project-gateway-card">
             <div className="home-project-gateway-copy">
@@ -162,33 +115,46 @@ function App() {
           </div>
         </section>
 
-        <section className="section about-section" id="sobre" data-reveal>
-          <div className="about-panel commercial-about-panel">
-            <div><span className="section-kicker">Sobre meu trabalho</span><h2>Eu começo pelo motivo. O código vem depois.</h2></div>
-            <div className="about-copy">
-              <p>Antes de pensar em tecnologia, eu tento entender o que precisa melhorar: uma apresentação confusa, uma rotina repetitiva, um processo sem organização ou uma ideia que ainda não encontrou a melhor forma de existir.</p>
-              <p>Meu trabalho é traduzir isso para uma experiência digital clara, funcional e coerente com quem vai realmente usar.</p>
-              <a className="inline-recruiter-link" href="/recrutadores">Quer avaliar a parte técnica? Veja a área para recrutadores <ArrowUpRight size={15} /></a>
+        <section className="home-endcap" id="sobre" data-reveal>
+          <div className="home-endcap-grid">
+            <div className="home-endcap-statement">
+              <span className="section-kicker">Sobre meu trabalho</span>
+              <h2>Eu começo pelo motivo. O código vem depois.</h2>
+              <p>
+                Antes de pensar em tecnologia, eu tento entender o que precisa melhorar e transformar isso em uma experiência digital clara, funcional e coerente com quem vai usar.
+              </p>
+            </div>
+
+            <div className="home-endcap-links">
+              <a href="/recrutadores">
+                <small>Perfil técnico</small>
+                <strong>Para recrutadores</strong>
+                <ArrowUpRight size={18} />
+              </a>
+              <button type="button" onClick={() => openContact('whatsapp')}>
+                <small>Contato direto</small>
+                <strong>WhatsApp Business</strong>
+                <ArrowUpRight size={18} />
+              </button>
+              <button type="button" onClick={() => openContact('instagram')}>
+                <small>Conteúdo & contato</small>
+                <strong>Instagram</strong>
+                <Instagram size={18} />
+              </button>
             </div>
           </div>
-        </section>
 
-        <section className="section contact-section" id="contato" data-reveal>
-          <div className="contact-panel commercial-contact-panel">
-            <div className="contact-copy"><span className="section-kicker">Vamos conversar?</span><h2>Se existe um processo que pode ficar mais claro, rápido ou profissional, já existe um bom ponto de partida.</h2><p>Conte o contexto primeiro. A tecnologia certa vem depois.</p></div>
-            <div className="contact-actions">
-              <button className="contact-card whatsapp" type="button" onClick={() => openContact('whatsapp')}><div className="contact-icon"><WhatsAppBusinessIcon /></div><div><small>Contato direto</small><strong>WhatsApp Business</strong></div><ArrowUpRight size={20} /></button>
-              <button className="contact-card instagram" type="button" onClick={() => openContact('instagram')}><div className="contact-icon"><Instagram size={23} /></div><div><small>Conteúdo & contato</small><strong>Instagram</strong></div><ArrowUpRight size={20} /></button>
-            </div>
+          <div className="home-endcap-meta" id="contato">
+            <a href="/" className="home-endcap-brand">
+              <img className="footer-logo-transparent" src={logo} alt="" />
+              <span>Marcus Camargo Portfólio</span>
+            </a>
+            <p>Experiências digitais • Sistemas • Automação</p>
+            <p>© {new Date().getFullYear()} Marcus Camargo. · <a className="footer-privacy-link" href="/privacidade">Privacidade</a></p>
           </div>
         </section>
       </main>
 
-      <footer>
-        <a href="/" className="footer-brand"><img className="footer-logo-transparent" src={logo} alt="" /><span>Marcus Camargo Portfólio</span></a>
-        <p>Experiências digitais • Sistemas • Automação</p>
-        <p>© {new Date().getFullYear()} Marcus Camargo. · <a className="footer-privacy-link" href="/privacidade">Privacidade</a></p>
-      </footer>
     </>
   )
 }

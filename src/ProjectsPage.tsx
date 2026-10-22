@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { Header } from './components/Header'
 import { ProjectPreview } from './components/ProjectPreview'
@@ -6,7 +6,49 @@ import { projects } from './data/projects'
 
 export function ProjectsPage() {
   const [activeSlug, setActiveSlug] = useState<string | null>(null)
+  const [mobileSlug, setMobileSlug] = useState<string | null>(null)
   const activeProject = projects.find((project) => project.slug === activeSlug) ?? null
+  const mobileProject = projects.find((project) => project.slug === mobileSlug) ?? null
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 760px)')
+
+    const updateMobileProject = () => {
+      if (!media.matches) {
+        setMobileSlug(null)
+        return
+      }
+
+      const rows = Array.from(
+        document.querySelectorAll<HTMLElement>('[data-project-slug]'),
+      )
+
+      const viewportBottom = window.innerHeight
+      const visibleRows = rows.filter((row) => {
+        const rect = row.getBoundingClientRect()
+        return rect.bottom > 0 && rect.top < viewportBottom
+      })
+
+      const lastVisible = visibleRows.at(-1)
+      const fallback = rows[0]
+      const selected = lastVisible ?? fallback
+
+      if (selected) {
+        setMobileSlug(selected.dataset.projectSlug ?? null)
+      }
+    }
+
+    updateMobileProject()
+    window.addEventListener('scroll', updateMobileProject, { passive: true })
+    window.addEventListener('resize', updateMobileProject)
+    media.addEventListener('change', updateMobileProject)
+
+    return () => {
+      window.removeEventListener('scroll', updateMobileProject)
+      window.removeEventListener('resize', updateMobileProject)
+      media.removeEventListener('change', updateMobileProject)
+    }
+  }, [])
 
   return (
     <div className="editorial-projects-page">
@@ -40,6 +82,7 @@ export function ProjectsPage() {
               <article
                 className={`editorial-project-row ${activeSlug === project.slug ? 'is-active' : ''}`}
                 key={project.slug}
+                data-project-slug={project.slug}
                 onMouseEnter={() => setActiveSlug(project.slug)}
               >
                 <a
@@ -52,14 +95,22 @@ export function ProjectsPage() {
                   <span className="editorial-project-meta">{project.category} · {project.year}</span>
                   <ArrowUpRight className="editorial-project-arrow" size={24} />
                 </a>
-
-                <div className="editorial-mobile-preview">
-                  <div className={`editorial-preview project-${project.variant}`}>
-                    <ProjectPreview variant={project.variant} />
-                  </div>
-                </div>
               </article>
             ))}
+          </div>
+
+          <div className={`editorial-mobile-carousel ${mobileProject ? 'is-active' : ''}`} aria-live="polite">
+            {mobileProject && (
+              <div className="editorial-mobile-carousel-shell" key={mobileProject.slug}>
+                <div className={`editorial-preview project-${mobileProject.variant}`}>
+                  <ProjectPreview variant={mobileProject.variant} />
+                </div>
+                <div className="editorial-preview-caption">
+                  <span>{mobileProject.category}</span>
+                  <strong>{mobileProject.title}</strong>
+                </div>
+              </div>
+            )}
           </div>
         </section>
       </main>

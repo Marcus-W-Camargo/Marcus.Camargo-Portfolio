@@ -60,14 +60,6 @@ function App() {
               </p>
               <div className="hero-actions">
                 <a className="button button-primary" href="/projetos">Explorar projetos <ArrowUpRight size={18} /></a>
-                <a
-                  className="button button-secondary button-contact-animated"
-                  href="https://wa.me/message/S2FPE7ASPUHHM1"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Contato
-                </a>
               </div>
             </div>
 

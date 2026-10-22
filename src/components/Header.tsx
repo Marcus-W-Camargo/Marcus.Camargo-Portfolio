@@ -4,7 +4,6 @@ import profile from '../assets/Perfil Marcus Camargo - Portifolio.png'
 
 const links = [
   ['Início', '/'],
-  ['Serviços', '/#servicos'],
   ['Projetos', '/projetos'],
   ['Sobre', '/#sobre'],
 ]

@@ -1,12 +1,14 @@
 import { useEffect, useRef } from 'react'
 
 type Pixel = {
-  x: number
+  baseX: number
   y: number
   size: number
   speed: number
   phase: number
-  drift: number
+  amplitude: number
+  waveSpeed: number
+  tone: number
 }
 
 export function AmbientHeroField() {
@@ -22,6 +24,7 @@ export function AmbientHeroField() {
     const hero =
       canvas.closest<HTMLElement>('.home-intro-shell') ??
       canvas.closest<HTMLElement>('.commercial-hero')
+
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     let frame = 0
@@ -36,11 +39,15 @@ export function AmbientHeroField() {
       y: -9999,
       clientX: -9999,
       clientY: -9999,
-      active: false,
       known: false,
     }
 
     const pixels: Pixel[] = []
+
+    const seeded = (index: number, salt: number) => {
+      const value = Math.sin((index + 1) * 12.9898 + salt * 78.233) * 43758.5453
+      return value - Math.floor(value)
+    }
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect()
@@ -53,23 +60,24 @@ export function AmbientHeroField() {
       context.setTransform(ratio, 0, 0, ratio, 0, 0)
 
       pixels.length = 0
-      const count = Math.max(300, Math.floor((width * height) / 2800))
+      const count = Math.max(230, Math.floor((width * height) / 3900))
 
       for (let index = 0; index < count; index += 1) {
         pixels.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          size: Math.random() * 2 + .65,
-          speed: Math.random() * .3 + .06,
-          phase: Math.random() * Math.PI * 2,
-          drift: Math.random() * .24 - .12,
+          baseX: seeded(index, 1) * width,
+          y: seeded(index, 2) * (height + 180),
+          size: .6 + seeded(index, 3) * 1.75,
+          speed: .1 + seeded(index, 4) * .34,
+          phase: seeded(index, 5) * Math.PI * 2,
+          amplitude: 4 + seeded(index, 6) * 22,
+          waveSpeed: .004 + seeded(index, 7) * .009,
+          tone: seeded(index, 8),
         })
       }
     }
 
     const syncPointerWithHero = () => {
       if (!hero || !pointer.known) {
-        pointer.active = false
         targetPresence = 0
         return
       }
@@ -81,7 +89,6 @@ export function AmbientHeroField() {
         pointer.clientY >= rect.top &&
         pointer.clientY <= rect.bottom
 
-      pointer.active = inside
       targetPresence = inside ? 1 : 0
 
       if (inside) {
@@ -92,7 +99,6 @@ export function AmbientHeroField() {
 
     const onPointerMove = (event: PointerEvent) => {
       if (event.pointerType === 'touch') {
-        pointer.active = false
         pointer.known = false
         targetPresence = 0
         return
@@ -105,7 +111,6 @@ export function AmbientHeroField() {
     }
 
     const onPointerLeaveWindow = () => {
-      pointer.active = false
       pointer.known = false
       targetPresence = 0
     }
@@ -143,74 +148,89 @@ export function AmbientHeroField() {
         presence = 0
       }
 
+      const heroRect = hero?.getBoundingClientRect()
+      const visualRect = hero?.querySelector<HTMLElement>('.hero-visual')?.getBoundingClientRect()
+      const isMobile = width <= 760
+
+      const logoGlowX = visualRect && heroRect
+        ? visualRect.left - heroRect.left + visualRect.width / 2
+        : width * (isMobile ? .68 : .72)
+
+      const logoGlowY = visualRect && heroRect
+        ? visualRect.top - heroRect.top + visualRect.height / 2
+        : height * (isMobile ? .7 : .48)
+
       if (presence > 0) {
-        const lightX = pointer.x
-        const lightY = pointer.y
         const glowRadius = Math.max(240, Math.min(width, height) * .56)
-
-        drawGlow(lightX, lightY, glowRadius, .42 * presence)
-
-        const heroRect = hero?.getBoundingClientRect()
-        const visualRect = hero?.querySelector<HTMLElement>('.hero-visual')?.getBoundingClientRect()
-        const isMobile = width <= 760
-
-        const logoGlowX = visualRect && heroRect
-          ? visualRect.left - heroRect.left + visualRect.width / 2
-          : width * (isMobile ? .68 : .72)
-
-        const logoGlowY = visualRect && heroRect
-          ? visualRect.top - heroRect.top + visualRect.height / 2
-          : height * (isMobile ? .7 : .48)
+        drawGlow(pointer.x, pointer.y, glowRadius, .42 * presence)
 
         const logoGlowRadius = Math.max(220, Math.min(width, height) * .46)
-
         drawGlow(
           logoGlowX,
           logoGlowY,
           logoGlowRadius,
-          .19 * presence,
+          .17 * presence,
           '226, 38, 170',
           '128, 58, 238',
         )
+      }
 
-        for (const pixel of pixels) {
-          if (!reduceMotion) {
-            pixel.y -= pixel.speed
-            pixel.x += pixel.drift
+      for (let index = 0; index < pixels.length; index += 1) {
+        const pixel = pixels[index]
 
-            if (pixel.y < -6) pixel.y = height + 6
-            if (pixel.x < -6) pixel.x = width + 6
-            if (pixel.x > width + 6) pixel.x = -6
+        if (!reduceMotion) {
+          pixel.y -= pixel.speed
+
+          if (pixel.y < -12) {
+            pixel.y = height + 28 + seeded(index, 9) * 150
           }
+        }
 
-          const dx = pixel.x - lightX
-          const dy = pixel.y - lightY
+        const wave =
+          Math.sin(frame * pixel.waveSpeed + pixel.phase) * pixel.amplitude +
+          Math.sin(frame * .0025 + pixel.phase * 1.7) * pixel.amplitude * .28
+
+        const x = pixel.baseX + wave
+        const y = pixel.y
+
+        const ambientPulse = reduceMotion
+          ? .1
+          : .085 + Math.sin(frame * .014 + pixel.phase) * .025
+
+        let cursorInfluence = 0
+        let logoInfluence = 0
+
+        if (presence > 0) {
+          const dx = x - pointer.x
+          const dy = y - pointer.y
           const distance = Math.sqrt(dx * dx + dy * dy)
-          const influence = Math.max(0, 1 - distance / 300)
+          cursorInfluence = Math.max(0, 1 - distance / 310) * presence
 
-          const logoDx = pixel.x - logoGlowX
-          const logoDy = pixel.y - logoGlowY
+          const logoDx = x - logoGlowX
+          const logoDy = y - logoGlowY
           const logoDistance = Math.sqrt(logoDx * logoDx + logoDy * logoDy)
-          const logoInfluence = Math.max(0, 1 - logoDistance / 260)
+          logoInfluence = Math.max(0, 1 - logoDistance / 270) * presence
+        }
 
-          const shimmer = reduceMotion
-            ? .36
-            : .24 + Math.sin(frame * .024 + pixel.phase) * .14
+        const interactiveInfluence = Math.max(cursorInfluence, logoInfluence * .66)
+        const ambientAlpha = ambientPulse * (.72 + pixel.tone * .48)
+        const interactiveAlpha = interactiveInfluence * .78
+        const alpha = Math.min(.95, ambientAlpha + interactiveAlpha)
+        const size = pixel.size + interactiveInfluence * 2.8
 
-          const combinedInfluence = Math.max(influence, logoInfluence * .72)
-          const alpha = Math.min(.98, shimmer + combinedInfluence * .84) * presence
-          const size = pixel.size + combinedInfluence * 2.9
+        if (interactiveInfluence > .07) {
+          context.fillStyle = `rgba(255, 80, 181, ${alpha})`
+        } else if (pixel.tone > .62) {
+          context.fillStyle = `rgba(225, 62, 174, ${alpha * .78})`
+        } else {
+          context.fillStyle = `rgba(218, 207, 232, ${alpha * .6})`
+        }
 
-          context.fillStyle = combinedInfluence > .08
-            ? `rgba(255, 82, 184, ${alpha})`
-            : `rgba(226, 214, 240, ${alpha * .55})`
+        context.fillRect(x, y, size, size)
 
-          context.fillRect(pixel.x, pixel.y, size, size)
-
-          if (combinedInfluence > .5) {
-            context.fillStyle = `rgba(255, 184, 226, ${combinedInfluence * .46 * presence})`
-            context.fillRect(pixel.x - 5, pixel.y, size + 10, 1)
-          }
+        if (interactiveInfluence > .5) {
+          context.fillStyle = `rgba(255, 185, 226, ${interactiveInfluence * .42})`
+          context.fillRect(x - 5, y, size + 10, 1)
         }
       }
 

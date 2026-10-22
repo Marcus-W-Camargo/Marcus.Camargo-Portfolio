@@ -25,15 +25,6 @@ const contactLinks = {
   instagram: 'https://www.instagram.com/marcus.camargo_portifolio?igsi=ZmdpOTdzNmIzY25p',
 }
 
-function WhatsAppBusinessIcon() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M16 3.5C9.1 3.5 3.5 8.85 3.5 15.45c0 2.36.72 4.56 1.96 6.42L4.1 28.5l6.96-1.25a13.1 13.1 0 0 0 4.94.95c6.9 0 12.5-5.35 12.5-11.95S22.9 3.5 16 3.5Z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
-      <path d="M12.2 9.8h4.75c2.35 0 3.75 1.15 3.75 3 0 1.1-.55 1.95-1.55 2.45 1.35.45 2.1 1.45 2.1 2.85 0 2.2-1.65 3.55-4.35 3.55h-4.7V9.8Zm4.35 4.75c1.15 0 1.8-.5 1.8-1.4 0-.85-.65-1.35-1.8-1.35h-1.95v2.75h1.95Zm.25 5.05c1.35 0 2.05-.55 2.05-1.55s-.7-1.55-2.05-1.55h-2.2v3.1h2.2Z" fill="currentColor" />
-    </svg>
-  )
-}
-
 function App() {
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>('[data-reveal]')

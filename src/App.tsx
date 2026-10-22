@@ -68,7 +68,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="home-page-shell">
       <div className="page-glow page-glow-one" aria-hidden="true" />
       <div className="page-glow page-glow-two" aria-hidden="true" />
       <div className="home-intro-shell">
@@ -124,19 +124,7 @@ function App() {
         </section>
       </div>
 
-      <main>
-        <section className="home-project-gateway" data-reveal>
-          <div className="home-project-gateway-card">
-            <div className="home-project-gateway-copy">
-              <span>Projetos</span>
-              <h2>Os trabalhos agora têm espaço para contar a história inteira.</h2>
-            </div>
-            <a className="home-project-gateway-link" href="/projetos">
-              Abrir projetos <ArrowUpRight size={17} />
-            </a>
-          </div>
-        </section>
-
+      <main className="home-page-main">
         <section className="home-endcap" id="sobre" data-reveal>
           <div className="home-endcap-grid">
             <div className="home-endcap-statement">
@@ -176,8 +164,7 @@ function App() {
           </div>
         </section>
       </main>
-
-    </>
+    </div>
   )
 }
 

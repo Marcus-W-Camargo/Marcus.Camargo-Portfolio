@@ -125,22 +125,6 @@
   align-items: center;
 }
 
-.nav-contact-menu::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 270px;
-  height: 14px;
-  pointer-events: none;
-}
-
-.nav-contact-menu:hover::after,
-.nav-contact-menu:focus-within::after,
-.nav-contact-menu.is-open::after {
-  pointer-events: auto;
-}
-
 .nav-contact-trigger {
   min-height: 48px;
   padding: 0 20px;
@@ -166,9 +150,22 @@
 .nav-contact-popover {
   position: absolute;
   z-index: 60;
-  top: calc(100% + 12px);
+  top: 100%;
   right: 0;
   width: 270px;
+  padding-top: 12px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-7px) scale(.98);
+  transform-origin: top right;
+  transition:
+    opacity .2s ease,
+    transform .22s ease,
+    visibility .2s ease;
+}
+
+.nav-contact-popover-panel {
   padding: 8px;
   display: grid;
   gap: 4px;
@@ -180,15 +177,6 @@
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   box-shadow: 0 22px 55px rgba(0,0,0,.34);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(-7px) scale(.98);
-  transform-origin: top right;
-  transition:
-    opacity .2s ease,
-    transform .22s ease,
-    visibility .2s ease;
 }
 
 .nav-contact-menu.is-open .nav-contact-popover,
@@ -201,7 +189,10 @@
 }
 
 .main-nav .nav-contact-popover a {
+  position: relative;
+  z-index: 2;
   min-height: 66px;
+  pointer-events: auto;
   padding: 11px 12px;
   display: grid;
   grid-template-columns: 38px 1fr;
@@ -260,10 +251,6 @@
     display: block;
   }
 
-  .nav-contact-menu::after {
-    display: none;
-  }
-
   .nav-contact-trigger {
     width: 100%;
     min-height: 46px;
@@ -275,12 +262,16 @@
     position: static;
     width: 100%;
     margin-top: 6px;
-    padding: 5px;
+    padding-top: 0;
     display: none;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: none;
+  }
+
+  .nav-contact-popover-panel {
+    padding: 5px;
     box-shadow: none;
     background: rgba(255,255,255,.025);
   }

@@ -11,33 +11,33 @@ export function ProjectsPage() {
 
   useEffect(() => {
     const media = window.matchMedia('(max-width: 760px)')
+    const list = document.querySelector<HTMLElement>('.editorial-project-list')
 
     const updateMobileProject = () => {
-      if (!media.matches) {
+      if (!media.matches || !list) {
         setMobileSlug(null)
         return
       }
 
-      const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-project-slug]'))
-      const carousel = document.querySelector<HTMLElement>('.editorial-mobile-carousel')
-      const selectionBottom = carousel ? carousel.getBoundingClientRect().top - 10 : window.innerHeight
+      const rows = Array.from(list.querySelectorAll<HTMLElement>('[data-project-slug]'))
+      const listRect = list.getBoundingClientRect()
 
       const visibleRows = rows.filter((row) => {
         const rect = row.getBoundingClientRect()
-        return rect.bottom > 0 && rect.top < selectionBottom
+        return rect.bottom > listRect.top + 2 && rect.top < listRect.bottom - 2
       })
 
-      const selected = visibleRows.at(-1) ?? rows[0]
-      if (selected) setMobileSlug(selected.dataset.projectSlug ?? null)
+      const selected = visibleRows.at(-1) ?? rows.at(-1) ?? null
+      setMobileSlug(selected?.dataset.projectSlug ?? null)
     }
 
     updateMobileProject()
-    window.addEventListener('scroll', updateMobileProject, { passive: true })
+    list?.addEventListener('scroll', updateMobileProject, { passive: true })
     window.addEventListener('resize', updateMobileProject)
     media.addEventListener('change', updateMobileProject)
 
     return () => {
-      window.removeEventListener('scroll', updateMobileProject)
+      list?.removeEventListener('scroll', updateMobileProject)
       window.removeEventListener('resize', updateMobileProject)
       media.removeEventListener('change', updateMobileProject)
     }
@@ -87,6 +87,11 @@ export function ProjectsPage() {
                 </a>
               </article>
             ))}
+          </div>
+
+          <div className="editorial-mobile-list-hint" aria-hidden="true">
+            <span>role para explorar</span>
+            <i />
           </div>
 
           <div className={`editorial-mobile-carousel ${mobileProject ? 'is-active' : ''}`} aria-live="polite">

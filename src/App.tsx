@@ -7,6 +7,7 @@ import {
   PanelsTopLeft,
   Workflow,
 } from 'lucide-react'
+import logo from './assets/Marcus-Camargo-Logo-Transparente.png'
 import profile from './assets/Perfil Marcus Camargo - Portifolio.png'
 import { Header } from './components/Header'
 import { AmbientHeroField } from './components/AmbientHeroField'
@@ -100,8 +101,16 @@ function App() {
             </div>
           </div>
         </section>
-      </div>
 
+        <footer className="home-minimal-footer">
+          <a href="/" className="home-minimal-footer-brand">
+            <img src={logo} alt="" />
+            <span>Marcus Camargo Portfólio</span>
+          </a>
+          <p>Experiências digitais • Sistemas • Automação</p>
+          <p>© {new Date().getFullYear()} Marcus Camargo. · <a href="/privacidade">Privacidade</a></p>
+        </footer>
+      </div>
     </div>
   )
 }

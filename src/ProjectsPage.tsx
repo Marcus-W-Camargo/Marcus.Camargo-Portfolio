@@ -71,7 +71,7 @@ export function ProjectsPage() {
           <div className="editorial-project-list" onMouseLeave={() => setActiveSlug(null)}>
             {projects.map((project, index) => (
               <article
-                className={`editorial-project-row editorial-project-row-${index + 1} ${activeSlug === project.slug ? 'is-active' : ''}`}
+                className={`editorial-project-row editorial-project-row-${index + 1} ${(activeSlug === project.slug || mobileSlug === project.slug) ? 'is-active' : ''}`}
                 key={project.slug}
                 data-project-slug={project.slug}
                 onMouseEnter={() => setActiveSlug(project.slug)}

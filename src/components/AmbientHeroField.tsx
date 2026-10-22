@@ -19,7 +19,9 @@ export function AmbientHeroField() {
     const context = canvas.getContext('2d')
     if (!context) return
 
-    const hero = canvas.closest<HTMLElement>('.commercial-hero')
+    const hero =
+      canvas.closest<HTMLElement>('.home-intro-shell') ??
+      canvas.closest<HTMLElement>('.commercial-hero')
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     let frame = 0

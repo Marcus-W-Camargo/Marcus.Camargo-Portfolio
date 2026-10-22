@@ -1,0 +1,61 @@
+/* Home continuity cleanup after section consolidation */
+
+.commercial-hero {
+  min-height: auto;
+  padding-top: clamp(64px, 7vh, 92px);
+  padding-bottom: clamp(34px, 5vh, 62px);
+}
+
+.home-project-gateway {
+  padding: 18px 0 34px;
+}
+
+.home-project-gateway-card {
+  padding: clamp(24px, 3.4vw, 42px) 0;
+  gap: 28px;
+}
+
+.home-endcap {
+  margin-top: 0;
+  padding-top: clamp(28px, 3vw, 42px);
+}
+
+.home-endcap-grid {
+  gap: clamp(38px, 5vw, 72px);
+}
+
+.home-endcap-meta {
+  margin-top: 30px;
+  padding-top: 18px;
+}
+
+@media (max-width: 760px) {
+  .commercial-hero {
+    min-height: auto;
+    padding-top: 74px;
+    padding-bottom: 30px;
+  }
+
+  .home-project-gateway {
+    padding: 8px 0 24px;
+  }
+
+  .home-project-gateway-card {
+    padding: 24px 4px 28px;
+    gap: 18px;
+  }
+
+  .home-endcap {
+    margin-top: 0;
+    padding-top: 24px;
+  }
+
+  .home-endcap-grid {
+    gap: 26px;
+  }
+
+  .home-endcap-meta {
+    margin-top: 26px;
+    padding-top: 16px;
+  }
+}

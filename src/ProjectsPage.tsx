@@ -102,7 +102,9 @@ export function ProjectsPage() {
               <div className="editorial-project-spacer" aria-hidden="true" />
 
               {projects.map((project, index) => {
-                const distance = mobileIndex < 0 ? 4 : Math.min(Math.abs(index - mobileIndex), 4)
+                const offset = mobileIndex < 0 ? 0 : index - mobileIndex
+                const distance = mobileIndex < 0 ? 5 : Math.min(Math.abs(offset), 5)
+                const side = offset === 0 ? 'selected' : offset > 0 ? 'below' : 'above'
 
                 return (
                   <article
@@ -110,6 +112,7 @@ export function ProjectsPage() {
                     key={project.slug}
                     data-project-slug={project.slug}
                     data-mobile-distance={distance}
+                    data-mobile-side={side}
                     onMouseEnter={() => setActiveSlug(project.slug)}
                   >
                     <a

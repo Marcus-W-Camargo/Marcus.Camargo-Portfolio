@@ -33,21 +33,21 @@ export function ProjectsPage() {
           ? selectorRect.top + selectorRect.height / 2
           : listRect.top + listRect.height * 0.34
 
-        let nearest: HTMLElement | null = null
+        let nearestSlug = projects[0]?.slug ?? null
         let nearestDistance = Number.POSITIVE_INFINITY
 
-        rows.forEach((row) => {
+        for (const row of rows) {
           const rect = row.getBoundingClientRect()
           const rowCenter = rect.top + rect.height / 2
           const distance = Math.abs(rowCenter - selectorY)
 
           if (distance < nearestDistance) {
             nearestDistance = distance
-            nearest = row
+            nearestSlug = row.dataset.projectSlug ?? nearestSlug
           }
-        })
+        }
 
-        setMobileSlug(nearest?.dataset.projectSlug ?? projects[0]?.slug ?? null)
+        setMobileSlug(nearestSlug)
       })
     }
 

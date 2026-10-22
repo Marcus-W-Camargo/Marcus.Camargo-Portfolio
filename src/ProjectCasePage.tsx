@@ -8,6 +8,27 @@ type ProjectCasePageProps = {
 }
 
 export function ProjectCasePage({ project }: ProjectCasePageProps) {
+  if (project.comingSoon) {
+    return (
+      <div className="project-case-page">
+        <Header />
+
+        <main className="project-case-main project-case-coming-soon">
+          <a className="project-case-back" href="/projetos">
+            <ArrowLeft size={16} /> Todos os projetos
+          </a>
+
+          <section className="project-coming-soon-page">
+            <span>{project.category} · {project.year}</span>
+            <h1>{project.title}</h1>
+            <p>Em breve...</p>
+            <div className="project-coming-soon-line" aria-hidden="true" />
+          </section>
+        </main>
+      </div>
+    )
+  }
+
   return (
     <div className="project-case-page">
       <Header />
@@ -54,13 +75,15 @@ export function ProjectCasePage({ project }: ProjectCasePageProps) {
           </div>
         </section>
 
-        <section className="project-case-visit">
-          <span>Projeto publicado</span>
-          <h2>Agora que você conhece o contexto, veja a experiência funcionando.</h2>
-          <a href={project.liveUrl} target="_blank" rel="noreferrer">
-            {project.liveLabel} <ArrowUpRight size={18} />
-          </a>
-        </section>
+        {project.liveUrl && project.liveLabel && (
+          <section className="project-case-visit">
+            <span>Projeto publicado</span>
+            <h2>Agora que você conhece o contexto, veja a experiência funcionando.</h2>
+            <a href={project.liveUrl} target="_blank" rel="noreferrer">
+              {project.liveLabel} <ArrowUpRight size={18} />
+            </a>
+          </section>
+        )}
       </main>
     </div>
   )

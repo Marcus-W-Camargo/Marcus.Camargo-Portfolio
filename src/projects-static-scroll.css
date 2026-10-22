@@ -3,6 +3,8 @@
   .editorial-projects-page {
     height: 100svh;
     min-height: 100svh;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
   }
 
@@ -11,7 +13,8 @@
   }
 
   .editorial-projects-main {
-    height: calc(100svh - 110px);
+    flex: 1 1 auto;
+    height: auto;
     min-height: 0;
     padding: 22px 0 24px;
     display: grid;
@@ -147,8 +150,8 @@
 
 @media (min-width: 761px) and (max-height: 760px) {
   .editorial-projects-main {
-    height: calc(100svh - 102px);
     padding-top: 14px;
+    padding-bottom: 16px;
   }
 
   .editorial-project-row,

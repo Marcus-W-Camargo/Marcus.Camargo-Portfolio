@@ -1,0 +1,100 @@
+/* Full-hero interactive light field */
+.commercial-hero {
+  isolation: isolate;
+}
+
+.commercial-hero::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7,5,11,.58) 0%,
+      rgba(7,5,11,.26) 40%,
+      rgba(7,5,11,.05) 69%,
+      rgba(7,5,11,.11) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(8,6,13,.03) 0%,
+      rgba(8,6,13,.19) 58%,
+      rgba(8,6,13,.38) 100%
+    );
+}
+
+.ambient-hero-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  pointer-events: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.commercial-hero .hero-copy,
+.commercial-hero .hero-visual {
+  position: relative;
+  z-index: 2;
+}
+
+.commercial-hero .hero-visual {
+  isolation: isolate;
+}
+
+.commercial-orbit {
+  position: relative;
+  isolation: isolate;
+}
+
+.commercial-orbit .hero-logo-card {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 32, 149, .055), transparent 58%),
+    rgba(13, 8, 20, .14);
+  backdrop-filter: blur(1.25px) saturate(1.06);
+  -webkit-backdrop-filter: blur(1.25px) saturate(1.06);
+  border-color: rgba(255, 76, 166, .34);
+  box-shadow:
+    0 30px 75px rgba(0, 0, 0, .22),
+    0 0 0 1px rgba(255, 255, 255, .03),
+    0 0 72px rgba(255, 10, 120, .12);
+}
+
+.commercial-orbit::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 7%;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 41, 155, .10), rgba(139, 59, 236, .035) 45%, transparent 72%);
+  filter: blur(18px);
+}
+
+@media (max-width: 900px) {
+  .commercial-hero::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7,5,11,.18) 0%,
+        rgba(7,5,11,.24) 40%,
+        rgba(7,5,11,.43) 78%,
+        rgba(7,5,11,.56) 100%
+      );
+  }
+
+  .commercial-orbit .hero-logo-card {
+    background:
+      radial-gradient(circle at 50% 48%, rgba(255, 32, 149, .06), transparent 58%),
+      rgba(13, 8, 20, .11);
+    backdrop-filter: blur(1px) saturate(1.04);
+    -webkit-backdrop-filter: blur(1px) saturate(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-hero-field {
+    opacity: .92;
+  }
+}

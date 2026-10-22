@@ -13,6 +13,16 @@ type Props = {
 }
 
 export function ProjectPreview({ variant }: Props) {
+  if (variant === 'coming-soon') {
+    return (
+      <div className="project-coming-soon-preview" aria-hidden="true">
+        <span>Case</span>
+        <strong>Em breve...</strong>
+        <i />
+      </div>
+    )
+  }
+
   if (variant === 'letreiro') {
     return (
       <div className="mock-browser mock-browser-letreiro">

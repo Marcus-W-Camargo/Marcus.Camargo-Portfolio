@@ -3,10 +3,10 @@ import { BriefcaseBusiness } from 'lucide-react'
 import profile from '../assets/Perfil Marcus Camargo - Portifolio.png'
 
 const links = [
-  ['Início', 'inicio'],
-  ['Serviços', 'servicos'],
-  ['Projetos', 'projetos'],
-  ['Sobre', 'sobre'],
+  ['Início', '/'],
+  ['Serviços', '/#servicos'],
+  ['Projetos', '/projetos'],
+  ['Sobre', '/#sobre'],
 ]
 
 export function Header() {
@@ -16,7 +16,7 @@ export function Header() {
 
   return (
     <header className="site-header">
-      <a href="#inicio" className="brand" onClick={closeMenu}>
+      <a href="/" className="brand" onClick={closeMenu}>
         <img src={profile} alt="Foto de perfil de Marcus Camargo" />
         <span className="brand-text">
           <strong>Marcus Camargo</strong>
@@ -36,8 +36,8 @@ export function Header() {
       </button>
 
       <nav className={`main-nav ${open ? 'open' : ''}`} aria-label="Navegação principal">
-        {links.map(([label, id]) => (
-          <a key={id} href={`#${id}`} onClick={closeMenu}>
+        {links.map(([label, href]) => (
+          <a key={href} href={href} onClick={closeMenu}>
             {label}
           </a>
         ))}
@@ -48,7 +48,7 @@ export function Header() {
           <BriefcaseBusiness size={16} />
           Para recrutadores
         </a>
-        <a className="nav-cta" href="#contato" onClick={closeMenu}>
+        <a className="nav-cta" href="/#contato" onClick={closeMenu}>
           Contato
         </a>
       </nav>

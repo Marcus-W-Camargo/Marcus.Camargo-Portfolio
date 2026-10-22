@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import {
-  ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   Bot,
   Braces,
   Database,
-  Github,
   Globe2,
   Instagram,
   PanelsTopLeft,
@@ -14,11 +11,9 @@ import {
   Workflow,
 } from 'lucide-react'
 import logo from './assets/Marcus-Camargo-Logo-Transparente.png'
-import identityImage from './assets/Identidade Marcus Camargo - Portifolio.png'
 import { Header } from './components/Header'
-import { ProjectPreview } from './components/ProjectPreview'
+import { AmbientHeroField } from './components/AmbientHeroField'
 import { SectionHeading } from './components/SectionHeading'
-import { projects } from './data/projects'
 
 const services = [
   {
@@ -66,9 +61,6 @@ function WhatsAppBusinessIcon() {
 }
 
 function App() {
-  const [projectIndex, setProjectIndex] = useState(0)
-  const activeProject = projects[projectIndex]
-
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>('[data-reveal]')
     const observer = new IntersectionObserver(
@@ -91,10 +83,6 @@ function App() {
     window.open(contactLinks[type], '_blank', 'noopener,noreferrer')
   }
 
-  const changeProject = (direction: number) => {
-    setProjectIndex((current) => (current + direction + projects.length) % projects.length)
-  }
-
   return (
     <>
       <div className="page-glow page-glow-one" aria-hidden="true" />
@@ -103,6 +91,8 @@ function App() {
 
       <main>
         <section className="hero section commercial-hero" id="inicio">
+          <AmbientHeroField />
+
           <div className="hero-copy" data-reveal>
             <div className="eyebrow"><span />Soluções digitais pensadas para resolver, não apenas aparecer</div>
             <h1>
@@ -113,7 +103,7 @@ function App() {
               Eu transformo necessidades reais em páginas, sistemas e automações claras, modernas e fáceis de usar. Com atenção ao que o seu cliente precisa sentir, entender e fazer.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#projetos">Ver soluções na prática <ArrowUpRight size={18} /></a>
+              <a className="button button-primary" href="/projetos">Explorar projetos <ArrowUpRight size={18} /></a>
               <a className="button button-secondary button-contact-animated" href="#contato">Quero conversar</a>
               <a className="button button-github" href="/recrutadores"><Sparkles size={18} /> Para recrutadores</a>
             </div>
@@ -155,17 +145,6 @@ function App() {
           <div><Bot size={20} /><strong>Agilidade</strong><span>Automação para reduzir tarefas repetitivas.</span></div>
         </section>
 
-        <section className="brand-showcase" aria-label="Identidade visual Marcus Camargo" data-reveal>
-          <div className="brand-showcase-inner">
-            <div className="brand-showcase-copy">
-              <span className="section-kicker">Identidade</span>
-              <h2>Tecnologia pode ser sofisticada sem parecer complicada.</h2>
-              <p>Minha identidade visual combina contraste, movimento e cores vivas para criar uma experiência marcante sem perder clareza.</p>
-            </div>
-            <div className="brand-logo-panel"><img src={identityImage} alt="Identidade visual Marcus Camargo Portfólio" /></div>
-          </div>
-        </section>
-
         <section className="section services-section" id="servicos" data-reveal>
           <SectionHeading kicker="Como posso ajudar" title="Menos tecnologia na conversa. Mais clareza sobre o resultado." text="Cada solução parte de uma necessidade concreta: apresentar melhor, organizar, agilizar, vender, atender ou eliminar trabalho repetitivo." />
           <div className="service-grid">
@@ -179,37 +158,16 @@ function App() {
           </div>
         </section>
 
-        <section className="section projects-section commercial-projects" id="projetos" data-reveal>
-          <div className="project-slider-heading">
-            <SectionHeading kicker="Projetos em destaque" title="Um projeto por vez. Uma história que vale a pena entender." text="Cada projeto nasce de uma necessidade diferente e mostra como uma ideia pode se transformar em uma experiência útil, clara e publicada." />
-            <div className="project-slider-controls" aria-label="Navegação entre projetos">
-              <button type="button" onClick={() => changeProject(-1)} aria-label="Projeto anterior"><ArrowLeft size={20} /></button>
-              <span>{String(projectIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
-              <button type="button" onClick={() => changeProject(1)} aria-label="Próximo projeto"><ArrowRight size={20} /></button>
+        <section className="home-project-gateway" data-reveal>
+          <div className="home-project-gateway-card">
+            <div className="home-project-gateway-copy">
+              <span>Projetos</span>
+              <h2>Os trabalhos agora têm espaço para contar a história inteira.</h2>
             </div>
+            <a className="home-project-gateway-link" href="/projetos">
+              Abrir projetos <ArrowUpRight size={17} />
+            </a>
           </div>
-
-          <article className={`project-card project-${activeProject.variant} commercial-project-slide`} key={activeProject.title}>
-            <div className="project-preview"><ProjectPreview variant={activeProject.variant} /></div>
-            <div className="project-content">
-              <span className="commercial-project-label">{activeProject.variant === 'lista-app' ? 'Aplicativo Android' : 'Solução publicada'}</span>
-              <h3>{activeProject.title}</h3>
-              <p>{activeProject.variant === 'letreiro'
-                ? 'Transformei a rotina de descobrir um filme em uma experiência diária: simples de começar, curiosa o suficiente para voltar no dia seguinte e com uma identidade própria.'
-                : activeProject.variant === 'lista-app'
-                  ? 'Levei o Liste & Compre para uma experiência realmente mobile: um aplicativo próprio para acompanhar a compra com toque, gestos, persistência local da sessão e integração com os mesmos dados da conta usados na versão web.'
-                  : 'Nasceu de uma situação cotidiana: fazer compras sem perder controle do que falta, do que já foi colocado no carrinho e de quanto está sendo gasto ao longo do processo.'}
-              </p>
-              <div className="commercial-project-outcomes">
-                {activeProject.variant === 'letreiro'
-                  ? <><span>Desafio diário</span><span>Retenção por hábito</span><span>Experiência responsiva</span></>
-                  : activeProject.variant === 'lista-app'
-                    ? <><span>Experiência mobile nativa</span><span>Dados integrados ao web</span><span>Compra persistida no aparelho</span></>
-                    : <><span>Organização prática</span><span>Controle durante a compra</span><span>Histórico reutilizável</span></>}
-              </div>
-              <a href={activeProject.liveUrl} target="_blank" rel="noreferrer">{activeProject.variant === 'lista-app' ? 'Ver aplicativo no GitHub' : 'Conhecer o projeto'} <ArrowUpRight size={16} /></a>
-            </div>
-          </article>
         </section>
 
         <section className="section about-section" id="sobre" data-reveal>
@@ -235,7 +193,7 @@ function App() {
       </main>
 
       <footer>
-        <a href="#inicio" className="footer-brand"><img className="footer-logo-transparent" src={logo} alt="" /><span>Marcus Camargo Portfólio</span></a>
+        <a href="/" className="footer-brand"><img className="footer-logo-transparent" src={logo} alt="" /><span>Marcus Camargo Portfólio</span></a>
         <p>Experiências digitais • Sistemas • Automação</p>
         <p>© {new Date().getFullYear()} Marcus Camargo. · <a className="footer-privacy-link" href="/privacidade">Privacidade</a></p>
       </footer>

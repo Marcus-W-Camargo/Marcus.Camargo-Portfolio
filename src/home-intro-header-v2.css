@@ -1,0 +1,328 @@
+/* Home intro v2: shared light field, compact hero, swapped identity and contact popover */
+
+.home-intro-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  width: 100%;
+}
+
+.home-intro-shell > .ambient-hero-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.home-intro-shell > .site-header,
+.home-intro-shell > .commercial-hero {
+  position: relative;
+  z-index: 2;
+}
+
+.home-intro-shell > .site-header {
+  position: sticky;
+  top: 16px;
+  background: rgba(13, 9, 21, .56);
+  border-color: rgba(255,255,255,.10);
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.18),
+    0 0 42px rgba(255, 20, 132, .035);
+}
+
+.home-intro-shell .commercial-hero::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7,5,11,.42) 0%,
+      rgba(7,5,11,.18) 40%,
+      rgba(7,5,11,.03) 69%,
+      rgba(7,5,11,.08) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(8,6,13,.015) 0%,
+      rgba(8,6,13,.11) 62%,
+      rgba(8,6,13,.28) 100%
+    );
+}
+
+.home-intro-shell .commercial-hero-inner {
+  min-height: clamp(560px, 64svh, 670px);
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.home-intro-shell .commercial-hero .eyebrow {
+  margin-bottom: 12px;
+}
+
+.home-intro-shell .commercial-hero .hero-copy h1 {
+  margin: 16px 0 14px;
+  line-height: .95;
+  overflow: visible;
+}
+
+.home-intro-shell .commercial-hero .hero-copy h1 span {
+  padding-bottom: .12em;
+  margin-bottom: -.08em;
+  overflow: visible;
+}
+
+.home-intro-shell .commercial-hero .hero-text {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.home-intro-shell .commercial-hero .hero-actions {
+  margin-top: 22px;
+}
+
+/* Header now uses the portfolio logo instead of the portrait. */
+.site-header .brand-logo-image {
+  padding: 5px;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  border: 1px solid rgba(255, 76, 166, .20);
+  box-shadow: inset 0 0 18px rgba(255, 26, 144, .055);
+}
+
+/* Portrait now occupies the hero frame where the logo used to live. */
+.commercial-orbit .hero-photo-card {
+  z-index: 2;
+  width: 78%;
+  aspect-ratio: 1;
+  padding: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 24%, rgba(255, 27, 143, .13), transparent 45%),
+    rgba(12, 8, 18, .34);
+  border: 1px solid rgba(255, 76, 166, .34);
+  border-radius: 34px;
+  box-shadow:
+    0 30px 75px rgba(0, 0, 0, .24),
+    0 0 0 1px rgba(255,255,255,.025),
+    0 0 68px rgba(255,10,120,.11);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+.commercial-orbit .hero-photo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 24%;
+  border-radius: 33px;
+}
+
+/* Header contact popover */
+.nav-contact-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-contact-trigger {
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--pink), var(--magenta));
+  box-shadow: 0 8px 22px rgba(255,10,120,.22);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.nav-contact-menu.is-open .nav-contact-trigger,
+.nav-contact-trigger:hover,
+.nav-contact-trigger:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(255,10,120,.28);
+}
+
+.nav-contact-popover {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 270px;
+  padding: 8px;
+  display: grid;
+  gap: 4px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255, 20, 132, .12), transparent 36%),
+    rgba(13,9,21,.94);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 22px 55px rgba(0,0,0,.34);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-7px) scale(.98);
+  transform-origin: top right;
+  transition:
+    opacity .2s ease,
+    transform .22s ease,
+    visibility .2s ease;
+}
+
+.nav-contact-menu.is-open .nav-contact-popover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+
+.main-nav .nav-contact-popover a {
+  min-height: 66px;
+  padding: 11px 12px;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 11px;
+  align-items: center;
+  border-radius: 13px;
+  color: #eee9f2;
+  background: transparent;
+  text-align: left;
+}
+
+.main-nav .nav-contact-popover a:hover,
+.main-nav .nav-contact-popover a:focus-visible {
+  color: #fff;
+  background: rgba(255,255,255,.055);
+  transform: none;
+}
+
+.nav-contact-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  color: #ff64b5;
+  background: rgba(255, 40, 151, .09);
+  border: 1px solid rgba(255, 64, 167, .14);
+}
+
+.nav-contact-popover small,
+.nav-contact-popover strong {
+  display: block;
+}
+
+.nav-contact-popover small {
+  margin-bottom: 3px;
+  color: #8e8497;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.nav-contact-popover strong {
+  font-size: 13px;
+}
+
+/* Keep the shared light visible behind the full intro, including the header. */
+.home-intro-shell .commercial-orbit::before {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 41, 155, .075), rgba(139, 59, 236, .025) 45%, transparent 72%);
+}
+
+@media (max-width: 1100px) {
+  .nav-contact-menu {
+    display: block;
+  }
+
+  .nav-contact-trigger {
+    width: 100%;
+    min-height: 46px;
+    padding: 13px 14px;
+    font-size: 14px;
+  }
+
+  .nav-contact-popover {
+    position: static;
+    width: 100%;
+    margin-top: 6px;
+    padding: 5px;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    box-shadow: none;
+    background: rgba(255,255,255,.025);
+  }
+
+  .nav-contact-menu.is-open .nav-contact-popover {
+    display: grid;
+  }
+
+  .main-nav .nav-contact-popover a {
+    min-height: 58px;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-intro-shell .commercial-hero-inner {
+    min-height: auto;
+    padding-top: 30px;
+    padding-bottom: 24px;
+  }
+
+  .home-intro-shell .commercial-hero::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7,5,11,.10) 0%,
+        rgba(7,5,11,.18) 42%,
+        rgba(7,5,11,.38) 100%
+      );
+  }
+}
+
+@media (max-width: 760px) {
+  .home-intro-shell {
+    overflow: clip;
+  }
+
+  .home-intro-shell > .site-header {
+    top: 10px;
+  }
+
+  .home-intro-shell .commercial-hero-inner {
+    padding-top: 34px;
+    padding-bottom: 24px;
+  }
+
+  .site-header .brand-logo-image {
+    padding: 4px;
+  }
+
+  .commercial-orbit .hero-photo-card {
+    width: 82%;
+    border-radius: 28px;
+  }
+
+  .commercial-orbit .hero-photo-image {
+    border-radius: 27px;
+  }
+
+  .home-intro-shell .commercial-hero .hero-copy h1 {
+    line-height: .98;
+  }
+
+  .home-intro-shell .commercial-hero .hero-copy h1 span {
+    padding-bottom: .14em;
+    margin-bottom: -.08em;
+  }
+}

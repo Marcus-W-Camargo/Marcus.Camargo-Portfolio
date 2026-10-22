@@ -125,6 +125,11 @@
 }
 
 /* Header contact popover */
+.site-header {
+  z-index: 200;
+  overflow: visible;
+}
+
 .main-nav {
   position: relative;
   z-index: 210;

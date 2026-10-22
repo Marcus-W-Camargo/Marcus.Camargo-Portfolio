@@ -91,32 +91,32 @@ export function Header() {
           </button>
 
           <div className="nav-contact-popover" role="menu">
-            <a
-              href="https://wa.me/message/S2FPE7ASPUHHM1"
-              target="_blank"
-              rel="noreferrer"
-              role="menuitem"
-              onClick={closeMenu}
-            >
-              <span className="nav-contact-icon"><WhatsAppIcon size={18} /></span>
-              <span>
-                <small>Contato direto</small>
-                <strong>WhatsApp</strong>
-              </span>
-            </a>
-            <a
-              href="https://www.instagram.com/marcus.camargo_portifolio?igsi=ZmdpOTdzNmIzY25p"
-              target="_blank"
-              rel="noreferrer"
-              role="menuitem"
-              onClick={closeMenu}
-            >
-              <span className="nav-contact-icon"><Instagram size={18} /></span>
-              <span>
-                <small>Conteúdo & contato</small>
-                <strong>Instagram</strong>
-              </span>
-            </a>
+            <div className="nav-contact-popover-panel">
+              <a
+                href="https://wa.me/message/S2FPE7ASPUHHM1"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="menuitem"
+              >
+                <span className="nav-contact-icon"><WhatsAppIcon size={18} /></span>
+                <span>
+                  <small>Contato direto</small>
+                  <strong>WhatsApp</strong>
+                </span>
+              </a>
+              <a
+                href="https://www.instagram.com/marcus.camargo_portifolio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="menuitem"
+              >
+                <span className="nav-contact-icon"><Instagram size={18} /></span>
+                <span>
+                  <small>Conteúdo & contato</small>
+                  <strong>Instagram</strong>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </nav>

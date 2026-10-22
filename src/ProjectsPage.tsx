@@ -7,6 +7,7 @@ export function ProjectsPage() {
   const [activeSlug, setActiveSlug] = useState<string | null>(null)
   const [mobileSlug, setMobileSlug] = useState<string | null>(null)
   const listRef = useRef<HTMLDivElement>(null)
+  const selectorRef = useRef<HTMLDivElement>(null)
 
   const activeProject = projects.find((project) => project.slug === activeSlug) ?? null
   const mobileProject = projects.find((project) => project.slug === mobileSlug) ?? null
@@ -27,7 +28,10 @@ export function ProjectsPage() {
       frame = window.requestAnimationFrame(() => {
         const rows = Array.from(list.querySelectorAll<HTMLElement>('[data-project-slug]'))
         const listRect = list.getBoundingClientRect()
-        const selectorY = listRect.top + listRect.height / 2
+        const selectorRect = selectorRef.current?.getBoundingClientRect()
+        const selectorY = selectorRect
+          ? selectorRect.top + selectorRect.height / 2
+          : listRect.top + listRect.height * 0.34
 
         let nearest: HTMLElement | null = null
         let nearestDistance = Number.POSITIVE_INFINITY
@@ -86,7 +90,7 @@ export function ProjectsPage() {
           </div>
 
           <div className="editorial-mobile-wheel">
-            <div className="editorial-mobile-selector-line" aria-hidden="true">
+            <div className="editorial-mobile-selector-line" ref={selectorRef} aria-hidden="true">
               <span />
             </div>
 

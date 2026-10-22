@@ -23,10 +23,14 @@ export function ProjectsPage() {
         document.querySelectorAll<HTMLElement>('[data-project-slug]'),
       )
 
-      const viewportBottom = window.innerHeight
+      const carousel = document.querySelector<HTMLElement>('.editorial-mobile-carousel')
+      const selectionBottom = carousel
+        ? carousel.getBoundingClientRect().top - 12
+        : window.innerHeight
+
       const visibleRows = rows.filter((row) => {
         const rect = row.getBoundingClientRect()
-        return rect.bottom > 0 && rect.top < viewportBottom
+        return rect.bottom > 0 && rect.top < selectionBottom
       })
 
       const lastVisible = visibleRows.at(-1)

@@ -23,21 +23,34 @@ import './commercial-recruiter-refinements.css'
 import './commercial-recruiter-visual-fixes.css'
 import './hero-orbit-icons.css'
 import './apoie.css'
+import './editorial-projects.css'
 import App from './App'
 import { ApoiePage } from './ApoiePage'
 import { PrivacyPage } from './PrivacyPage'
+import { ProjectCasePage } from './ProjectCasePage'
+import { ProjectsPage } from './ProjectsPage'
 import { RecruiterPage } from './RecruiterPage'
+import { findProjectBySlug } from './data/projects'
 
 const SITE_URL = 'https://marcuscamargo-portfolio.com.br'
 
-const seoPages: Record<
-  string,
-  { title: string; description: string; index: boolean }
-> = {
+type SeoPage = {
+  title: string
+  description: string
+  index: boolean
+}
+
+const seoPages: Record<string, SeoPage> = {
   '/': {
     title: 'Marcus Camargo | Portfólio',
     description:
       'Marcus Camargo — desenvolvimento de sites, aplicações web e mobile, integrações, automações e chatbots.',
+    index: true,
+  },
+  '/projetos': {
+    title: 'Projetos | Marcus Camargo',
+    description:
+      'Explore projetos de Marcus Camargo e conheça o contexto, a solução e a experiência construída em cada trabalho.',
     index: true,
   },
   '/recrutadores': {
@@ -61,13 +74,25 @@ const seoPages: Record<
 }
 
 const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
-const seoPage = seoPages[pathname] ?? {
-  title: 'Marcus Camargo | Portfólio',
-  description:
-    'Projetos reais, soluções digitais e evolução técnica em desenvolvimento web e mobile.',
-  index: false,
-}
-const canonicalPath = seoPages[pathname] ? pathname : '/'
+const projectSlug = pathname.startsWith('/projetos/')
+  ? decodeURIComponent(pathname.slice('/projetos/'.length))
+  : null
+const project = projectSlug ? findProjectBySlug(projectSlug) : undefined
+
+const seoPage: SeoPage = project
+  ? {
+      title: `${project.title} | Projetos de Marcus Camargo`,
+      description: project.description,
+      index: true,
+    }
+  : seoPages[pathname] ?? {
+      title: 'Marcus Camargo | Portfólio',
+      description:
+        'Projetos reais, soluções digitais e evolução técnica em desenvolvimento web e mobile.',
+      index: false,
+    }
+
+const canonicalPath = project ? `/projetos/${project.slug}` : seoPages[pathname] ? pathname : '/'
 const canonicalUrl = `${SITE_URL}${canonicalPath === '/' ? '/' : canonicalPath}`
 
 const setMetaByName = (name: string, content: string) => {
@@ -118,16 +143,20 @@ setMetaByProperty('og:url', canonicalUrl)
 setMetaByName('twitter:title', seoPage.title)
 setMetaByName('twitter:description', seoPage.description)
 
-const Page = pathname === '/privacidade'
-  ? PrivacyPage
-  : pathname === '/recrutadores'
-    ? RecruiterPage
-    : pathname === '/apoie'
-      ? ApoiePage
-      : App
+const page = project
+  ? <ProjectCasePage project={project} />
+  : pathname === '/projetos'
+    ? <ProjectsPage />
+    : pathname === '/privacidade'
+      ? <PrivacyPage />
+      : pathname === '/recrutadores'
+        ? <RecruiterPage />
+        : pathname === '/apoie'
+          ? <ApoiePage />
+          : <App />
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Page />
+    {page}
   </StrictMode>,
 )

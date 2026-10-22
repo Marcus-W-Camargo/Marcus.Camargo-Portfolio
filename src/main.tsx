@@ -34,12 +34,15 @@ import './hero-light-scroll.css'
 import './hero-full-bleed.css'
 import './home-intro-header-v2.css'
 import './home-one-viewport.css'
+import './public-detail-pages.css'
 import App from './App'
+import { AboutPage } from './AboutPage'
 import { ApoiePage } from './ApoiePage'
 import { PrivacyPage } from './PrivacyPage'
 import { ProjectCasePage } from './ProjectCasePage'
 import { ProjectsPage } from './ProjectsPage'
 import { RecruiterPage } from './RecruiterPage'
+import { ServicesPage } from './ServicesPage'
 import { findProjectBySlug } from './data/projects'
 
 const SITE_URL = 'https://marcuscamargo-portfolio.com.br'
@@ -61,6 +64,18 @@ const seoPages: Record<string, SeoPage> = {
     title: 'Projetos | Marcus Camargo',
     description:
       'Explore projetos de Marcus Camargo e conheça o contexto, a solução e a experiência construída em cada trabalho.',
+    index: true,
+  },
+  '/servicos': {
+    title: 'Serviços | Marcus Camargo',
+    description:
+      'Sites, sistemas sob medida, agendamento, automações, integrações e aplicações web e mobile desenvolvidas por Marcus Camargo.',
+    index: true,
+  },
+  '/sobre': {
+    title: 'Sobre | Marcus Camargo',
+    description:
+      'Conheça a trajetória, experiência prática, projetos e tecnologias com as quais Marcus Camargo trabalha.',
     index: true,
   },
   '/recrutadores': {
@@ -157,7 +172,11 @@ const page = project
   ? <ProjectCasePage project={project} />
   : pathname === '/projetos'
     ? <ProjectsPage />
-    : pathname === '/privacidade'
+    : pathname === '/servicos'
+      ? <ServicesPage />
+      : pathname === '/sobre'
+        ? <AboutPage />
+        : pathname === '/privacidade'
       ? <PrivacyPage />
       : pathname === '/recrutadores'
         ? <RecruiterPage />

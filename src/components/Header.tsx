@@ -5,6 +5,8 @@ import logo from '../assets/Marcus-Camargo-Logo-Transparente.png'
 const links = [
   ['Início', '/'],
   ['Projetos', '/projetos'],
+  ['Serviços', '/servicos'],
+  ['Sobre', '/sobre'],
 ]
 
 function WhatsAppIcon({ size = 18 }: { size?: number }) {

@@ -370,7 +370,7 @@
 
 @media (max-width: 760px) {
   .editorial-project-row[data-mobile-side="above"][data-mobile-distance="1"] .editorial-project-title {
-    transform: scale(.512);
+    transform: scale(.64);
     opacity: .72;
   }
 
@@ -380,7 +380,7 @@
   }
 
   .editorial-project-row[data-mobile-side="above"][data-mobile-distance="3"] .editorial-project-title {
-    transform: scale(.32);
+    transform: scale(.40);
     opacity: .34;
   }
 

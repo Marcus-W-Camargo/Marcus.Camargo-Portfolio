@@ -1914,3 +1914,988 @@
     animation-timing-function: steps(1, end);
   }
 }
+
+
+/* =========================================================
+   Fidelity refinement v2 — real palettes, licensed media,
+   live Spaço Liss panel and real purchase structures
+   ========================================================= */
+
+/* Licensed client media placeholders */
+.licensed-media-card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1.1cqw;
+  padding: 10%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.licensed-media-card::before {
+  content: '▣';
+  width: 7cqw;
+  height: 7cqw;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 2.5cqw;
+  opacity: .72;
+}
+
+.licensed-media-card::after {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border: 1px solid currentColor;
+  border-radius: 44% 56% 48% 52% / 58% 42% 58% 42%;
+  opacity: .08;
+  transform: rotate(-8deg);
+}
+
+.licensed-media-card span {
+  position: relative;
+  z-index: 2;
+  font-size: 1.05cqw;
+  font-weight: 900;
+  letter-spacing: .2em;
+}
+
+.licensed-media-card strong {
+  position: relative;
+  z-index: 2;
+  max-width: 80%;
+  font-size: 2.6cqw;
+  line-height: 1.05;
+}
+
+.licensed-media-card small {
+  position: relative;
+  z-index: 2;
+  max-width: 78%;
+  font-size: 1.05cqw;
+  line-height: 1.55;
+  opacity: .72;
+}
+
+.licensed-media-spaco {
+  color: #b6255a;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(208,46,102,.12), transparent 26%),
+    linear-gradient(145deg, #fffafb, #f7e9ee);
+}
+
+.licensed-media-mexe {
+  color: #171719;
+  background:
+    linear-gradient(90deg, #f33eaa 0 1.2%, transparent 1.2%),
+    radial-gradient(circle at 72% 25%, rgba(243,62,170,.15), transparent 28%),
+    #f4f4f0;
+}
+
+/* Spaço Liss — real light palette */
+.editorial-preview.project-spaco-liss {
+  background: linear-gradient(145deg, #fffaf8, #f8eef1 68%, #d12e67 160%);
+}
+
+.spaco-scene {
+  background: #fffdfc;
+  color: #4b4b4d;
+}
+
+.spaco-header-mini {
+  background: #fffdfc;
+  border-bottom-color: #eee4e7;
+}
+
+.spaco-header-mini > div {
+  color: #5e595b;
+}
+
+.spaco-header-mini b,
+.spaco-home-copy button,
+.spaco-booking-summary button {
+  background: #cc2f66;
+  color: #fff;
+}
+
+.spaco-home-copy small,
+.spaco-booking-form > small,
+.spaco-booking-summary > small {
+  color: #d32d67;
+}
+
+.spaco-home-copy h3,
+.spaco-booking-form > strong,
+.spaco-booking-summary h4 {
+  color: #505052;
+}
+
+.spaco-home-copy p {
+  color: #655f61;
+}
+
+.spaco-home-photo::after {
+  display: none;
+}
+
+.spaco-booking-scene {
+  background: #fffdfc;
+}
+
+.spaco-booking-banner {
+  background: #ca2f67;
+}
+
+.spaco-booking-banner h3 {
+  color: #505052;
+  text-shadow: 0 1px rgba(255,255,255,.24);
+}
+
+.spaco-booking-banner small,
+.spaco-booking-banner p {
+  color: rgba(255,255,255,.94);
+}
+
+.spaco-booking-body {
+  background: #fffdfc;
+}
+
+.spaco-booking-form label {
+  color: #d12f67;
+}
+
+.spaco-booking-form label > span {
+  border-color: #efdce3;
+  background: #fff;
+  color: #a09a9c;
+  box-shadow: 0 5px 14px rgba(137,78,99,.05);
+}
+
+.spaco-booking-summary {
+  border-color: #f1dce4;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(114,62,81,.08);
+}
+
+.spaco-booking-summary > div {
+  border-bottom-color: #eee7e9;
+  color: #393638;
+}
+
+.spaco-booking-summary span {
+  color: #746c6f;
+}
+
+/* Spaço Liss — open internal panel, recreated from the live session */
+.spaco-panel-open {
+  width: 100%;
+  height: 100%;
+  padding: 2.6% 3.4% 3%;
+  background:
+    radial-gradient(circle at 87% 5%, rgba(217,69,118,.07), transparent 24%),
+    #fffaf8;
+  color: #252326;
+  overflow: hidden;
+}
+
+.spaco-panel-topbar {
+  min-height: 9%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2%;
+  padding-bottom: 1.4%;
+  border-bottom: 1px solid #f0e5e8;
+}
+
+.spaco-panel-brand-open {
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+}
+
+.spaco-panel-brand-open img {
+  width: 7.5cqw;
+  max-height: 3.2cqw;
+  object-fit: contain;
+}
+
+.spaco-panel-brand-open > span {
+  display: grid;
+  gap: .15cqw;
+}
+
+.spaco-panel-brand-open b {
+  font-size: 1cqw;
+  letter-spacing: .12em;
+}
+
+.spaco-panel-brand-open small {
+  color: #8a8084;
+  font-size: .8cqw;
+}
+
+.spaco-panel-topbar nav {
+  display: flex;
+  align-items: center;
+  gap: 1.05cqw;
+  color: #5f5659;
+  font-size: .82cqw;
+}
+
+.spaco-panel-topbar nav b {
+  color: #d12f67;
+}
+
+.spaco-panel-heading {
+  margin-top: 2%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.spaco-panel-heading h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: #252326;
+  font-size: 4.7cqw;
+  font-weight: 500;
+  line-height: .92;
+  letter-spacing: -.035em;
+}
+
+.spaco-panel-heading p {
+  margin: .45cqw 0 0;
+  color: #7a7174;
+  font-size: .9cqw;
+}
+
+.spaco-panel-counter {
+  min-width: 9cqw;
+  padding: 1.2cqw 1.5cqw;
+  display: grid;
+  border: 1px solid #f2e3e8;
+  border-radius: 1.8cqw;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(138,73,96,.06);
+}
+
+.spaco-panel-counter strong {
+  color: #cf2f67;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 3.2cqw;
+  font-weight: 500;
+  line-height: .9;
+}
+
+.spaco-panel-counter small {
+  margin-top: .25cqw;
+  color: #847a7e;
+  font-size: .72cqw;
+}
+
+.spaco-panel-filters {
+  margin: 2.4% 0 2%;
+  display: flex;
+  gap: .7cqw;
+  align-items: center;
+}
+
+.spaco-panel-filters > span {
+  min-height: 3.4cqw;
+  padding: .45cqw .9cqw .45cqw .45cqw;
+  display: flex;
+  align-items: center;
+  gap: .5cqw;
+  border: 1px solid #eadfe2;
+  border-radius: 999px;
+  background: #fff;
+  color: #282428;
+  font-size: .8cqw;
+  font-weight: 700;
+}
+
+.spaco-panel-filters > span.active {
+  border-color: #e92e72;
+  box-shadow: 0 4px 12px rgba(215,49,106,.1);
+}
+
+.spaco-panel-filters i {
+  width: 2.25cqw;
+  height: 2.25cqw;
+  display: grid;
+  place-items: center;
+  border: .16cqw solid #d32f68;
+  border-radius: 50%;
+  background: #f6eef1;
+  color: #5c5055;
+  font-size: .7cqw;
+  font-style: normal;
+}
+
+.spaco-panel-filters > span.active i {
+  border-color: #474146;
+  background: #474146;
+  color: #fff;
+}
+
+.spaco-panel-layout {
+  height: 57%;
+  display: grid;
+  grid-template-columns: .38fr .62fr;
+  gap: 1.5cqw;
+}
+
+.spaco-panel-calendar,
+.spaco-panel-day {
+  overflow: hidden;
+  border: 1px solid #f1e2e7;
+  border-radius: 1.5cqw;
+  background: #fff;
+}
+
+.spaco-panel-calendar {
+  padding: 1.3cqw;
+}
+
+.spaco-panel-calendar > header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  text-align: center;
+}
+
+.spaco-panel-calendar > header b {
+  width: 2cqw;
+  height: 2cqw;
+  display: grid;
+  place-items: center;
+  border: 1px solid #f4dbe4;
+  border-radius: 50%;
+  color: #d43069;
+  font-size: .9cqw;
+}
+
+.spaco-panel-calendar > header strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.15cqw;
+  font-weight: 500;
+}
+
+.spaco-panel-calendar > header em {
+  color: #b98c9c;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.spaco-panel-week,
+.spaco-panel-days {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: .34cqw;
+}
+
+.spaco-panel-week {
+  margin: .85cqw 0 .35cqw;
+  color: #8d8487;
+  font-size: .58cqw;
+  text-align: center;
+}
+
+.spaco-panel-days i {
+  min-height: 2.25cqw;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: .62cqw;
+  background: #fcf8f9;
+  color: #332f31;
+  font-size: .72cqw;
+  font-style: normal;
+}
+
+.spaco-panel-days i.selected {
+  border: .12cqw solid #ee2f74;
+  background: #fff;
+}
+
+.spaco-panel-days i.busy {
+  background: #faf4f6;
+}
+
+.spaco-panel-days i small {
+  position: absolute;
+  top: .15cqw;
+  right: .25cqw;
+  color: #d82d69;
+  font-size: .42cqw;
+}
+
+.spaco-panel-day > header {
+  padding: 1.15cqw 1.35cqw .75cqw;
+}
+
+.spaco-panel-day > header small {
+  color: #dc2d6b;
+  font-size: .58cqw;
+  font-weight: 900;
+  letter-spacing: .18em;
+}
+
+.spaco-panel-day h4 {
+  margin: .25cqw 0 .15cqw;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.9cqw;
+  font-weight: 500;
+}
+
+.spaco-panel-day p {
+  margin: 0;
+  color: #8b8084;
+  font-size: .65cqw;
+}
+
+.spaco-panel-grid-head {
+  display: grid;
+  grid-template-columns: .45fr repeat(4,1fr);
+  border-top: 1px solid #eee4e7;
+  border-bottom: 1px solid #eee4e7;
+  background: #fff;
+}
+
+.spaco-panel-grid-head > * {
+  min-height: 2.55cqw;
+  padding: 0 .55cqw;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #eee4e7;
+  font-size: .68cqw;
+}
+
+.spaco-panel-grid-head b {
+  color: #968b8f;
+  font-size: .58cqw;
+}
+
+.spaco-panel-time-grid > div {
+  display: grid;
+  grid-template-columns: .45fr repeat(4,1fr);
+  min-height: 2.15cqw;
+}
+
+.spaco-panel-time-grid > div > * {
+  padding: .35cqw .45cqw;
+  border-right: 1px solid #eadfe3;
+  border-bottom: 1px solid #eadfe3;
+  font-size: .55cqw;
+}
+
+.spaco-panel-time-grid > div > b {
+  background: #fff;
+  color: #927f86;
+  font-weight: 700;
+}
+
+.spaco-panel-time-grid > div > span {
+  background: #f8d5df;
+}
+
+.spaco-panel-time-grid > div > span:nth-of-type(4) {
+  background: #fff;
+}
+
+.spaco-panel-time-grid .appointment {
+  position: relative;
+  z-index: 2;
+  min-height: 3.1cqw;
+  border: 1px solid #f1e4e8;
+  border-left: .22cqw solid #ef2c72;
+  border-radius: .5cqw;
+  background: #fff !important;
+  color: #544a4e;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(118,67,84,.08);
+}
+
+.spaco-panel-time-grid .appointment.katia {
+  border-left-color: #e7a91a;
+}
+
+/* Mexe — real site palette without forced dark-mode */
+.mexe-header-mini {
+  background: #f5f5f1;
+  border-bottom-color: #dddcd7;
+}
+
+.mexe-brand-small {
+  color: #171719;
+}
+
+.mexe-header-mini > div {
+  color: #5f5e60;
+}
+
+.mexe-header-mini > div b {
+  background: #171719;
+  color: #fff;
+}
+
+.mexe-home-grid,
+.mexe-ambassador-grid {
+  background: #171719;
+}
+
+.mexe-booking-layout {
+  background: #f7f7f5;
+}
+
+.mexe-booking-intro {
+  background: #19191b;
+}
+
+.mexe-booking-calendar {
+  background: #f7f7f5;
+  color: #171719;
+}
+
+.mexe-booking-calendar > small,
+.mexe-stepper b {
+  color: #171719;
+}
+
+.mexe-stepper {
+  color: #9d9c9f;
+}
+
+.mexe-stepper span {
+  background: #d8d8d5;
+}
+
+.mexe-booking-calendar h4 {
+  color: #171719;
+}
+
+.mexe-calendar-box {
+  border-color: #d8d8d5;
+  background: #fff;
+}
+
+.mexe-calendar-box header b,
+.mexe-calendar-week {
+  color: #77767a;
+}
+
+.mexe-calendar-days i {
+  background: #f4f4f4;
+  color: #949397;
+}
+
+.mexe-calendar-days i.active {
+  border-color: #f33eaa;
+  background: #fff;
+  color: #171719;
+}
+
+/* Fix only the cropped word in the third Mexe preview. */
+.mexe-booking-intro h3 {
+  font-size: 5.55cqw;
+  line-height: .94;
+}
+
+.mexe-ambassador-photo {
+  background: #f4f4f0;
+}
+
+.mexe-ambassador-photo > .licensed-media-card {
+  position: absolute;
+  inset: 0;
+}
+
+/* Liste & Compre — real user photo wherever authenticated UI shows the avatar */
+.liste-web-account {
+  display: flex !important;
+  align-items: center;
+  gap: .75cqw;
+}
+
+.liste-user-avatar {
+  width: 2.55cqw !important;
+  height: 2.55cqw !important;
+  max-height: none !important;
+  border: .16cqw solid #1a263b;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.liste-native-avatar {
+  width: 2.7cqw !important;
+  height: 2.7cqw !important;
+  max-height: none !important;
+  border: .18cqw solid #1a263b;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  background: #fff4e7;
+}
+
+/* Liste & Compre Web — purchase in progress, based on the real component */
+.liste-web-purchase-real {
+  width: 88%;
+  height: 82%;
+  margin: 0 auto;
+  padding: 3.2% 3% 2.7%;
+  overflow: hidden;
+  border-radius: 2.8cqw;
+  background: rgba(214,225,237,.93);
+  box-shadow: 0 10px 28px rgba(26,38,59,.16);
+  color: #1a263b;
+}
+
+.liste-web-purchase-top {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 2.2cqw;
+  padding: 0 .8cqw 1.7cqw;
+}
+
+.liste-web-purchase-title {
+  display: flex;
+  align-items: center;
+  gap: .9cqw;
+  min-width: 0;
+}
+
+.liste-web-purchase-title > i {
+  font-size: 2.2cqw;
+  font-style: normal;
+}
+
+.liste-web-purchase-title h3 {
+  margin: 0;
+  color: #f7501b;
+  font-size: 2.7cqw;
+  line-height: 1;
+}
+
+.liste-web-purchase-title small {
+  color: #4a5b78;
+  font-size: .82cqw;
+  font-weight: 600;
+}
+
+.liste-web-purchase-progress {
+  display: flex;
+  align-items: center;
+  gap: .65cqw;
+  color: #f7501b;
+  font-size: 1.05cqw;
+}
+
+.liste-web-purchase-progress > i {
+  width: 2.9cqw;
+  height: 2.9cqw;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(#f7501b 0 39%, #d7e0ea 39% 100%);
+}
+
+.liste-web-purchase-progress > i span {
+  width: 1.7cqw;
+  height: 1.7cqw;
+  border-radius: 50%;
+  background: rgb(214 225 237);
+}
+
+.liste-web-purchase-top > strong {
+  font-size: 1.05cqw;
+  white-space: nowrap;
+}
+
+.liste-web-purchase-section {
+  overflow: hidden;
+  border-radius: 1.5cqw;
+  background: transparent;
+}
+
+.liste-web-purchase-section > header {
+  min-height: 3.3cqw;
+  padding: 0 1.5cqw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1.5cqw;
+  background: #88aad8;
+  color: #0b1424;
+}
+
+.liste-web-purchase-section > header b {
+  font-size: 1.45cqw;
+}
+
+.liste-web-purchase-section > header span {
+  display: flex;
+  align-items: center;
+  gap: .8cqw;
+}
+
+.liste-web-purchase-section > header small {
+  font-size: .9cqw;
+  font-weight: 600;
+}
+
+.liste-web-purchase-section > header i {
+  color: #f7501b;
+  font-size: .8cqw;
+  font-style: normal;
+}
+
+.liste-web-purchase-items {
+  padding: .6cqw .8cqw;
+  display: grid;
+  gap: .55cqw;
+}
+
+.liste-web-purchase-items > div {
+  min-height: 4.6cqw;
+  padding: .45cqw .6cqw;
+  display: grid;
+  grid-template-columns: 1.8cqw 1.8cqw 1fr 6.7cqw 6.1cqw 4.6cqw 5.6cqw 1.4cqw;
+  gap: .55cqw;
+  align-items: center;
+  border-radius: .9cqw;
+  background: rgba(255,255,255,.75);
+}
+
+.liste-web-purchase-items > div.done {
+  background: #f2fbf6;
+}
+
+.liste-web-check {
+  width: 1.45cqw;
+  height: 1.45cqw;
+  display: grid;
+  place-items: center;
+  border: .13cqw solid #1a263b;
+  border-radius: .35cqw;
+  color: #fff;
+  font-size: .75cqw;
+  font-style: normal;
+}
+
+.liste-web-purchase-items > div.done .liste-web-check {
+  border-color: #1f7a4d;
+  background: #1f7a4d;
+}
+
+.liste-web-category-icon {
+  font-size: 1.25cqw;
+}
+
+.liste-web-product-name {
+  min-width: 0;
+  display: grid;
+}
+
+.liste-web-product-name b {
+  overflow: hidden;
+  font-size: .92cqw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.liste-web-product-name small {
+  color: #687995;
+  font-size: .62cqw;
+}
+
+.liste-web-purchase-items label {
+  display: grid;
+  gap: .18cqw;
+}
+
+.liste-web-purchase-items label > small {
+  color: #4a5b78;
+  font-size: .55cqw;
+  font-weight: 700;
+}
+
+.liste-web-purchase-items label > em {
+  min-height: 2cqw;
+  padding: 0 .45cqw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: .12cqw dashed #1a263b;
+  border-radius: .55cqw;
+  background: #fff;
+  color: #1a263b;
+  font-size: .72cqw;
+  font-style: normal;
+}
+
+.liste-web-purchase-items label.measure > em {
+  justify-content: space-between;
+  gap: .3cqw;
+}
+
+.liste-web-purchase-items label.measure i {
+  font-style: normal;
+}
+
+.liste-web-purchase-items > div > strong {
+  font-size: .82cqw;
+  text-align: right;
+}
+
+.liste-web-trash {
+  color: #f7501b;
+  font-size: 1cqw;
+  text-align: center;
+}
+
+.liste-web-purchase-actions {
+  margin-top: 1.1cqw;
+  display: flex;
+  justify-content: space-between;
+  gap: .8cqw;
+}
+
+.liste-web-purchase-actions button {
+  min-height: 2.5cqw;
+  padding: 0 1.25cqw;
+  border: 0;
+  border-radius: .7cqw;
+  background: #1a263b;
+  color: #fff;
+  font: inherit;
+  font-size: .82cqw;
+  font-weight: 800;
+}
+
+.liste-web-purchase-actions button:last-child {
+  background: #f7501b;
+}
+
+/* Liste & Compre APP — real native purchase row structure */
+.liste-native-product-list.real {
+  margin-top: .7cqw;
+  gap: .65cqw;
+}
+
+.liste-native-product-list.real > div {
+  min-height: 9.2cqw;
+  padding: .75cqw;
+  grid-template-columns: 2.5cqw 1fr;
+  gap: .7cqw;
+  align-items: flex-start;
+  border-radius: 1.45cqw;
+}
+
+.liste-native-product-list.real > div.done {
+  background: #f2fbf6;
+}
+
+.liste-native-check {
+  width: 2.4cqw !important;
+  height: 2.4cqw !important;
+  margin-top: .3cqw;
+  border-width: .18cqw !important;
+  font-size: 1.05cqw !important;
+}
+
+.liste-native-row-body {
+  min-width: 0;
+}
+
+.liste-native-row-body > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.liste-native-row-body > header > span {
+  display: grid;
+}
+
+.liste-native-row-body > header b {
+  font-size: 1cqw;
+}
+
+.liste-native-row-body > header small {
+  color: #5e6f89;
+  font-size: .62cqw;
+}
+
+.liste-native-row-body > header strong {
+  color: #b92f18;
+  font-size: 1.5cqw;
+  line-height: 1;
+}
+
+.liste-native-row-inputs {
+  margin-top: .6cqw;
+  display: grid;
+  grid-template-columns: 1.25fr .78fr .68fr;
+  gap: .28cqw;
+}
+
+.liste-native-row-inputs label {
+  display: grid;
+  gap: .18cqw;
+}
+
+.liste-native-row-inputs small {
+  height: .8cqw;
+  color: #1a263b;
+  font-size: .52cqw;
+  font-weight: 700;
+}
+
+.liste-native-row-inputs em {
+  min-height: 2.6cqw;
+  padding: 0 .45cqw;
+  display: grid;
+  place-items: center;
+  border: .16cqw solid #1a263b;
+  border-radius: .8cqw;
+  background: #fff;
+  color: #1a263b;
+  font-size: .68cqw;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.liste-native-hint {
+  display: block;
+  margin-top: .35cqw;
+  color: #5e6f89;
+  font-size: .5cqw;
+}
+
+.liste-native-actions {
+  margin-top: .65cqw;
+  display: grid;
+  gap: .42cqw;
+}
+
+.liste-native-actions button {
+  min-height: 2.15cqw;
+  border: 0;
+  border-radius: .75cqw;
+  background: #dce7f7;
+  color: #1a263b;
+  font-size: .67cqw;
+  font-weight: 800;
+}
+
+.liste-native-actions button:last-child {
+  background: #f7501b;
+  color: #fff;
+}

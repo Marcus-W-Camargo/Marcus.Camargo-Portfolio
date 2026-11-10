@@ -2899,3 +2899,97 @@
   background: #f7501b;
   color: #fff;
 }
+
+
+/* Project list empty-state preview card */
+.editorial-preview-empty-shell {
+  width: min(100%, 650px);
+}
+
+.project-preview-empty-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(circle at 78% 24%, rgba(255,44,152,.10), transparent 27%),
+    radial-gradient(circle at 20% 78%, rgba(176,48,255,.08), transparent 30%),
+    linear-gradient(145deg, rgba(18,13,27,.98), rgba(12,9,18,.98));
+}
+
+.project-preview-empty-card::before,
+.project-preview-empty-card::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+.project-preview-empty-card::before {
+  width: 42%;
+  aspect-ratio: 1;
+  right: -12%;
+  top: -30%;
+  border: 1px solid rgba(255,62,170,.11);
+  border-radius: 50%;
+}
+
+.project-preview-empty-card::after {
+  width: 30%;
+  aspect-ratio: 1;
+  left: -12%;
+  bottom: -24%;
+  border: 1px solid rgba(180,56,255,.09);
+  border-radius: 50%;
+}
+
+.project-preview-empty-card > p {
+  position: relative;
+  z-index: 2;
+  max-width: 76%;
+  margin: 0;
+  color: #dcd4e2;
+  font-size: clamp(16px, 1.35vw, 21px);
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: -.015em;
+}
+
+.project-preview-empty-line {
+  position: relative;
+  z-index: 2;
+  width: 58px;
+  height: 2px;
+  margin-bottom: 18px;
+  display: block;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #b538ff, #ff2c98);
+  box-shadow: 0 0 18px rgba(255,44,152,.28);
+}
+
+@media (max-width: 760px) {
+  .editorial-mobile-carousel .editorial-preview-empty-shell {
+    width: min(100%, 560px);
+  }
+
+  .editorial-mobile-carousel .project-preview-empty-card {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 0 !important;
+    padding: 7px !important;
+    display: grid !important;
+    place-items: center;
+    align-content: center;
+    overflow: hidden;
+  }
+
+  .editorial-mobile-carousel .project-preview-empty-card > p {
+    max-width: 82%;
+    font-size: clamp(13px, 3.7vw, 17px);
+    line-height: 1.48;
+  }
+
+  .editorial-mobile-carousel .project-preview-empty-line {
+    width: 42px;
+    margin-bottom: 13px;
+  }
+}

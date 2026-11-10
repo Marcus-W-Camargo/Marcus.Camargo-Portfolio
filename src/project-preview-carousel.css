@@ -137,7 +137,7 @@
   align-items: center;
   gap: 12px;
   color: #aaa3a6;
-  font-size: clamp(4px, .62vw, 8px);
+  font-size: .62cqw;
 }
 
 .spaco-header-mini b {
@@ -168,7 +168,7 @@
 .spaco-booking-summary > small,
 .spaco-panel-card > small {
   color: #f14e8c;
-  font-size: clamp(4px, .52vw, 7px);
+  font-size: .52cqw;
   font-weight: 900;
   letter-spacing: .18em;
 }
@@ -177,7 +177,7 @@
   max-width: 95%;
   margin: 4% 0 3%;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(23px, 3.6vw, 49px);
+  font-size: 3.6cqw;
   font-weight: 500;
   line-height: .92;
   letter-spacing: -.035em;
@@ -187,7 +187,7 @@
   max-width: 82%;
   margin: 0;
   color: #a9a2a5;
-  font-size: clamp(5px, .72vw, 10px);
+  font-size: .72cqw;
   line-height: 1.6;
 }
 
@@ -200,7 +200,7 @@
   background: #c72f67;
   color: white;
   font: inherit;
-  font-size: clamp(5px, .65vw, 8px);
+  font-size: .65cqw;
   font-weight: 800;
 }
 
@@ -228,7 +228,7 @@
   right: 7%;
   bottom: 6%;
   color: #fff;
-  font-size: clamp(4px, .5vw, 7px);
+  font-size: .5cqw;
   font-weight: 900;
   letter-spacing: .22em;
 }
@@ -250,7 +250,7 @@
 .spaco-booking-banner h3 {
   margin: 1% 0 .6%;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(21px, 3.25vw, 44px);
+  font-size: 3.25cqw;
   font-weight: 500;
   line-height: .95;
 }
@@ -258,7 +258,7 @@
 .spaco-booking-banner p {
   margin: 0;
   color: rgba(255,255,255,.74);
-  font-size: clamp(5px, .67vw, 9px);
+  font-size: .67cqw;
 }
 
 .spaco-booking-body {
@@ -277,7 +277,7 @@
   display: block;
   margin: 1.2% 0 3.2%;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(12px, 1.6vw, 22px);
+  font-size: 1.6cqw;
   font-weight: 500;
 }
 
@@ -286,7 +286,7 @@
   display: block;
   margin-bottom: 2.2%;
   color: #d3cdd0;
-  font-size: clamp(4px, .51vw, 7px);
+  font-size: .51cqw;
   font-weight: 700;
 }
 
@@ -302,7 +302,7 @@
   border-radius: 8px;
   background: #0b0b0c;
   color: #92898d;
-  font-size: clamp(4px, .54vw, 7px);
+  font-size: .54cqw;
   font-weight: 500;
 }
 
@@ -327,7 +327,7 @@
 .spaco-booking-summary h4 {
   margin: 2% 0 7%;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(14px, 2vw, 26px);
+  font-size: 2cqw;
   font-weight: 500;
 }
 
@@ -337,7 +337,7 @@
   justify-content: space-between;
   gap: 8px;
   border-bottom: 1px solid rgba(255,255,255,.06);
-  font-size: clamp(4px, .52vw, 7px);
+  font-size: .52cqw;
 }
 
 .spaco-booking-summary span {
@@ -353,7 +353,7 @@
   border-radius: 999px;
   background: #c72f67;
   color: #fff;
-  font-size: clamp(4px, .55vw, 7px);
+  font-size: .55cqw;
   font-weight: 800;
 }
 
@@ -396,21 +396,21 @@
 }
 
 .spaco-panel-brand b {
-  font-size: clamp(5px, .63vw, 8px);
+  font-size: .63cqw;
   letter-spacing: .16em;
 }
 
 .spaco-panel-brand small,
 .spaco-panel-card em {
   color: #81787b;
-  font-size: clamp(4px, .45vw, 6px);
+  font-size: .45cqw;
   font-style: normal;
 }
 
 .spaco-panel-card h3 {
   margin: 3% 0 2%;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(20px, 3vw, 41px);
+  font-size: 3cqw;
   font-weight: 500;
   line-height: .92;
 }
@@ -418,7 +418,7 @@
 .spaco-panel-card p {
   margin: 0 0 7%;
   color: #91888c;
-  font-size: clamp(4px, .54vw, 7px);
+  font-size: .54cqw;
   line-height: 1.5;
 }
 
@@ -451,7 +451,7 @@
 
 .mexe-brand-small {
   color: white;
-  font-size: clamp(5px, .64vw, 8px);
+  font-size: .64cqw;
   font-weight: 800;
   line-height: .9;
   letter-spacing: .12em;
@@ -467,7 +467,7 @@
   align-items: center;
   gap: 12px;
   color: #b9b8bb;
-  font-size: clamp(4px, .54vw, 7px);
+  font-size: .54cqw;
 }
 
 .mexe-header-mini > div b {
@@ -492,7 +492,7 @@
 .mexe-booking-intro > small,
 .mexe-booking-calendar > small {
   color: #f7f7f5;
-  font-size: clamp(4px, .51vw, 7px);
+  font-size: .51cqw;
   font-weight: 800;
   letter-spacing: .16em;
 }
@@ -500,7 +500,7 @@
 .mexe-home-copy h3 {
   margin: 4% 0 4%;
   color: #f5f5f1;
-  font-size: clamp(24px, 3.75vw, 51px);
+  font-size: 3.75cqw;
   line-height: .86;
   letter-spacing: -.07em;
 }
@@ -515,7 +515,7 @@
 .mexe-home-copy p {
   max-width: 80%;
   color: #aaa9ad;
-  font-size: clamp(5px, .67vw, 9px);
+  font-size: .67cqw;
   line-height: 1.55;
 }
 
@@ -527,7 +527,7 @@
   border-radius: 999px;
   background: #f33eaa;
   color: white;
-  font-size: clamp(4px, .54vw, 7px);
+  font-size: .54cqw;
   font-weight: 700;
 }
 
@@ -569,7 +569,7 @@
   position: absolute;
   z-index: 3;
   color: #77777d;
-  font-size: clamp(3px, .44vw, 6px);
+  font-size: .44cqw;
   letter-spacing: .24em;
   font-style: normal;
 }
@@ -591,14 +591,14 @@
 
 .mexe-ambassador-copy h3 {
   margin: 8% 0 7%;
-  font-size: clamp(26px, 4vw, 54px);
+  font-size: 4cqw;
   line-height: .9;
   letter-spacing: -.065em;
 }
 
 .mexe-ambassador-copy p {
   color: #a8a7aa;
-  font-size: clamp(5px, .68vw, 9px);
+  font-size: .68cqw;
   line-height: 1.6;
 }
 
@@ -610,7 +610,7 @@
   gap: 8px;
   border-top: 1px solid rgba(255,255,255,.06);
   color: #8b8a90;
-  font-size: clamp(3px, .39vw, 5px);
+  font-size: .39cqw;
   letter-spacing: .1em;
 }
 
@@ -632,7 +632,7 @@
   left: 7%;
   bottom: 5%;
   color: white;
-  font-size: clamp(4px, .48vw, 6px);
+  font-size: .48cqw;
   font-weight: 900;
   letter-spacing: .2em;
 }
@@ -650,7 +650,7 @@
 
 .mexe-booking-intro h3 {
   margin: 8% 0 13%;
-  font-size: clamp(26px, 4vw, 54px);
+  font-size: 4cqw;
   line-height: .9;
   letter-spacing: -.065em;
 }
@@ -665,11 +665,11 @@
 .mexe-booking-intro > div span,
 .mexe-booking-intro > div small {
   color: #9b9a9e;
-  font-size: clamp(4px, .45vw, 6px);
+  font-size: .45cqw;
 }
 
 .mexe-booking-intro > div strong {
-  font-size: clamp(18px, 2.65vw, 36px);
+  font-size: 2.65cqw;
   letter-spacing: -.05em;
 }
 
@@ -684,7 +684,7 @@
   gap: 8px;
   align-items: center;
   margin-bottom: 10%;
-  font-size: clamp(3px, .4vw, 5px);
+  font-size: .4cqw;
   color: #949397;
 }
 
@@ -700,7 +700,7 @@
 .mexe-booking-calendar h4 {
   margin: 3% 0 7%;
   max-width: 80%;
-  font-size: clamp(18px, 2.8vw, 38px);
+  font-size: 2.8cqw;
   line-height: .95;
   letter-spacing: -.055em;
 }
@@ -731,12 +731,12 @@
 }
 
 .mexe-calendar-box header strong {
-  font-size: clamp(6px, .8vw, 10px);
+  font-size: .8cqw;
 }
 
 .mexe-calendar-week {
   color: #89888c;
-  font-size: clamp(3px, .38vw, 5px);
+  font-size: .38cqw;
   text-align: center;
 }
 
@@ -751,7 +751,7 @@
   border-radius: 4px;
   background: #202022;
   color: #c5c4c7;
-  font-size: clamp(4px, .5vw, 7px);
+  font-size: .5cqw;
   font-style: normal;
 }
 
@@ -785,7 +785,7 @@
   border-radius: 5px;
   background: #d4cbb8;
   color: #1c1914;
-  font-size: clamp(6px, .75vw, 10px);
+  font-size: .75cqw;
 }
 
 .letreiro-landing-center {
@@ -800,14 +800,14 @@
 .letreiro-landing-center h3 {
   margin: 0;
   text-align: center;
-  font-size: clamp(19px, 2.7vw, 36px);
+  font-size: 2.7cqw;
 }
 
 .letreiro-landing-center > p {
   margin: 3% 0 7%;
   text-align: center;
   color: #d0c7b7;
-  font-size: clamp(5px, .65vw, 9px);
+  font-size: .65cqw;
 }
 
 .letreiro-language-grid {
@@ -837,7 +837,7 @@
   border-radius: 5px;
   background: #d7cfbf;
   color: white;
-  font-size: clamp(5px, .6vw, 8px);
+  font-size: .6cqw;
 }
 
 .letreiro-language-grid > div.selected > b,
@@ -850,12 +850,12 @@
 }
 
 .letreiro-language-grid strong {
-  font-size: clamp(5px, .62vw, 8px);
+  font-size: .62cqw;
 }
 
 .letreiro-language-grid small {
   color: #c6bdaa;
-  font-size: clamp(4px, .46vw, 6px);
+  font-size: .46cqw;
 }
 
 .letreiro-language-grid i {
@@ -876,7 +876,7 @@
   border-radius: 8px;
   background: #2a9248;
   color: white;
-  font-size: clamp(5px, .65vw, 8px);
+  font-size: .65cqw;
   font-weight: 800;
 }
 
@@ -906,7 +906,7 @@
 }
 
 .letreiro-game-head b {
-  font-size: clamp(8px, 1.15vw, 15px);
+  font-size: 1.15cqw;
   letter-spacing: .05em;
 }
 
@@ -915,7 +915,7 @@
   margin-top: 1.2%;
   text-align: center;
   color: #d7cfbf;
-  font-size: clamp(4px, .48vw, 6px);
+  font-size: .48cqw;
   font-weight: 700;
 }
 
@@ -934,14 +934,14 @@
 }
 
 .letreiro-board i {
-  width: clamp(16px, 2vw, 27px);
+  width: 2cqw;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
   border: 2px solid #555044;
   background: #302c22;
   color: white;
-  font-size: clamp(5px, .63vw, 8px);
+  font-size: .63cqw;
   font-style: normal;
   font-weight: 800;
 }
@@ -972,7 +972,7 @@
   border-radius: 3px;
   background: #d4cbb8;
   color: #fff;
-  font-size: clamp(4px, .5vw, 7px);
+  font-size: .5cqw;
   box-shadow: inset 0 2px rgba(28,25,20,.16), inset 0 -2px rgba(28,25,20,.16);
 }
 
@@ -983,13 +983,13 @@
   border-radius: 3px;
   background: #c2b79f;
   color: white;
-  font-size: clamp(4px, .52vw, 7px);
+  font-size: .52cqw;
 }
 
 .letreiro-calendar-scene h3 {
   margin: 2.5% 0 1%;
   text-align: center;
-  font-size: clamp(12px, 1.8vw, 24px);
+  font-size: 1.8cqw;
 }
 
 .letreiro-month {
@@ -998,7 +998,7 @@
   display: flex;
   justify-content: space-between;
   color: #d6cdbd;
-  font-size: clamp(5px, .62vw, 8px);
+  font-size: .62cqw;
 }
 
 .letreiro-calendar-grid {
@@ -1046,7 +1046,7 @@
   margin: 3px;
   background: #332e20;
   color: white;
-  font-size: clamp(4px, .54vw, 7px);
+  font-size: .54cqw;
 }
 
 .letreiro-calendar-legend {
@@ -1055,7 +1055,7 @@
   justify-content: center;
   gap: 14px;
   color: #d5ccbb;
-  font-size: clamp(4px, .45vw, 6px);
+  font-size: .45cqw;
 }
 
 .letreiro-calendar-legend span:first-child { color:#d7ae21; }
@@ -1092,7 +1092,7 @@
   border-radius: 6px;
   background: #101010;
   color: white;
-  font-size: clamp(4px, .52vw, 7px);
+  font-size: .52cqw;
 }
 
 .liste-web-login i {
@@ -1134,7 +1134,7 @@
   background: #1a263b;
   color: white;
   font: inherit;
-  font-size: clamp(5px, .62vw, 8px);
+  font-size: .62cqw;
   font-weight: 800;
 }
 
@@ -1160,7 +1160,7 @@
 
 .liste-web-appbar span {
   color: #1a263b;
-  font-size: clamp(4px, .54vw, 7px);
+  font-size: .54cqw;
   font-weight: 700;
 }
 
@@ -1181,7 +1181,7 @@
 
 .liste-web-workspace aside h4 {
   margin: 0 0 8%;
-  font-size: clamp(6px, .8vw, 11px);
+  font-size: .8cqw;
 }
 
 .liste-web-workspace aside > div {
@@ -1194,12 +1194,12 @@
 }
 
 .liste-web-workspace aside b {
-  font-size: clamp(5px, .61vw, 8px);
+  font-size: .61cqw;
 }
 
 .liste-web-workspace aside small {
   color: #5e6f89;
-  font-size: clamp(3px, .42vw, 5px);
+  font-size: .42cqw;
 }
 
 .liste-web-workspace main {
@@ -1208,7 +1208,7 @@
 
 .liste-web-workspace main > h3 {
   margin: 0 0 2%;
-  font-size: clamp(9px, 1.2vw, 16px);
+  font-size: 1.2cqw;
 }
 
 .liste-web-form,
@@ -1222,7 +1222,7 @@
 .liste-web-form > label,
 .liste-web-form > div > label {
   color: #1a263b;
-  font-size: clamp(4px, .48vw, 6px);
+  font-size: .48cqw;
   font-weight: 700;
 }
 
@@ -1256,7 +1256,7 @@
   background: #f7501b;
   color: white;
   font: inherit;
-  font-size: clamp(4px, .48vw, 6px);
+  font-size: .48cqw;
   font-weight: 800;
 }
 
@@ -1269,7 +1269,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: clamp(4px, .5vw, 7px);
+  font-size: .5cqw;
 }
 
 .liste-web-items header span {
@@ -1288,7 +1288,7 @@
   align-items: center;
   border-radius: 6px;
   background: #f7f8fa;
-  font-size: clamp(4px, .49vw, 6px);
+  font-size: .49cqw;
 }
 
 .liste-web-items > div > span {
@@ -1330,12 +1330,12 @@
 
 .liste-web-purchase small {
   color: #6f7d92;
-  font-size: clamp(3px, .4vw, 5px);
+  font-size: .4cqw;
 }
 
 .liste-web-purchase strong {
   color: #1a263b;
-  font-size: clamp(7px, .9vw, 12px);
+  font-size: .9cqw;
 }
 
 .liste-progress-ring {
@@ -1364,7 +1364,7 @@
   display: flex;
   justify-content: space-between;
   background: #dce7f7;
-  font-size: clamp(5px, .63vw, 8px);
+  font-size: .63cqw;
 }
 
 .liste-web-purchase section > div {
@@ -1375,7 +1375,7 @@
   gap: 5px;
   align-items: center;
   border-top: 1px solid #e4e7eb;
-  font-size: clamp(4px, .5vw, 7px);
+  font-size: .5cqw;
 }
 
 .liste-web-purchase section > div i {
@@ -1408,7 +1408,7 @@
   background: #f7501b;
   color: white;
   font: inherit;
-  font-size: clamp(4px, .49vw, 6px);
+  font-size: .49cqw;
   font-weight: 800;
 }
 
@@ -1448,7 +1448,7 @@
   justify-content: space-between;
   background: #7b9fd6;
   color: #1a263b;
-  font-size: clamp(3px, .4vw, 5px);
+  font-size: .4cqw;
   font-weight: 800;
 }
 
@@ -1505,7 +1505,7 @@
   align-items: center;
   gap: 3px;
   color: #1a263b;
-  font-size: clamp(3px, .36vw, 5px);
+  font-size: .36cqw;
   text-align: right;
 }
 
@@ -1526,7 +1526,7 @@
   margin: 1% 0 5%;
   text-align: center;
   color: #1a263b;
-  font-size: clamp(7px, .82vw, 11px);
+  font-size: .82cqw;
 }
 
 .liste-native-flow {
@@ -1560,7 +1560,7 @@
 
 .liste-native-flow > div b {
   color: #1a263b;
-  font-size: clamp(4px, .47vw, 6px);
+  font-size: .47cqw;
 }
 
 .liste-native-flow > span {
@@ -1580,7 +1580,7 @@
 }
 
 .liste-native-summary > b {
-  font-size: clamp(4px, .45vw, 6px);
+  font-size: .45cqw;
 }
 
 .liste-native-summary > div {
@@ -1596,12 +1596,12 @@
 
 .liste-native-summary strong {
   color: #f7501b;
-  font-size: clamp(7px, .8vw, 11px);
+  font-size: .8cqw;
 }
 
 .liste-native-summary small {
   color: #5e6f89;
-  font-size: clamp(3px, .32vw, 4px);
+  font-size: .32cqw;
 }
 
 .liste-native-tabs {
@@ -1627,12 +1627,12 @@
 }
 
 .liste-native-tabs b {
-  font-size: clamp(6px, .68vw, 9px);
+  font-size: .68cqw;
   line-height: 1;
 }
 
 .liste-native-tabs small {
-  font-size: clamp(3px, .32vw, 4px);
+  font-size: .32cqw;
   font-weight: 700;
 }
 
@@ -1653,12 +1653,12 @@
 }
 
 .liste-native-pagehead b {
-  font-size: clamp(6px, .72vw, 10px);
+  font-size: .72cqw;
 }
 
 .liste-native-pagehead small {
   color: #5e6f89;
-  font-size: clamp(3px, .34vw, 4.5px);
+  font-size: .34cqw;
 }
 
 .liste-native-pagehead button {
@@ -1668,7 +1668,7 @@
   border-radius: 6px;
   background: #f7501b;
   color: white;
-  font-size: clamp(3px, .36vw, 5px);
+  font-size: .36cqw;
   font-weight: 800;
 }
 
@@ -1694,12 +1694,12 @@
 }
 
 .liste-native-listcards b {
-  font-size: clamp(4px, .47vw, 6px);
+  font-size: .47cqw;
 }
 
 .liste-native-listcards small {
   color: #5e6f89;
-  font-size: clamp(3px, .32vw, 4px);
+  font-size: .32cqw;
 }
 
 .liste-native-purchase-summary {
@@ -1717,12 +1717,12 @@
 
 .liste-native-purchase-summary small {
   color: #5e6f89;
-  font-size: clamp(3px, .3vw, 4px);
+  font-size: .3cqw;
 }
 
 .liste-native-purchase-summary b {
   color: #e04312;
-  font-size: clamp(7px, .82vw, 11px);
+  font-size: .82cqw;
 }
 
 .liste-native-product-list {
@@ -1770,12 +1770,12 @@
 }
 
 .liste-native-product-list b {
-  font-size: clamp(4px, .42vw, 5.5px);
+  font-size: .42cqw;
 }
 
 .liste-native-product-list small {
   color: #5e6f89;
-  font-size: clamp(2.5px, .28vw, 3.5px);
+  font-size: .28cqw;
 }
 
 .liste-native-product-list em {
@@ -1784,7 +1784,7 @@
   place-items: center;
   border: 1px solid #1a263b;
   border-radius: 5px;
-  font-size: clamp(2.5px, .3vw, 4px);
+  font-size: .3cqw;
   font-style: normal;
 }
 
@@ -1796,7 +1796,7 @@
   border-radius: 6px;
   background: #f7501b;
   color: white;
-  font-size: clamp(3px, .34vw, 4.5px);
+  font-size: .34cqw;
   font-weight: 800;
 }
 

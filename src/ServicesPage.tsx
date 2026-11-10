@@ -96,7 +96,7 @@ export function ServicesPage() {
     const cards = Array.from(stage.querySelectorAll<HTMLElement>('[data-service-card]'))
     const mobile = window.matchMedia('(max-width: 760px)')
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const thresholds = [0, 0, .35, .53, .7, .87]
+    const desktopViewportOffsets = [.5, .28, .06, -.16, -.38, -.6]
     const mobileThresholds = [0, .12, .3, .48, .66, .84]
     const removalTimers = new Map<HTMLElement, number>()
 
@@ -179,15 +179,9 @@ export function ServicesPage() {
         return
       }
 
-      const firstCardVisible = rect.top <= window.innerHeight * .5
-      const secondCardVisible = rect.top <= window.innerHeight * .28
-
       cards.forEach((card, index) => {
-        const shouldBeVisible = index === 0
-          ? firstCardVisible
-          : index === 1
-            ? secondCardVisible
-            : progress >= thresholds[index]
+        const shouldBeVisible =
+          rect.top <= window.innerHeight * desktopViewportOffsets[index]
 
         if (shouldBeVisible) {
           showCard(card)

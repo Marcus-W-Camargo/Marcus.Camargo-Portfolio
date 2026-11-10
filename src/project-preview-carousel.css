@@ -7,6 +7,7 @@
 
 .project-preview-carousel-viewport {
   position: relative;
+  container-type: inline-size;
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
@@ -1864,6 +1865,17 @@
   .editorial-mobile-carousel .liste-native-phone,
   .editorial-mobile-preview .liste-native-phone {
     min-width: 0;
+  }
+
+  .editorial-mobile-carousel .spaco-panel-card,
+  .editorial-mobile-preview .spaco-panel-card {
+    min-width: 0;
+  }
+
+  .editorial-mobile-carousel .faithful-browser-bar i,
+  .editorial-mobile-preview .faithful-browser-bar i {
+    width: .8cqw;
+    height: .8cqw;
   }
 
   /* Explicitly neutralize the previous cropped/vertical preview rules. */

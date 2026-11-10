@@ -269,6 +269,23 @@
 }
 
 @media (max-width: 1100px) {
+  .site-header {
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    margin-left: auto;
+  }
+
+  .main-nav {
+    position: fixed;
+    z-index: 240;
+    top: 108px;
+    left: max(16px, calc((100vw - var(--max)) / 2));
+    right: max(16px, calc((100vw - var(--max)) / 2));
+    overflow: visible;
+  }
+
   .nav-contact-menu {
     display: block;
   }
@@ -326,6 +343,12 @@
 }
 
 @media (max-width: 760px) {
+  .main-nav {
+    top: 88px;
+    left: 11px;
+    right: 11px;
+  }
+
   .home-intro-shell {
     overflow: clip;
   }

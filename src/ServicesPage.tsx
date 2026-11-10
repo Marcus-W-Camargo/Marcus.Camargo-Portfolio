@@ -96,7 +96,7 @@ export function ServicesPage() {
     const cards = Array.from(stage.querySelectorAll<HTMLElement>('[data-service-card]'))
     const mobile = window.matchMedia('(max-width: 760px)')
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const desktopViewportOffsets = [.5, .28, .06, -.16, -.38, -.6]
+    const desktopViewportOffsets = [.5, .286, .072, -.142, -.356, -.57]
     const mobileThresholds = [0, .12, .3, .48, .66, .84]
     const removalTimers = new Map<HTMLElement, number>()
 
@@ -236,6 +236,24 @@ export function ServicesPage() {
             banco, automações e operação interna. O escopo muda; a lógica é a mesma: entender o processo antes
             de decidir a tecnologia.
           </p>
+
+          <div className="services-transition-cue" aria-hidden="true">
+            <div className="services-transition-copy">
+              <span className="services-transition-eyebrow">O que eu construo na prática</span>
+              <p>Cada projeto começa com uma necessidade real. O formato muda. A lógica acompanha o problema.</p>
+            </div>
+
+            <div className="services-transition-loader">
+              <div className="services-transition-loader-head">
+                <span>SERVIÇOS / 06 MÓDULOS</span>
+                <small>ROLE PARA CARREGAR ↓</small>
+              </div>
+              <div className="services-transition-track">
+                <i />
+                <b />
+              </div>
+            </div>
+          </div>
         </section>
 
         <section

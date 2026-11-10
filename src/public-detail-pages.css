@@ -1104,17 +1104,10 @@
     aspect-ratio: 1.05 / 1;
   }
 
-  .service-diskette-card:nth-child(1) { --label-rotate: 7.2deg; }
-  .service-diskette-card:nth-child(2) { --label-rotate: -5.8deg; }
-  .service-diskette-card:nth-child(3) { --label-rotate: 5.1deg; }
-  .service-diskette-card:nth-child(4) { --label-rotate: -6.6deg; }
-  .service-diskette-card:nth-child(5) { --label-rotate: 6.4deg; }
-  .service-diskette-card:nth-child(6) { --label-rotate: -7.4deg; }
-
   .service-diskette-label {
     inset: 22% 6.3% 7.2%;
     padding: 5.4% 5.8% 4.8%;
-    transform: rotate(var(--label-rotate, 0deg));
+    transform: none;
     transform-origin: center center;
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;

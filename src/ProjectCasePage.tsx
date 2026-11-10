@@ -46,7 +46,7 @@ export function ProjectCasePage({ project }: ProjectCasePageProps) {
           </div>
 
           <div className={`project-case-preview project-${project.variant}`}>
-            <ProjectPreview variant={project.variant} />
+            <ProjectPreview variant={project.variant} autoplayMs={7000} showControls />
           </div>
         </section>
 

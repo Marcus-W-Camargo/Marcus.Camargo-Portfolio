@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import type { Project } from '../data/projects'
 import profilePhoto from '../assets/Perfil Marcus Camargo - Portifolio.png'
 
@@ -15,27 +15,45 @@ const listeAppLogo =
 
 type Props = {
   variant: Project['variant']
+  autoplayMs?: number
+  showControls?: boolean
 }
 
 type PreviewCarouselProps = {
   variant: string
   slides: ReactNode[]
+  autoplayMs: number
+  showControls: boolean
 }
 
-function PreviewCarousel({ variant, slides }: PreviewCarouselProps) {
+function PreviewCarousel({ variant, slides, autoplayMs, showControls }: PreviewCarouselProps) {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
     setIndex(0)
-    const interval = window.setInterval(() => {
-      setIndex((current) => (current + 1) % slides.length)
-    }, 3000)
+  }, [variant])
 
-    return () => window.clearInterval(interval)
-  }, [variant, slides.length])
+  useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      setIndex((current) => (current + 1) % slides.length)
+    }, autoplayMs)
+
+    return () => window.clearTimeout(timeout)
+  }, [autoplayMs, index, slides.length])
+
+  const previous = () => {
+    setIndex((current) => (current - 1 + slides.length) % slides.length)
+  }
+
+  const next = () => {
+    setIndex((current) => (current + 1) % slides.length)
+  }
 
   return (
-    <div className={`project-preview-carousel project-preview-carousel-${variant}`}>
+    <div
+      className={`project-preview-carousel project-preview-carousel-${variant} ${showControls ? 'has-manual-controls' : ''}`}
+      style={{ '--project-preview-duration': `${autoplayMs}ms` } as CSSProperties}
+    >
       <div className="project-preview-carousel-viewport">
         {slides.map((slide, slideIndex) => (
           <div
@@ -46,6 +64,13 @@ function PreviewCarousel({ variant, slides }: PreviewCarouselProps) {
             {slide}
           </div>
         ))}
+
+        {showControls && slides.length > 1 && (
+          <div className="project-preview-carousel-controls">
+            <button type="button" onClick={previous} aria-label="Imagem anterior">‹</button>
+            <button type="button" onClick={next} aria-label="Próxima imagem">›</button>
+          </div>
+        )}
       </div>
 
       <div className="project-preview-carousel-meta" aria-hidden="true">
@@ -447,25 +472,25 @@ function ListeAppPurchaseScene() {
   )
 }
 
-export function ProjectPreview({ variant }: Props) {
+export function ProjectPreview({ variant, autoplayMs = 3000, showControls = false }: Props) {
   if (variant === 'spaco-liss') {
-    return <PreviewCarousel variant={variant} slides={[<SpacoHomeScene />, <SpacoBookingScene />, <SpacoPanelScene />]} />
+    return <PreviewCarousel variant={variant} autoplayMs={autoplayMs} showControls={showControls} slides={[<SpacoHomeScene />, <SpacoBookingScene />, <SpacoPanelScene />]} />
   }
 
   if (variant === 'mexe-pilates') {
-    return <PreviewCarousel variant={variant} slides={[<MexeHomeScene />, <MexeAmbassadorScene />, <MexeBookingScene />]} />
+    return <PreviewCarousel variant={variant} autoplayMs={autoplayMs} showControls={showControls} slides={[<MexeHomeScene />, <MexeAmbassadorScene />, <MexeBookingScene />]} />
   }
 
   if (variant === 'letreiro') {
-    return <PreviewCarousel variant={variant} slides={[<LetreiroLandingScene />, <LetreiroGameScene />, <LetreiroCalendarScene />]} />
+    return <PreviewCarousel variant={variant} autoplayMs={autoplayMs} showControls={showControls} slides={[<LetreiroLandingScene />, <LetreiroGameScene />, <LetreiroCalendarScene />]} />
   }
 
   if (variant === 'lista') {
-    return <PreviewCarousel variant={variant} slides={[<ListeWebHomeScene />, <ListeWebListScene />, <ListeWebPurchaseScene />]} />
+    return <PreviewCarousel variant={variant} autoplayMs={autoplayMs} showControls={showControls} slides={[<ListeWebHomeScene />, <ListeWebListScene />, <ListeWebPurchaseScene />]} />
   }
 
   if (variant === 'lista-app') {
-    return <PreviewCarousel variant={variant} slides={[<ListeAppHomeScene />, <ListeAppListsScene />, <ListeAppPurchaseScene />]} />
+    return <PreviewCarousel variant={variant} autoplayMs={autoplayMs} showControls={showControls} slides={[<ListeAppHomeScene />, <ListeAppListsScene />, <ListeAppPurchaseScene />]} />
   }
 
   return (

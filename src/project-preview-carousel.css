@@ -32,6 +32,53 @@
   z-index: 2;
 }
 
+
+.project-preview-carousel-controls {
+  position: absolute;
+  z-index: 8;
+  inset: 50% 12px auto;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.project-preview-carousel-controls button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 50%;
+  background: rgba(10,7,15,.72);
+  color: #fff;
+  font: inherit;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.26);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, opacity .18s ease;
+}
+
+.project-preview-carousel-controls button:hover,
+.project-preview-carousel-controls button:focus-visible {
+  border-color: rgba(255,48,152,.7);
+  background: rgba(25,10,25,.9);
+  transform: scale(1.06);
+}
+
+.project-preview-carousel-controls button:active {
+  transform: scale(.96);
+}
+
+.project-preview-carousel.has-manual-controls .project-preview-carousel-viewport:hover .project-preview-carousel-controls button {
+  opacity: 1;
+}
+
+
 .project-preview-carousel-meta {
   height: 24px;
   margin-top: 10px;
@@ -64,7 +111,7 @@
   transform-origin: left center;
   background: linear-gradient(90deg, #bd35ff 0%, #ef2bba 48%, #ff308b 100%);
   box-shadow: 0 0 14px rgba(240,48,173,.62);
-  animation: projectPreviewProgress 3s linear forwards;
+  animation: projectPreviewProgress var(--project-preview-duration, 3000ms) linear forwards;
 }
 
 @keyframes projectPreviewProgress {
@@ -1805,6 +1852,17 @@
    Mobile scales the whole 16:10 scene instead of cropping it.
    ========================================================= */
 @media (max-width: 760px) {
+  .project-preview-carousel-controls {
+    left: 7px;
+    right: 7px;
+  }
+
+  .project-preview-carousel-controls button {
+    width: 30px;
+    height: 30px;
+    font-size: 21px;
+  }
+
   .editorial-mobile-carousel {
     padding-left: 8px;
     padding-right: 8px;

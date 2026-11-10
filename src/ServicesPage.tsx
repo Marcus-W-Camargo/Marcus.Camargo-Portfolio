@@ -97,7 +97,7 @@ export function ServicesPage() {
     const mobile = window.matchMedia('(max-width: 760px)')
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
     const desktopViewportOffsets = [.5, .275, .05, -.175, -.4, -.625]
-    const mobileThresholds = [0, .12, .3, .48, .66, .84]
+    const mobileThresholds = [0, .15, .33, .51, .69, .87]
     const removalTimers = new Map<HTMLElement, number>()
 
     let lastScrollY = window.scrollY

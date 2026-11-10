@@ -1,4 +1,4 @@
-export type ProjectVariant = 'letreiro' | 'lista' | 'lista-app' | 'coming-soon'
+export type ProjectVariant = 'letreiro' | 'lista' | 'lista-app' | 'spaco-liss' | 'mexe-pilates' | 'coming-soon'
 
 export type Project = {
   slug: string
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     description: 'O case completo do Spaço Liss será apresentado em breve.',
     story: '',
     technologies: [],
-    variant: 'coming-soon',
+    variant: 'spaco-liss',
     comingSoon: true,
   },
   {
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     description: 'O case completo do Mexe Pilates será apresentado em breve.',
     story: '',
     technologies: [],
-    variant: 'coming-soon',
+    variant: 'mexe-pilates',
     comingSoon: true,
   },
   {

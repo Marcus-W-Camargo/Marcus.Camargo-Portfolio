@@ -616,8 +616,8 @@
   --entry-rotate: -17deg;
   --exit-x: -150%;
   --exit-y: -6%;
-  left: 8%;
-  top: 11%;
+  left: 10%;
+  top: 13%;
   z-index: 1;
 }
 
@@ -630,7 +630,7 @@
   --exit-y: -5%;
   --pickup-x: 9%;
   left: 31%;
-  top: 5%;
+  top: 7%;
   z-index: 2;
 }
 
@@ -642,8 +642,8 @@
   --exit-x: 150%;
   --exit-y: 3%;
   --pickup-x: 9%;
-  right: 7%;
-  top: 15%;
+  right: 9%;
+  top: 17%;
   z-index: 3;
 }
 
@@ -654,8 +654,8 @@
   --entry-rotate: 17deg;
   --exit-x: -150%;
   --exit-y: 4%;
-  left: 12%;
-  bottom: 2%;
+  left: 13%;
+  bottom: 7%;
   z-index: 4;
 }
 
@@ -667,7 +667,7 @@
   --exit-x: -150%;
   --exit-y: 8%;
   left: 35%;
-  bottom: 8%;
+  bottom: 11%;
   z-index: 5;
 }
 
@@ -679,8 +679,8 @@
   --exit-x: 150%;
   --exit-y: 5%;
   --pickup-x: 9%;
-  right: 6%;
-  bottom: 1%;
+  right: 8%;
+  bottom: 7%;
   z-index: 6;
 }
 

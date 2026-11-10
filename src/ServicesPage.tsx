@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import {
   ArrowUpRight,
   Bot,
@@ -14,7 +15,6 @@ import { Header } from './components/Header'
 const services = [
   {
     icon: Code2,
-    index: '01',
     title: 'Sites profissionais',
     summary: 'Sites institucionais, páginas comerciais e experiências públicas com identidade própria — não templates apenas preenchidos.',
     details: [
@@ -26,7 +26,6 @@ const services = [
   },
   {
     icon: CalendarDays,
-    index: '02',
     title: 'Agendamento e operação',
     summary: 'Sistemas para negócios que precisam organizar agenda, clientes, profissionais, bloqueios, serviços e rotina interna.',
     details: [
@@ -38,7 +37,6 @@ const services = [
   },
   {
     icon: PanelsTopLeft,
-    index: '03',
     title: 'Sistemas sob medida',
     summary: 'Quando planilha, formulário ou ferramenta pronta começa a limitar a operação, construo a interface em torno do processo real.',
     details: [
@@ -50,7 +48,6 @@ const services = [
   },
   {
     icon: Workflow,
-    index: '04',
     title: 'Automações e integrações',
     summary: 'Conecto serviços e automatizo rotinas repetitivas quando isso elimina trabalho operacional ou torna o produto mais confiável.',
     details: [
@@ -62,7 +59,6 @@ const services = [
   },
   {
     icon: Smartphone,
-    index: '05',
     title: 'Aplicações web e mobile',
     summary: 'Produtos que precisam ir além de uma página: conta, estado, histórico, banco, experiência recorrente e, quando faz sentido, aplicativo.',
     details: [
@@ -74,7 +70,6 @@ const services = [
   },
   {
     icon: Database,
-    index: '06',
     title: 'Dados, autenticação e backend',
     summary: 'Estruturo a camada de dados para que a interface não dependa de improviso quando o projeto começa a crescer.',
     details: [
@@ -92,6 +87,120 @@ const foundations = [
 ]
 
 export function ServicesPage() {
+  const servicesStageRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const stage = servicesStageRef.current
+    if (!stage) return
+
+    const cards = Array.from(stage.querySelectorAll<HTMLElement>('[data-service-card]'))
+    const mobile = window.matchMedia('(max-width: 760px)')
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const thresholds = [.035, .14, .245, .35, .455, .56]
+    const removalTimers = new Map<HTMLElement, number>()
+
+    let lastScrollY = window.scrollY
+    let initial = true
+    let raf = 0
+
+    const clearRemoval = (card: HTMLElement) => {
+      const timer = removalTimers.get(card)
+      if (timer) {
+        window.clearTimeout(timer)
+        removalTimers.delete(card)
+      }
+    }
+
+    const showCard = (card: HTMLElement) => {
+      clearRemoval(card)
+      if (card.dataset.state !== 'landed') {
+        card.dataset.state = 'landed'
+      }
+    }
+
+    const hideCard = (card: HTMLElement, animatePickup: boolean) => {
+      clearRemoval(card)
+
+      if (!animatePickup || reduceMotion.matches) {
+        card.dataset.state = 'hidden'
+        return
+      }
+
+      if (card.dataset.state !== 'retrieving') {
+        card.dataset.state = 'retrieving'
+      }
+
+      const timer = window.setTimeout(() => {
+        card.dataset.state = 'hidden'
+        removalTimers.delete(card)
+      }, 720)
+
+      removalTimers.set(card, timer)
+    }
+
+    const update = () => {
+      raf = 0
+
+      if (mobile.matches) {
+        cards.forEach((card) => {
+          clearRemoval(card)
+          card.dataset.state = 'landed'
+        })
+        lastScrollY = window.scrollY
+        initial = false
+        return
+      }
+
+      const rect = stage.getBoundingClientRect()
+      const travel = Math.max(1, stage.offsetHeight - window.innerHeight)
+      const progress = Math.min(1, Math.max(0, -rect.top / travel))
+      const currentScrollY = window.scrollY
+      const scrollingUp = currentScrollY < lastScrollY - 1
+      const scrollingDown = currentScrollY > lastScrollY + 1
+
+      cards.forEach((card, index) => {
+        const shouldBeVisible = progress >= thresholds[index]
+
+        if (shouldBeVisible) {
+          showCard(card)
+          return
+        }
+
+        if (initial || scrollingDown || card.dataset.state === 'hidden') {
+          clearRemoval(card)
+          card.dataset.state = 'hidden'
+          return
+        }
+
+        if (scrollingUp && card.dataset.state === 'landed') {
+          hideCard(card, true)
+        }
+      })
+
+      lastScrollY = currentScrollY
+      initial = false
+    }
+
+    const scheduleUpdate = () => {
+      if (raf) return
+      raf = window.requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+    mobile.addEventListener('change', scheduleUpdate)
+
+    return () => {
+      window.cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      mobile.removeEventListener('change', scheduleUpdate)
+      removalTimers.forEach((timer) => window.clearTimeout(timer))
+      removalTimers.clear()
+    }
+  }, [])
+
   return (
     <div className="public-detail-page services-page">
       <Header />
@@ -107,22 +216,40 @@ export function ServicesPage() {
           </p>
         </section>
 
-        <section className="services-editorial-list" aria-label="Serviços oferecidos">
-          {services.map(({ icon: Icon, index, title, summary, details }) => (
-            <article className="service-editorial-item" key={title}>
-              <div className="service-editorial-heading">
-                <span>{index}</span>
-                <Icon size={24} strokeWidth={1.6} />
-                <h2>{title}</h2>
-              </div>
-              <div className="service-editorial-copy">
-                <p>{summary}</p>
-                <ul>
-                  {details.map((detail) => <li key={detail}>{detail}</li>)}
-                </ul>
-              </div>
-            </article>
-          ))}
+        <section
+          className="services-diskette-stage"
+          aria-label="Serviços oferecidos"
+          ref={servicesStageRef}
+        >
+          <div className="services-diskette-sticky">
+            <div className="services-diskette-board">
+              {services.map(({ icon: Icon, title, summary, details }) => (
+                <article
+                  className="service-diskette-card"
+                  data-service-card
+                  data-state="hidden"
+                  key={title}
+                >
+                  <div className="service-diskette-shutter" aria-hidden="true">
+                    <Icon size={19} strokeWidth={1.55} />
+                    <span>MC</span>
+                  </div>
+
+                  <div className="service-diskette-label">
+                    <span className="service-diskette-type">SERVIÇO / DESENVOLVIMENTO</span>
+                    <h2>{title}</h2>
+                    <p>{summary}</p>
+                    <ul>
+                      {details.map((detail) => <li key={detail}>{detail}</li>)}
+                    </ul>
+                  </div>
+
+                  <span className="service-diskette-lock" aria-hidden="true" />
+                  <span className="service-diskette-hand" aria-hidden="true" />
+                </article>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section className="services-foundations">

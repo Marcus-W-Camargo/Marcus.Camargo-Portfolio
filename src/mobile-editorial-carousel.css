@@ -434,3 +434,20 @@
     opacity: .18;
   }
 }
+
+
+@media (max-width: 760px) {
+  .editorial-project-empty-start {
+    display: block;
+    min-height: 90px;
+    margin: 0;
+    scroll-snap-align: center;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .editorial-project-empty-start {
+    min-height: 82px;
+  }
+}

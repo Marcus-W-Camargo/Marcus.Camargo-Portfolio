@@ -8,7 +8,6 @@ import {
   Workflow,
 } from 'lucide-react'
 import logo from './assets/Marcus-Camargo-Logo-Transparente.png'
-import profile from './assets/Perfil Marcus Camargo - Portifolio.png'
 import { Header } from './components/Header'
 import { AmbientHeroField } from './components/AmbientHeroField'
 
@@ -78,8 +77,8 @@ function App() {
                   ))}
                 </div>
 
-                <div className="hero-profile-card hero-photo-card">
-                  <img className="hero-photo-image" src={profile} alt="Foto de Marcus Camargo" />
+                <div className="hero-profile-card hero-logo-card">
+                  <img className="hero-logo-image" src={logo} alt="Logomarca Marcus Camargo Portfólio" />
                 </div>
 
                 <div className="hero-orbit-layer hero-orbit-layer-front" aria-hidden="true">

@@ -96,7 +96,7 @@ export function ServicesPage() {
     const cards = Array.from(stage.querySelectorAll<HTMLElement>('[data-service-card]'))
     const mobile = window.matchMedia('(max-width: 760px)')
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const thresholds = [0, .14, .27, .4, .53, .66]
+    const thresholds = [0, .18, .35, .53, .7, .87]
     const removalTimers = new Map<HTMLElement, number>()
 
     let lastScrollY = window.scrollY
@@ -158,7 +158,9 @@ export function ServicesPage() {
       const scrollingUp = currentScrollY < lastScrollY - 1
       const scrollingDown = currentScrollY > lastScrollY + 1
 
-      const firstCardVisible = rect.top <= window.innerHeight * .5
+      const firstCardVisible = scrollingUp
+        ? rect.top <= window.innerHeight * .3
+        : rect.top <= window.innerHeight * .5
 
       cards.forEach((card, index) => {
         const shouldBeVisible = index === 0

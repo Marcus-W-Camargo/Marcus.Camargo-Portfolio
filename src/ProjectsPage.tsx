@@ -51,7 +51,7 @@ export function ProjectsPage() {
       })
     }
 
-    updateMobileProject()
+    if (!media.matches) setMobileSlug(null)
     list?.addEventListener('scroll', updateMobileProject, { passive: true })
     window.addEventListener('resize', updateMobileProject)
     media.addEventListener('change', updateMobileProject)
@@ -75,8 +75,8 @@ export function ProjectsPage() {
         </div>
 
         <section className="editorial-projects-stage" aria-label="Projetos de Marcus Camargo">
-          <div className={`editorial-preview-stage ${activeProject ? 'is-active' : ''}`} aria-live="polite">
-            {activeProject && (
+          <div className="editorial-preview-stage is-active" aria-live="polite">
+            {activeProject ? (
               <div className="editorial-preview-shell" key={activeProject.slug}>
                 <div className={`editorial-preview project-${activeProject.variant}`}>
                   <ProjectPreview variant={activeProject.variant} />
@@ -84,6 +84,13 @@ export function ProjectsPage() {
                 <div className="editorial-preview-caption">
                   <span>{activeProject.category}</span>
                   <strong>{activeProject.year}</strong>
+                </div>
+              </div>
+            ) : (
+              <div className="editorial-preview-shell editorial-preview-empty-shell">
+                <div className="editorial-preview project-preview-empty-card">
+                  <span className="project-preview-empty-line" aria-hidden="true" />
+                  <p>Passe o cursor no projeto para ver imagens e clique para saber mais sobre o projeto.</p>
                 </div>
               </div>
             )}
@@ -137,8 +144,8 @@ export function ProjectsPage() {
             </div>
           </div>
 
-          <div className={`editorial-mobile-carousel ${mobileProject ? 'is-active' : ''}`} aria-live="polite">
-            {mobileProject && (
+          <div className="editorial-mobile-carousel is-active" aria-live="polite">
+            {mobileProject ? (
               <div className="editorial-mobile-carousel-shell" key={mobileProject.slug}>
                 <div className={`editorial-preview project-${mobileProject.variant}`}>
                   <ProjectPreview variant={mobileProject.variant} />
@@ -146,6 +153,13 @@ export function ProjectsPage() {
                 <div className="editorial-preview-caption">
                   <span>{mobileProject.category}</span>
                   <strong>{mobileProject.title}</strong>
+                </div>
+              </div>
+            ) : (
+              <div className="editorial-mobile-carousel-shell editorial-preview-empty-shell">
+                <div className="editorial-preview project-preview-empty-card">
+                  <span className="project-preview-empty-line" aria-hidden="true" />
+                  <p>Selecione para ver imagens e clique para saber mais sobre o projeto.</p>
                 </div>
               </div>
             )}

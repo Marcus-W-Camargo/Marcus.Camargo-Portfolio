@@ -96,7 +96,7 @@ export function ServicesPage() {
     const cards = Array.from(stage.querySelectorAll<HTMLElement>('[data-service-card]'))
     const mobile = window.matchMedia('(max-width: 760px)')
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const thresholds = [.035, .14, .245, .35, .455, .56]
+    const thresholds = [0, .18, .31, .44, .57, .7]
     const removalTimers = new Map<HTMLElement, number>()
 
     let lastScrollY = window.scrollY

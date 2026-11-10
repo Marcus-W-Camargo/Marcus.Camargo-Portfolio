@@ -1,14 +1,11 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import type { Project } from '../data/projects'
+import profilePhoto from '../assets/Perfil Marcus Camargo - Portifolio.png'
 
 const spacoLogo =
   'https://raw.githubusercontent.com/Spaco-Liss/spaco-liss/main/public/brand/spaco-liss-logo-oficial.png'
-const spacoHero =
-  'https://raw.githubusercontent.com/Spaco-Liss/spaco-liss/main/public/images/principal.png'
 const mexeLogo =
   'https://raw.githubusercontent.com/Marcus-W-Camargo/Mexe-Pilates/main/public/logo.png'
-const karinaPortrait =
-  'https://raw.githubusercontent.com/Marcus-W-Camargo/Mexe-Pilates/main/public/images/embaixadora/karina-retrato-embaixadora.png'
 const listeLogo =
   'https://raw.githubusercontent.com/Marcus-W-Camargo/liste-e-compre/main/src/assets/liste-%26-compre.png'
 const listeBackground =
@@ -81,14 +78,17 @@ function SpacoHomeScene() {
       </div>
       <div className="spaco-home-hero">
         <div className="spaco-home-copy">
-          <small>BELEZA · ESTÉTICA · EXPERIÊNCIA</small>
+          <small>BELEZA · ESTÉTICA · BEM-ESTAR</small>
           <h3>Seu momento de se cuidar começa aqui</h3>
           <p>Beleza, cuidado e experiências pensadas para valorizar você em cada detalhe.</p>
           <button type="button">Agende seu horário</button>
         </div>
         <div className="spaco-home-photo">
-          <img src={spacoHero} alt="" />
-          <span>SPAÇO LISS</span>
+          <div className="licensed-media-card licensed-media-spaco">
+            <span>IMAGEM LICENCIADA</span>
+            <strong>Uso exclusivo do Spaço Liss</strong>
+            <small>Fotografia original reservada aos proprietários do site.</small>
+          </div>
         </div>
       </div>
     </BrowserFrame>
@@ -131,21 +131,36 @@ function SpacoBookingScene() {
 }
 
 function SpacoPanelScene() {
+  const calendarDays = Array.from({ length: 30 }, (_, index) => index + 1)
   return (
     <BrowserFrame className="spaco-scene spaco-panel-scene">
-      <div className="spaco-panel-backdrop">
-        <div className="spaco-panel-card">
-          <div className="spaco-panel-brand">
-            <img src={spacoLogo} alt="" />
-            <span><b>SPAÇO LISS</b><small>Painel interno</small></span>
-          </div>
-          <small>ACESSO INTERNO</small>
-          <h3>Entrar no painel</h3>
-          <p>Conecte seu usuário para acessar agenda, clientes, caixa e demais ferramentas.</p>
-          <label>Profissional<span>Selecione seu usuário⌄</span></label>
-          <label>Senha<span>••••••••　◉</span></label>
-          <button type="button">Entrar no painel</button>
-          <em>Este dispositivo continuará conectado até você usar o botão Sair.</em>
+      <div className="spaco-panel-open">
+        <div className="spaco-panel-topbar">
+          <div className="spaco-panel-brand-open"><img src={spacoLogo} alt="" /><span><b>PAINEL INTERNO</b><small>Agenda de atendimentos</small></span></div>
+          <nav><span>Clientes</span><span>Cupons</span><span>Caixa do Dia</span><span>Catálogo</span><span>Gestão de Horários</span><b>Sair</b></nav>
+        </div>
+        <div className="spaco-panel-heading">
+          <div><h3>Agenda do Spaço Liss</h3><p>Visualize os atendimentos por data e filtre a agenda de cada profissional.</p></div>
+          <div className="spaco-panel-counter"><strong>119</strong><small>agendamentos no mês</small></div>
+        </div>
+        <div className="spaco-panel-filters">
+          {['Geral','Rose Britto','Katia Curam','Edino Britto','Suelem Aldevino','Freelancer'].map((name,index)=><span className={index===0?'active':''} key={name}><i>{index===0?'G':name.split(' ').map((part)=>part[0]).join('').slice(0,2)}</i>{name}</span>)}
+        </div>
+        <div className="spaco-panel-layout">
+          <section className="spaco-panel-calendar">
+            <header><b>←</b><strong>Novembro <em>2026</em></strong><b>→</b></header>
+            <div className="spaco-panel-week"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
+            <div className="spaco-panel-days">
+              {calendarDays.map((day)=><i className={day===10?'selected':day===7||day===14?'busy':''} key={day}><b>{day}</b>{[3,4,5,6,7,10,11,12,13,14,17,18,19,20,21,26,27,28].includes(day)?<small>{day===7?'22':day===10?'5':day===14?'12':'•'}</small>:null}</i>)}
+            </div>
+          </section>
+          <section className="spaco-panel-day">
+            <header><small>AGENDA DO DIA</small><h4>Terça-Feira, 10 De Novembro De 2026</h4><p>5 agendamentos</p></header>
+            <div className="spaco-panel-grid-head"><b>HORÁRIO</b><span>Rose Britto</span><span>Katia Curam</span><span>Edino Britto</span><span>Suelem</span></div>
+            <div className="spaco-panel-time-grid">
+              {['07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00'].map((time,index)=><div key={time}><b>{time}</b><span className={index===6?'appointment rose':''}>{index===6?'Coloração raiz':''}</span><span className={index===5?'appointment katia':''}>{index===5?'Manicure e Pedicure':''}</span><span /><span /></div>)}
+            </div>
+          </section>
         </div>
       </div>
     </BrowserFrame>
@@ -190,8 +205,11 @@ function MexeAmbassadorScene() {
           <div><span>CREFITO 3/71038-F</span><span>FISIOTERAPEUTA · PILATES CLÍNICO · DOCÊNCIA</span></div>
         </div>
         <div className="mexe-ambassador-photo">
-          <img src={karinaPortrait} alt="" />
-          <span>EMBAIXADORA</span>
+          <div className="licensed-media-card licensed-media-mexe">
+            <span>IMAGEM LICENCIADA</span>
+            <strong>Uso exclusivo do Mexe Pilates</strong>
+            <small>Retrato original preservado para os proprietários do site.</small>
+          </div>
         </div>
       </div>
     </BrowserFrame>
@@ -299,7 +317,7 @@ function ListeWebListScene() {
   const items=[['Arroz','Mercearia','2 un'],['Feijão','Mercearia','0,500 Kg'],['Leite','Laticínios','2 un']]
   return (
     <BrowserFrame className="liste-web-scene liste-web-list-scene">
-      <div className="liste-web-appbar"><img src={listeLogo} alt="" /><span>Olá, Marcus Camargo.　●</span></div>
+      <div className="liste-web-appbar"><img src={listeLogo} alt="" /><span className="liste-web-account">Olá, Marcus Camargo.<img className="liste-user-avatar" src={profilePhoto} alt="" /></span></div>
       <div className="liste-web-workspace">
         <aside><h4>📋 Minhas Listas</h4><div><b>Final de Semana</b><small>4 itens</small></div><div><b>Compra do mês</b><small>18 itens</small></div></aside>
         <main>
@@ -321,16 +339,32 @@ function ListeWebListScene() {
 }
 
 function ListeWebPurchaseScene() {
-  const rows=[['Arroz','R$ 24,90','2','un'],['Feijão','R$ 8,79','1','un'],['Banana','R$ 6,49','1,2','Kg']]
+  const rows=[['Arroz','Mercearia','24,90','2','Un.','R$ 49,80',true],['Feijão','Mercearia','8,79','1','Un.','R$ 8,79',true],['Banana','Hortifrúti','6,49','1,200','Kg.','R$ 7,79',false]]
   return (
     <BrowserFrame className="liste-web-scene liste-web-purchase-scene">
-      <div className="liste-web-appbar"><img src={listeLogo} alt="" /><span>Compra do mês　●</span></div>
-      <div className="liste-web-purchase">
-        <header><div><small>PROGRESSO</small><strong>7 / 18 itens</strong></div><div className="liste-progress-ring">39%</div><div><small>TOTAL PARCIAL</small><strong>R$ 98,42</strong></div></header>
-        <section><h4>🍞 Mercearia <span>3 itens</span></h4>
-          {rows.map(([n,p,q,u],i)=><div className={i<2?'done':''} key={n}><i>{i<2?'✓':''}</i><b>{n}</b><span>{p}</span><span>{q}</span><span>{u}</span></div>)}
+      <div className="liste-web-appbar"><img src={listeLogo} alt="" /><span className="liste-web-account">Compra do mês<img className="liste-user-avatar" src={profilePhoto} alt="" /></span></div>
+      <div className="liste-web-purchase-real">
+        <header className="liste-web-purchase-top">
+          <div className="liste-web-purchase-title"><i>📝</i><span><h3>Compra do mês</h3><small>Agendada para 15/11/2026</small></span></div>
+          <div className="liste-web-purchase-progress"><i><span /></i><b>39% concluída</b></div>
+          <strong>Total parcial: R$ 66,38</strong>
+        </header>
+        <section className="liste-web-purchase-section">
+          <header><b>Geral (Todos)</b><span><small>3 Itens</small><i>▲</i></span></header>
+          <div className="liste-web-purchase-items">
+            {rows.map(([name,category,price,qty,measure,total,done])=><div className={done?'done':''} key={String(name)}>
+              <i className="liste-web-check">{done?'✓':''}</i>
+              <span className="liste-web-category-icon">{category==='Mercearia'?'🍞':'🍎'}</span>
+              <span className="liste-web-product-name"><b>{name}</b><small>{category}</small></span>
+              <label><small>Preço</small><em>R$ {price}</em></label>
+              <label className="measure"><small>Medida</small><em>{measure}<i>{measure==='Kg.'?'⚖️':'📦'}</i></em></label>
+              <label><small>Qtd.</small><em>{qty}</em></label>
+              <strong>{total}</strong>
+              <span className="liste-web-trash">⌫</span>
+            </div>)}
+          </div>
         </section>
-        <button type="button">+ Adicionar item</button>
+        <div className="liste-web-purchase-actions"><button type="button">+ Adicionar item</button><button type="button">Finalizar compra</button></div>
       </div>
     </BrowserFrame>
   )
@@ -356,7 +390,7 @@ function ListeAppHomeScene() {
     <div className="liste-app-faithful-scene">
       <AppPhone active="Início">
         <div className="liste-native-decor one" /><div className="liste-native-decor two" />
-        <div className="liste-native-top"><img src={listeAppLogo} alt="" /><span>Olá, Marcus<br /><b>●</b></span></div>
+        <div className="liste-native-top"><img src={listeAppLogo} alt="" /><span>Olá, Marcus<br /><img className="liste-native-avatar" src={profilePhoto} alt="" /></span></div>
         <h3>Por onde começamos?</h3>
         <div className="liste-native-flow">
           <div><i>📝</i><b>Crie sua lista</b></div><span>↓</span>
@@ -373,7 +407,7 @@ function ListeAppListsScene() {
   return (
     <div className="liste-app-faithful-scene">
       <AppPhone active="Listas">
-        <div className="liste-native-top"><img src={listeAppLogo} alt="" /><span><b>●</b></span></div>
+        <div className="liste-native-top"><img src={listeAppLogo} alt="" /><span><img className="liste-native-avatar" src={profilePhoto} alt="" /></span></div>
         <div className="liste-native-pagehead"><span><b>Minhas listas</b><small>Listas sincronizadas com a sua conta.</small></span><button type="button">+ Nova lista</button></div>
         <div className="liste-native-listcards">
           <div><span><b>Compra do mês</b><small>18 itens · 15/11/2026</small></span><strong>›</strong></div>
@@ -386,20 +420,28 @@ function ListeAppListsScene() {
 }
 
 function ListeAppPurchaseScene() {
-  const rows=[['Arroz','R$ 24,90','2','un',true],['Feijão','R$ 8,79','1','un',true],['Banana','R$ 6,49','1,2','Kg',false]]
+  const rows=[['Arroz','Mercearia','24,90','2','un',true],['Banana','Hortifrúti','6,49','1,200','Kg',false]]
   return (
     <div className="liste-app-faithful-scene">
       <AppPhone active="Comprar">
-        <div className="liste-native-top compact"><img src={listeAppLogo} alt="" /><span><b>●</b></span></div>
-        <div className="liste-native-pagehead simple"><span><b>Compra do mês</b><small>A compra fica protegida neste aparelho.</small></span></div>
-        <div className="liste-native-purchase-summary"><span><small>PROGRESSO</small><b>7 / 18</b></span><span><small>TOTAL</small><b>R$ 98,42</b></span></div>
-        <div className="liste-native-product-list">
-          {rows.map(([n,p,q,u,done])=><div className={done?'done':''} key={String(n)}>
-            <i>{done?'✓':''}</i><span><b>{n}</b><small>Mercearia</small></span>
-            <em>{p}</em><em>{q}</em><em>{u}</em>
+        <div className="liste-native-top compact"><img src={listeAppLogo} alt="" /><span><img className="liste-native-avatar" src={profilePhoto} alt="" /></span></div>
+        <div className="liste-native-pagehead simple"><span><b>‹　Compra do mês</b><small>Agendada para 15/11/2026</small></span></div>
+        <div className="liste-native-purchase-summary"><span><b>39% concluída</b><small>7/18 itens</small></span><span><b>R$ 66,38</b></span></div>
+        <div className="liste-native-product-list real">
+          {rows.map(([name,category,price,qty,measure,done])=><div className={done?'done':''} key={String(name)}>
+            <i className="liste-native-check">{done?'✓':''}</i>
+            <div className="liste-native-row-body">
+              <header><span><b>{name}</b><small>{category}</small></span><strong>×</strong></header>
+              <div className="liste-native-row-inputs">
+                <label><small>Preço unitário</small><em>R$ {price}</em></label>
+                <label><small>Quantidade</small><em>{qty}</em></label>
+                <label><small>Medida</small><em>{measure==='Kg'?'⚖️ Kg':'📦 un'}</em></label>
+              </div>
+              {!done?<small className="liste-native-hint">Toque no círculo para marcar como colocado no carrinho.</small>:null}
+            </div>
           </div>)}
         </div>
-        <button className="liste-native-extra" type="button">+ Adicionar item extra</button>
+        <div className="liste-native-actions"><button type="button">+ Adicionar item extra</button><button type="button">Finalizar compra</button></div>
       </AppPhone>
     </div>
   )

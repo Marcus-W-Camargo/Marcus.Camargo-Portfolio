@@ -33,6 +33,12 @@ export function AmbientHeroField() {
     let raf = 0
     let presence = 0
     let targetPresence = 0
+    let touchPulse = 0
+
+    const touchPoint = {
+      x: -9999,
+      y: -9999,
+    }
 
     const pointer = {
       x: -9999,
@@ -110,6 +116,24 @@ export function AmbientHeroField() {
       syncPointerWithHero()
     }
 
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.pointerType !== 'touch') return
+      if (!hero) return
+
+      const rect = hero.getBoundingClientRect()
+      const inside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom
+
+      if (!inside) return
+
+      touchPoint.x = event.clientX - rect.left
+      touchPoint.y = event.clientY - rect.top
+      touchPulse = 1
+    }
+
     const onPointerLeaveWindow = () => {
       pointer.known = false
       targetPresence = 0
@@ -152,6 +176,15 @@ export function AmbientHeroField() {
       const visualRect = hero?.querySelector<HTMLElement>('.hero-visual')?.getBoundingClientRect()
       const isMobile = width <= 760
 
+      if (touchPulse > .001) {
+        touchPulse *= reduceMotion ? .82 : .955
+      } else {
+        touchPulse = 0
+      }
+
+      const mobileDriftX = width * (.5 + Math.sin(frame * .0032) * .26)
+      const mobileDriftY = height * (.5 + Math.sin(frame * .0022 + 1.35) * .23)
+
       const logoGlowX = visualRect && heroRect
         ? visualRect.left - heroRect.left + visualRect.width / 2
         : width * (isMobile ? .68 : .72)
@@ -172,6 +205,30 @@ export function AmbientHeroField() {
           .17 * presence,
           '226, 38, 170',
           '128, 58, 238',
+        )
+      }
+
+      if (isMobile) {
+        const driftRadius = Math.max(180, Math.min(width, height) * .5)
+        drawGlow(
+          mobileDriftX,
+          mobileDriftY,
+          driftRadius,
+          reduceMotion ? .055 : .115,
+          '239, 45, 167',
+          '120, 63, 235',
+        )
+      }
+
+      if (touchPulse > 0) {
+        const touchRadius = Math.max(190, Math.min(width, height) * .52)
+        drawGlow(
+          touchPoint.x,
+          touchPoint.y,
+          touchRadius,
+          .52 * touchPulse,
+          '255, 49, 157',
+          '145, 63, 246',
         )
       }
 
@@ -199,6 +256,8 @@ export function AmbientHeroField() {
 
         let cursorInfluence = 0
         let logoInfluence = 0
+        let mobileDriftInfluence = 0
+        let touchInfluence = 0
 
         if (presence > 0) {
           const dx = x - pointer.x
@@ -212,7 +271,26 @@ export function AmbientHeroField() {
           logoInfluence = Math.max(0, 1 - logoDistance / 270) * presence
         }
 
-        const interactiveInfluence = Math.max(cursorInfluence, logoInfluence * .66)
+        if (isMobile) {
+          const driftDx = x - mobileDriftX
+          const driftDy = y - mobileDriftY
+          const driftDistance = Math.sqrt(driftDx * driftDx + driftDy * driftDy)
+          mobileDriftInfluence = Math.max(0, 1 - driftDistance / 250) * (reduceMotion ? .08 : .2)
+        }
+
+        if (touchPulse > 0) {
+          const touchDx = x - touchPoint.x
+          const touchDy = y - touchPoint.y
+          const touchDistance = Math.sqrt(touchDx * touchDx + touchDy * touchDy)
+          touchInfluence = Math.max(0, 1 - touchDistance / 300) * touchPulse
+        }
+
+        const interactiveInfluence = Math.max(
+          cursorInfluence,
+          logoInfluence * .66,
+          mobileDriftInfluence,
+          touchInfluence,
+        )
         const ambientAlpha = ambientPulse * (.72 + pixel.tone * .48)
         const interactiveAlpha = interactiveInfluence * .78
         const alpha = Math.min(.95, ambientAlpha + interactiveAlpha)
@@ -243,6 +321,7 @@ export function AmbientHeroField() {
     window.addEventListener('resize', resize)
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('pointermove', onPointerMove, { passive: true })
+    window.addEventListener('pointerdown', onPointerDown, { passive: true })
     window.addEventListener('pointerleave', onPointerLeaveWindow)
 
     return () => {
@@ -250,6 +329,7 @@ export function AmbientHeroField() {
       window.removeEventListener('resize', resize)
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('pointermove', onPointerMove)
+      window.removeEventListener('pointerdown', onPointerDown)
       window.removeEventListener('pointerleave', onPointerLeaveWindow)
     }
   }, [])

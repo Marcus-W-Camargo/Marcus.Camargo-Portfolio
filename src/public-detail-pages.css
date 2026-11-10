@@ -975,78 +975,6 @@
   }
 }
 
-@media (max-width: 760px) {
-  .services-diskette-stage {
-    height: auto;
-    margin-top: 0;
-  }
-
-  .services-diskette-sticky {
-    position: relative;
-    top: auto;
-    height: auto;
-    min-height: 0;
-    overflow: visible;
-  }
-
-  .services-diskette-board {
-    height: auto;
-    display: grid;
-    gap: 22px;
-  }
-
-  .service-diskette-card,
-  .service-diskette-card:nth-child(n) {
-    position: relative;
-    inset: auto;
-    left: auto;
-    right: auto;
-    top: auto;
-    bottom: auto;
-    width: min(100%, 560px);
-    min-height: 390px;
-    margin: 0 auto;
-    opacity: 1 !important;
-    transform: rotate(0deg) !important;
-    animation: none !important;
-    pointer-events: auto;
-  }
-
-  .service-diskette-card:nth-child(odd) {
-    transform: rotate(-1deg) !important;
-  }
-
-  .service-diskette-card:nth-child(even) {
-    transform: rotate(1deg) !important;
-  }
-
-  .service-diskette-hand {
-    display: none;
-  }
-
-  .service-diskette-label {
-    inset: 24% 7% 10%;
-    padding: 7% 7% 6%;
-  }
-
-  .service-diskette-type {
-    font-size: 8px;
-  }
-
-  .service-diskette-label h2 {
-    font-size: clamp(30px, 9vw, 44px);
-  }
-
-  .service-diskette-label > p {
-    font-size: 13px;
-  }
-
-  .service-diskette-label li {
-    font-size: 11px;
-    line-height: 1.45;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .service-diskette-card,
   .service-diskette-card[data-state='landed'],
@@ -1151,12 +1079,41 @@
   }
 }
 
-/* Mobile becomes a real scroll stage: card 1 is the permanent base and
-   cards 2–6 are thrown over it, then removed in reverse when scrolling up. */
+/* Mobile becomes a dedicated sticky stack: card 1 is the permanent
+   base; cards 2–6 are thrown over it and removed in reverse. */
 @media (max-width: 760px) {
+  .services-page .site-header {
+    position: relative;
+    top: 0;
+    margin-top: 10px;
+  }
+
+  .services-page .public-detail-main {
+    width: calc(100% - 28px);
+    padding-top: 0;
+    padding-bottom: 54px;
+  }
+
+  .services-page .public-detail-hero {
+    min-height: calc(100svh - 98px);
+    padding: 28px 0 42px;
+    justify-content: center;
+  }
+
+  .services-page .public-detail-hero h1 {
+    margin: 14px 0 18px;
+    font-size: clamp(43px, 12.2vw, 62px);
+    line-height: .94;
+  }
+
+  .services-page .public-detail-hero > p {
+    font-size: 14px;
+    line-height: 1.62;
+  }
+
   .services-diskette-stage {
     position: relative;
-    height: 240svh;
+    height: 205svh;
     margin-top: 0;
   }
 
@@ -1179,103 +1136,108 @@
   .service-diskette-card,
   .service-diskette-card:nth-child(n) {
     position: absolute;
-    width: 92%;
+    width: 88%;
     min-height: 0;
-    aspect-ratio: .9 / 1;
+    aspect-ratio: .92 / 1;
     margin: 0;
-    opacity: 0 !important;
+    opacity: 0;
     pointer-events: none;
-    animation: none !important;
+    animation: none;
     transform:
       translate3d(var(--entry-x), var(--entry-y), 0)
       rotate(var(--entry-rotate))
-      scale(.86) !important;
+      scale(.88);
   }
 
   .service-diskette-card:nth-child(1) {
     --card-rotate: -2.4deg;
     --label-rotate: 2.4deg;
-    left: 4%;
-    top: 24%;
+    left: 6%;
+    top: 17%;
     z-index: 1;
   }
 
   .service-diskette-card:nth-child(2) {
-    --card-rotate: 3.6deg;
-    --label-rotate: -3.6deg;
-    --entry-x: 9%;
-    --entry-y: -125%;
-    --entry-rotate: 14deg;
+    --card-rotate: 3.4deg;
+    --label-rotate: -3.4deg;
+    --entry-x: 8%;
+    --entry-y: -118%;
+    --entry-rotate: 13deg;
     --exit-x: 145%;
-    left: 6%;
-    top: 22%;
+    --pickup-x: 9%;
+    left: 7%;
+    top: 16%;
     z-index: 2;
   }
 
   .service-diskette-card:nth-child(3) {
-    --card-rotate: -4.2deg;
-    --label-rotate: 4.2deg;
-    --entry-x: -9%;
-    --entry-y: -130%;
-    --entry-rotate: -15deg;
+    --card-rotate: -4deg;
+    --label-rotate: 4deg;
+    --entry-x: -8%;
+    --entry-y: -121%;
+    --entry-rotate: -14deg;
     --exit-x: -145%;
-    left: 2%;
-    top: 25%;
+    --pickup-x: -9%;
+    left: 4%;
+    top: 18%;
     z-index: 3;
   }
 
   .service-diskette-card:nth-child(4) {
-    --card-rotate: 4.8deg;
-    --label-rotate: -4.8deg;
-    --entry-x: 8%;
-    --entry-y: -126%;
-    --entry-rotate: 16deg;
+    --card-rotate: 4.4deg;
+    --label-rotate: -4.4deg;
+    --entry-x: 7%;
+    --entry-y: -119%;
+    --entry-rotate: 15deg;
     --exit-x: 145%;
-    left: 5%;
-    top: 21%;
+    --pickup-x: 9%;
+    left: 7%;
+    top: 15%;
     z-index: 4;
   }
 
   .service-diskette-card:nth-child(5) {
-    --card-rotate: -3.5deg;
-    --label-rotate: 3.5deg;
+    --card-rotate: -3.3deg;
+    --label-rotate: 3.3deg;
     --entry-x: -7%;
-    --entry-y: -132%;
-    --entry-rotate: -15deg;
+    --entry-y: -122%;
+    --entry-rotate: -14deg;
     --exit-x: -145%;
-    left: 3%;
-    top: 24%;
+    --pickup-x: -9%;
+    left: 5%;
+    top: 17%;
     z-index: 5;
   }
 
   .service-diskette-card:nth-child(6) {
-    --card-rotate: 4.1deg;
-    --label-rotate: -4.1deg;
-    --entry-x: 8%;
-    --entry-y: -127%;
-    --entry-rotate: 16deg;
+    --card-rotate: 3.8deg;
+    --label-rotate: -3.8deg;
+    --entry-x: 7%;
+    --entry-y: -118%;
+    --entry-rotate: 15deg;
     --exit-x: 145%;
-    left: 6%;
-    top: 20%;
+    --pickup-x: 9%;
+    left: 7%;
+    top: 14%;
     z-index: 6;
   }
 
   .service-diskette-card[data-state='landed'] {
-    opacity: 1 !important;
+    opacity: 1;
     pointer-events: auto;
-    animation: serviceDisketteDrop .72s cubic-bezier(.17,.75,.22,1.08) both !important;
+    animation: serviceDisketteDrop .72s cubic-bezier(.17,.75,.22,1.08) both;
   }
 
   .service-diskette-card[data-state='retrieving'] {
-    opacity: 1 !important;
+    opacity: 1;
     pointer-events: none;
-    animation: serviceDiskettePickup .72s cubic-bezier(.55,.02,.84,.38) both !important;
+    animation: serviceDiskettePickup .72s cubic-bezier(.55,.02,.84,.38) both;
   }
 
   .service-diskette-card[data-state='hidden'] {
-    opacity: 0 !important;
+    opacity: 0;
     pointer-events: none;
-    animation: none !important;
+    animation: none;
   }
 
   .service-diskette-label {
@@ -1290,37 +1252,37 @@
 
   .service-diskette-type {
     margin-bottom: 7px;
-    font-size: 9px;
+    font-size: 8px;
     letter-spacing: .13em;
   }
 
   .service-diskette-label h2 {
     max-width: 96%;
     margin-bottom: 8px;
-    font-size: clamp(27px, 7.4vw, 34px);
+    font-size: clamp(25px, 6.8vw, 32px);
     line-height: .98;
   }
 
   .service-diskette-label > p {
-    margin-bottom: 10px;
+    margin-bottom: 9px;
     color: #d8d2dc;
-    font-size: clamp(12px, 3.35vw, 14px);
-    line-height: 1.45;
+    font-size: clamp(11px, 3vw, 13px);
+    line-height: 1.42;
   }
 
   .service-diskette-label ul {
-    gap: 5px;
+    gap: 4px;
   }
 
   .service-diskette-label li {
-    padding-left: 14px;
+    padding-left: 13px;
     color: #f1edf3;
-    font-size: clamp(10.5px, 2.9vw, 12px);
-    line-height: 1.38;
+    font-size: clamp(9.5px, 2.65vw, 11px);
+    line-height: 1.34;
   }
 
   .service-diskette-label li::before {
-    width: 7px;
+    width: 6px;
   }
 
   .service-diskette-hand {
@@ -1329,6 +1291,10 @@
 
   .service-diskette-card:first-child .service-diskette-hand {
     display: none;
+  }
+
+  .services-foundations {
+    margin-top: 40px;
   }
 }
 

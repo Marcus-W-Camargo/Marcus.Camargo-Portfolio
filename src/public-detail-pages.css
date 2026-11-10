@@ -532,8 +532,8 @@
 
 .services-diskette-sticky {
   position: sticky;
-  top: 92px;
-  height: calc(100svh - 112px);
+  top: 0;
+  height: 100svh;
   min-height: 640px;
   overflow: hidden;
   isolation: isolate;
@@ -554,9 +554,10 @@
   --entry-rotate: 0deg;
   --exit-x: -145%;
   --exit-y: -4%;
+  --pickup-x: -9%;
   position: absolute;
   width: 31%;
-  aspect-ratio: 1.28 / 1;
+  aspect-ratio: 1.42 / 1;
   overflow: visible;
   color: #f6f2f7;
   background:
@@ -616,7 +617,7 @@
   --exit-x: -150%;
   --exit-y: -6%;
   left: 1.5%;
-  top: 5%;
+  top: 13%;
 }
 
 .service-diskette-card:nth-child(2) {
@@ -626,8 +627,9 @@
   --entry-rotate: 11deg;
   --exit-x: 150%;
   --exit-y: -5%;
+  --pickup-x: 9%;
   left: 34.3%;
-  top: 2%;
+  top: 10%;
 }
 
 .service-diskette-card:nth-child(3) {
@@ -637,8 +639,9 @@
   --entry-rotate: -9deg;
   --exit-x: 150%;
   --exit-y: 3%;
+  --pickup-x: 9%;
   right: 1.2%;
-  top: 7%;
+  top: 14%;
 }
 
 .service-diskette-card:nth-child(4) {
@@ -670,6 +673,7 @@
   --entry-rotate: 14deg;
   --exit-x: 150%;
   --exit-y: 5%;
+  --pickup-x: 9%;
   right: .8%;
   bottom: 2.5%;
 }
@@ -713,13 +717,14 @@
 }
 
 @keyframes serviceDiskettePickup {
-  0% {
+  0%,
+  28% {
     opacity: 1;
     transform: translate3d(0, 0, 0) rotate(var(--card-rotate)) scale(1);
   }
-  34% {
+  46% {
     opacity: 1;
-    transform: translate3d(calc(var(--exit-x) * .08), -2%, 0) rotate(calc(var(--card-rotate) * .55)) scale(.99);
+    transform: translate3d(var(--pickup-x), -2%, 0) rotate(var(--card-rotate)) scale(.99);
   }
   100% {
     opacity: 0;
@@ -759,7 +764,7 @@
 .service-diskette-label {
   position: absolute;
   z-index: 2;
-  inset: 25% 8% 11%;
+  inset: 23% 7% 8%;
   padding: 6.3% 6.7% 5.2%;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.11);
@@ -848,7 +853,7 @@
 /* Abstract pickup arm/hand: intentionally graphic, not photorealistic. */
 .service-diskette-hand {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   top: 41%;
   width: 45%;
   height: 14%;
@@ -881,32 +886,46 @@
   border-radius: 0 0 999px 999px;
 }
 
-.service-diskette-card:nth-child(odd) .service-diskette-hand {
+.service-diskette-card:nth-child(1) .service-diskette-hand,
+.service-diskette-card:nth-child(4) .service-diskette-hand,
+.service-diskette-card:nth-child(5) .service-diskette-hand {
+  --hand-start-x: 42%;
   left: -39%;
   border-radius: 999px 28px 28px 999px;
   transform-origin: right center;
 }
 
-.service-diskette-card:nth-child(odd) .service-diskette-hand::before {
+.service-diskette-card:nth-child(1) .service-diskette-hand::before,
+.service-diskette-card:nth-child(4) .service-diskette-hand::before,
+.service-diskette-card:nth-child(5) .service-diskette-hand::before {
   right: -2%;
 }
 
-.service-diskette-card:nth-child(odd) .service-diskette-hand::after {
+.service-diskette-card:nth-child(1) .service-diskette-hand::after,
+.service-diskette-card:nth-child(4) .service-diskette-hand::after,
+.service-diskette-card:nth-child(5) .service-diskette-hand::after {
   right: 12%;
   transform: rotate(-17deg);
 }
 
-.service-diskette-card:nth-child(even) .service-diskette-hand {
+.service-diskette-card:nth-child(2) .service-diskette-hand,
+.service-diskette-card:nth-child(3) .service-diskette-hand,
+.service-diskette-card:nth-child(6) .service-diskette-hand {
+  --hand-start-x: -42%;
   right: -39%;
   border-radius: 28px 999px 999px 28px;
   transform-origin: left center;
 }
 
-.service-diskette-card:nth-child(even) .service-diskette-hand::before {
+.service-diskette-card:nth-child(2) .service-diskette-hand::before,
+.service-diskette-card:nth-child(3) .service-diskette-hand::before,
+.service-diskette-card:nth-child(6) .service-diskette-hand::before {
   left: -2%;
 }
 
-.service-diskette-card:nth-child(even) .service-diskette-hand::after {
+.service-diskette-card:nth-child(2) .service-diskette-hand::after,
+.service-diskette-card:nth-child(3) .service-diskette-hand::after,
+.service-diskette-card:nth-child(6) .service-diskette-hand::after {
   left: 12%;
   transform: rotate(17deg);
 }
@@ -918,7 +937,7 @@
 @keyframes serviceHandReach {
   0% {
     opacity: 0;
-    transform: translateX(42%) scaleX(.72);
+    transform: translateX(var(--hand-start-x, 42%)) scaleX(.72);
   }
   22% {
     opacity: .98;
@@ -936,7 +955,7 @@
 
 @media (max-width: 1180px) {
   .services-diskette-sticky {
-    top: 86px;
+    top: 0;
     min-height: 590px;
   }
 

@@ -103,6 +103,9 @@ export function ServicesPage() {
     let lastScrollY = window.scrollY
     let initial = true
     let raf = 0
+    let mobileVisibleIndex = 0
+    let touchStartY = 0
+    let touchStartedInsideStage = false
 
     const clearRemoval = (card: HTMLElement) => {
       const timer = removalTimers.get(card)
@@ -150,29 +153,20 @@ export function ServicesPage() {
       const scrollingDown = currentScrollY > lastScrollY + 1
 
       if (mobile.matches) {
-        cards.forEach((card, index) => {
-          if (index === 0) {
-            showCard(card)
-            return
-          }
+        showCard(cards[0])
 
-          const shouldBeVisible = progress >= mobileThresholds[index]
+        if (scrollingUp) {
+          cards.forEach((card, index) => {
+            if (index === 0) return
 
-          if (shouldBeVisible) {
-            showCard(card)
-            return
-          }
+            const shouldRemainVisible = progress >= mobileThresholds[index]
 
-          if (initial || scrollingDown || card.dataset.state === 'hidden') {
-            clearRemoval(card)
-            card.dataset.state = 'hidden'
-            return
-          }
-
-          if (scrollingUp && card.dataset.state === 'landed') {
-            hideCard(card, true)
-          }
-        })
+            if (!shouldRemainVisible && card.dataset.state === 'landed') {
+              hideCard(card, true)
+              mobileVisibleIndex = Math.min(mobileVisibleIndex, index - 1)
+            }
+          })
+        }
 
         lastScrollY = currentScrollY
         initial = false
@@ -208,15 +202,45 @@ export function ServicesPage() {
       raf = window.requestAnimationFrame(update)
     }
 
+    const onTouchStart = (event: TouchEvent) => {
+      if (!mobile.matches || event.touches.length !== 1) return
+
+      const rect = stage.getBoundingClientRect()
+      touchStartedInsideStage =
+        rect.top < window.innerHeight &&
+        rect.bottom > 0
+
+      touchStartY = event.touches[0].clientY
+    }
+
+    const onTouchEnd = (event: TouchEvent) => {
+      if (!mobile.matches || !touchStartedInsideStage) return
+
+      touchStartedInsideStage = false
+
+      const endY = event.changedTouches[0]?.clientY ?? touchStartY
+      const upwardFingerTravel = touchStartY - endY
+
+      if (upwardFingerTravel < 34) return
+      if (mobileVisibleIndex >= cards.length - 1) return
+
+      mobileVisibleIndex += 1
+      showCard(cards[mobileVisibleIndex])
+    }
+
     update()
     window.addEventListener('scroll', scheduleUpdate, { passive: true })
     window.addEventListener('resize', scheduleUpdate)
+    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('touchend', onTouchEnd, { passive: true })
     mobile.addEventListener('change', scheduleUpdate)
 
     return () => {
       window.cancelAnimationFrame(raf)
       window.removeEventListener('scroll', scheduleUpdate)
       window.removeEventListener('resize', scheduleUpdate)
+      window.removeEventListener('touchstart', onTouchStart)
+      window.removeEventListener('touchend', onTouchEnd)
       mobile.removeEventListener('change', scheduleUpdate)
       removalTimers.forEach((timer) => window.clearTimeout(timer))
       removalTimers.clear()

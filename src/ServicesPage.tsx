@@ -96,7 +96,8 @@ export function ServicesPage() {
     const cards = Array.from(stage.querySelectorAll<HTMLElement>('[data-service-card]'))
     const mobile = window.matchMedia('(max-width: 760px)')
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const thresholds = [0, .18, .35, .53, .7, .87]
+    const thresholds = [0, 0, .35, .53, .7, .87]
+    const mobileThresholds = [0, .12, .3, .48, .66, .84]
     const removalTimers = new Map<HTMLElement, number>()
 
     let lastScrollY = window.scrollY
@@ -141,16 +142,6 @@ export function ServicesPage() {
     const update = () => {
       raf = 0
 
-      if (mobile.matches) {
-        cards.forEach((card) => {
-          clearRemoval(card)
-          card.dataset.state = 'landed'
-        })
-        lastScrollY = window.scrollY
-        initial = false
-        return
-      }
-
       const rect = stage.getBoundingClientRect()
       const travel = Math.max(1, stage.offsetHeight - window.innerHeight)
       const progress = Math.min(1, Math.max(0, -rect.top / travel))
@@ -158,14 +149,45 @@ export function ServicesPage() {
       const scrollingUp = currentScrollY < lastScrollY - 1
       const scrollingDown = currentScrollY > lastScrollY + 1
 
-      const firstCardVisible = scrollingUp
-        ? rect.top <= window.innerHeight * .3
-        : rect.top <= window.innerHeight * .5
+      if (mobile.matches) {
+        cards.forEach((card, index) => {
+          if (index === 0) {
+            showCard(card)
+            return
+          }
+
+          const shouldBeVisible = progress >= mobileThresholds[index]
+
+          if (shouldBeVisible) {
+            showCard(card)
+            return
+          }
+
+          if (initial || scrollingDown || card.dataset.state === 'hidden') {
+            clearRemoval(card)
+            card.dataset.state = 'hidden'
+            return
+          }
+
+          if (scrollingUp && card.dataset.state === 'landed') {
+            hideCard(card, true)
+          }
+        })
+
+        lastScrollY = currentScrollY
+        initial = false
+        return
+      }
+
+      const firstCardVisible = rect.top <= window.innerHeight * .5
+      const secondCardVisible = rect.top <= window.innerHeight * .28
 
       cards.forEach((card, index) => {
         const shouldBeVisible = index === 0
           ? firstCardVisible
-          : progress >= thresholds[index]
+          : index === 1
+            ? secondCardVisible
+            : progress >= thresholds[index]
 
         if (shouldBeVisible) {
           showCard(card)

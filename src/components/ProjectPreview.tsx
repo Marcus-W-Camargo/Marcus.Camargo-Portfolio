@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import type { Project } from '../data/projects'
 import profilePhoto from '../assets/Perfil Marcus Camargo - Portifolio.png'
 
@@ -52,7 +52,7 @@ function PreviewCarousel({ variant, slides, autoplayMs, showControls }: PreviewC
   return (
     <div
       className={`project-preview-carousel project-preview-carousel-${variant} ${showControls ? 'has-manual-controls' : ''}`}
-      style={{ '--project-preview-duration': `${autoplayMs}ms` } as React.CSSProperties}
+      style={{ '--project-preview-duration': `${autoplayMs}ms` } as CSSProperties}
     >
       <div className="project-preview-carousel-viewport">
         {slides.map((slide, slideIndex) => (

@@ -158,7 +158,7 @@ export function ServicesPage() {
       const scrollingUp = currentScrollY < lastScrollY - 1
       const scrollingDown = currentScrollY > lastScrollY + 1
 
-      const firstCardVisible = rect.top <= window.innerHeight * .72
+      const firstCardVisible = rect.top <= window.innerHeight * .5
 
       cards.forEach((card, index) => {
         const shouldBeVisible = index === 0

@@ -526,7 +526,7 @@
    ========================================================= */
 .services-diskette-stage {
   position: relative;
-  height: 205svh;
+  height: 180svh;
   margin-top: 6px;
 }
 
@@ -617,7 +617,7 @@
   --exit-x: -150%;
   --exit-y: -6%;
   left: 10%;
-  top: 13%;
+  top: 20%;
   z-index: 1;
 }
 
@@ -630,7 +630,7 @@
   --exit-y: -5%;
   --pickup-x: 9%;
   left: 31%;
-  top: 7%;
+  top: 15%;
   z-index: 2;
 }
 
@@ -643,7 +643,7 @@
   --exit-y: 3%;
   --pickup-x: 9%;
   right: 9%;
-  top: 17%;
+  top: 22%;
   z-index: 3;
 }
 

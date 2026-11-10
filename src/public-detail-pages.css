@@ -526,7 +526,7 @@
    ========================================================= */
 .services-diskette-stage {
   position: relative;
-  height: 245svh;
+  height: 205svh;
   margin-top: 6px;
 }
 
@@ -556,8 +556,8 @@
   --exit-y: -4%;
   --pickup-x: -9%;
   position: absolute;
-  width: 31%;
-  aspect-ratio: 1.42 / 1;
+  width: 38%;
+  aspect-ratio: 1.14 / 1;
   overflow: visible;
   color: #f6f2f7;
   background:
@@ -610,72 +610,78 @@
 }
 
 .service-diskette-card:nth-child(1) {
-  --card-rotate: -3.6deg;
-  --entry-x: -18%;
-  --entry-y: -138%;
-  --entry-rotate: -14deg;
+  --card-rotate: -7.2deg;
+  --entry-x: -16%;
+  --entry-y: -136%;
+  --entry-rotate: -17deg;
   --exit-x: -150%;
   --exit-y: -6%;
-  left: 1.5%;
-  top: 13%;
+  left: 8%;
+  top: 11%;
+  z-index: 1;
 }
 
 .service-diskette-card:nth-child(2) {
-  --card-rotate: 2.4deg;
-  --entry-x: 10%;
-  --entry-y: -132%;
-  --entry-rotate: 11deg;
+  --card-rotate: 5.8deg;
+  --entry-x: 9%;
+  --entry-y: -134%;
+  --entry-rotate: 15deg;
   --exit-x: 150%;
   --exit-y: -5%;
   --pickup-x: 9%;
-  left: 34.3%;
-  top: 10%;
+  left: 31%;
+  top: 5%;
+  z-index: 2;
 }
 
 .service-diskette-card:nth-child(3) {
-  --card-rotate: -1.7deg;
-  --entry-x: 16%;
-  --entry-y: -145%;
-  --entry-rotate: -9deg;
+  --card-rotate: -5.1deg;
+  --entry-x: 14%;
+  --entry-y: -142%;
+  --entry-rotate: -14deg;
   --exit-x: 150%;
   --exit-y: 3%;
   --pickup-x: 9%;
-  right: 1.2%;
-  top: 14%;
+  right: 7%;
+  top: 15%;
+  z-index: 3;
 }
 
 .service-diskette-card:nth-child(4) {
-  --card-rotate: 2.8deg;
-  --entry-x: -8%;
+  --card-rotate: 6.6deg;
+  --entry-x: -9%;
   --entry-y: -138%;
-  --entry-rotate: 13deg;
+  --entry-rotate: 17deg;
   --exit-x: -150%;
   --exit-y: 4%;
-  left: 2.8%;
-  bottom: 3%;
+  left: 12%;
+  bottom: 2%;
+  z-index: 4;
 }
 
 .service-diskette-card:nth-child(5) {
-  --card-rotate: -2.2deg;
-  --entry-x: 7%;
-  --entry-y: -145%;
-  --entry-rotate: -12deg;
+  --card-rotate: -6.4deg;
+  --entry-x: 6%;
+  --entry-y: -143%;
+  --entry-rotate: -16deg;
   --exit-x: -150%;
   --exit-y: 8%;
-  left: 35.5%;
-  bottom: 5%;
+  left: 35%;
+  bottom: 8%;
+  z-index: 5;
 }
 
 .service-diskette-card:nth-child(6) {
-  --card-rotate: 3.4deg;
-  --entry-x: 13%;
-  --entry-y: -132%;
-  --entry-rotate: 14deg;
+  --card-rotate: 7.4deg;
+  --entry-x: 12%;
+  --entry-y: -133%;
+  --entry-rotate: 18deg;
   --exit-x: 150%;
   --exit-y: 5%;
   --pickup-x: 9%;
-  right: .8%;
-  bottom: 2.5%;
+  right: 6%;
+  bottom: 1%;
+  z-index: 6;
 }
 
 .service-diskette-card[data-state='landed'] {
@@ -960,7 +966,7 @@
   }
 
   .service-diskette-card {
-    width: 31.5%;
+    width: 38.5%;
   }
 
   .service-diskette-label {

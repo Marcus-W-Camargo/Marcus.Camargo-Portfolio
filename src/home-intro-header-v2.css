@@ -384,3 +384,12 @@
     margin-bottom: -.08em;
   }
 }
+
+
+@media (max-width: 760px) {
+  .commercial-hero .hero-visual {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) scale(.82);
+  }
+}

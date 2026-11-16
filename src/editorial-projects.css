@@ -278,6 +278,21 @@
   max-width: 760px;
 }
 
+/*
+ * Case pages have much more room than the compact previews used in the
+ * projects index. Keep the outer showcase card at roughly the same height,
+ * but let the illustration use that space instead of stopping at 650px.
+ */
+@media (min-width: 761px) {
+  .project-case-preview {
+    padding: 24px 32px;
+  }
+
+  .project-case-preview .project-preview-carousel {
+    width: min(100%, 920px);
+  }
+}
+
 .project-case-story,
 .project-case-stack {
   margin-top: 92px;

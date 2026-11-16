@@ -98,9 +98,9 @@ export function RecruiterPage() {
             <p>Esta área concentra contexto, decisões, dificuldades e aprendizados dos projetos pessoais. O objetivo é facilitar uma avaliação técnica mais honesta do meu momento como desenvolvedor júnior e da direção em que estou evoluindo. Trabalhos desenvolvidos para clientes permanecem na área pública em nível de produto e entrega, sem repositórios ou detalhes internos.</p>
           </div>
           <div className="recruiter-snapshot">
-            <div><strong>03</strong><span>projetos publicados ou consolidados em destaque</span></div>
-            <div><strong>Produto + código</strong><span>decisões guiadas por problema real</span></div>
-            <div><strong>Aprendizado contínuo</strong><span>arquitetura, segurança, deploy e UX</span></div>
+            <div><strong>05</strong><span>projetos publicados no portfólio</span></div>
+            <div><strong>03 próprios</strong><span>cases com aprofundamento técnico e repositórios</span></div>
+            <div><strong>02 para clientes</strong><span>entregas comerciais apresentadas em nível de produto</span></div>
           </div>
         </section>
 

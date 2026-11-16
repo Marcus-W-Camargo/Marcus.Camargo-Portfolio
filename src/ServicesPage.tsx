@@ -88,11 +88,50 @@ const foundations = [
 
 
 function MobileServicesDeck() {
+  const shellRef = useRef<HTMLDivElement>(null)
   const scrollerRef = useRef<HTMLDivElement>(null)
   const previousStepRef = useRef(0)
   const exitTimerRef = useRef<number | null>(null)
   const [activeStep, setActiveStep] = useState(0)
   const [exitingStep, setExitingStep] = useState<number | null>(null)
+  const [deckReady, setDeckReady] = useState(false)
+
+  useEffect(() => {
+    const shell = shellRef.current
+    if (!shell) return
+
+    let raf = 0
+
+    const updateDeckReady = () => {
+      raf = 0
+
+      const rect = shell.getBoundingClientRect()
+      const viewportHeight = window.innerHeight
+      const tolerance = Math.max(28, viewportHeight * .08)
+      const nextReady =
+        rect.top <= tolerance &&
+        rect.bottom >= viewportHeight - tolerance
+
+      setDeckReady((current) => current === nextReady ? current : nextReady)
+    }
+
+    const scheduleUpdate = () => {
+      if (raf) return
+      raf = window.requestAnimationFrame(updateDeckReady)
+    }
+
+    updateDeckReady()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+    window.visualViewport?.addEventListener('resize', scheduleUpdate)
+
+    return () => {
+      window.cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      window.visualViewport?.removeEventListener('resize', scheduleUpdate)
+    }
+  }, [])
 
   useEffect(() => {
     const scroller = scrollerRef.current
@@ -154,7 +193,11 @@ function MobileServicesDeck() {
 
   return (
     <section className="services-mobile-deck-section" aria-label="Serviços oferecidos">
-      <div className="services-mobile-deck-shell">
+      <div
+        className="services-mobile-deck-shell"
+        data-deck-ready={deckReady ? 'true' : 'false'}
+        ref={shellRef}
+      >
         <div
           className="services-mobile-deck-scroller"
           ref={scrollerRef}

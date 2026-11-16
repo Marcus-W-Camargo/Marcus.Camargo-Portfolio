@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   ArrowUpRight,
   Bot,
@@ -86,6 +86,143 @@ const foundations = [
   { icon: Bot, title: 'Manutenção', text: 'Corrijo regressões, acompanho comportamento em produção e evoluo o projeto sem refatorar por hábito.' },
 ]
 
+
+function MobileServicesDeck() {
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const previousStepRef = useRef(0)
+  const exitTimerRef = useRef<number | null>(null)
+  const [activeStep, setActiveStep] = useState(0)
+  const [exitingStep, setExitingStep] = useState<number | null>(null)
+
+  useEffect(() => {
+    const scroller = scrollerRef.current
+    if (!scroller) return
+
+    const stepElements = Array.from(
+      scroller.querySelectorAll<HTMLElement>('[data-mobile-service-step]'),
+    )
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting && entry.intersectionRatio >= .6)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+
+        if (!visible) return
+
+        const nextStep = Number((visible.target as HTMLElement).dataset.mobileServiceStep)
+        if (!Number.isFinite(nextStep)) return
+
+        const previousStep = previousStepRef.current
+        if (nextStep === previousStep) return
+
+        if (exitTimerRef.current !== null) {
+          window.clearTimeout(exitTimerRef.current)
+          exitTimerRef.current = null
+        }
+
+        if (nextStep < previousStep) {
+          setExitingStep(previousStep)
+          setActiveStep(nextStep)
+
+          exitTimerRef.current = window.setTimeout(() => {
+            setExitingStep(null)
+            exitTimerRef.current = null
+          }, 720)
+        } else {
+          setExitingStep(null)
+          setActiveStep(nextStep)
+        }
+
+        previousStepRef.current = nextStep
+      },
+      {
+        root: scroller,
+        threshold: [.6, .75, .9],
+      },
+    )
+
+    stepElements.forEach((element) => observer.observe(element))
+
+    return () => {
+      observer.disconnect()
+      if (exitTimerRef.current !== null) {
+        window.clearTimeout(exitTimerRef.current)
+      }
+    }
+  }, [])
+
+  return (
+    <section className="services-mobile-deck-section" aria-label="Serviços oferecidos">
+      <div className="services-mobile-deck-shell">
+        <div
+          className="services-mobile-deck-scroller"
+          ref={scrollerRef}
+          aria-label="Navegue pelos serviços"
+        >
+          {services.map((service, index) => (
+            <div
+              className="services-mobile-snap-step"
+              data-mobile-service-step={index}
+              aria-hidden="true"
+              key={service.title}
+            />
+          ))}
+        </div>
+
+        <div className="services-mobile-deck-visual" aria-live="polite">
+          {services.map(({ icon: Icon, title, summary, details }, index) => {
+            const state =
+              index === 0
+                ? 'landed'
+                : index === exitingStep
+                  ? 'retrieving'
+                  : index <= activeStep
+                    ? 'landed'
+                    : 'hidden'
+
+            return (
+              <article
+                className="mobile-service-diskette-card"
+                data-mobile-card-index={index}
+                data-state={state}
+                aria-hidden={state === 'hidden'}
+                key={title}
+              >
+                <div className="mobile-service-diskette-shutter" aria-hidden="true">
+                  <Icon size={18} strokeWidth={1.55} />
+                  <span>MC</span>
+                </div>
+
+                <div className="mobile-service-diskette-label">
+                  <span className="mobile-service-diskette-type">SERVIÇO / DESENVOLVIMENTO</span>
+                  <h2>{title}</h2>
+                  <p>{summary}</p>
+                  <ul>
+                    {details.map((detail) => <li key={detail}>{detail}</li>)}
+                  </ul>
+                </div>
+
+                <span className="mobile-service-diskette-lock" aria-hidden="true" />
+                {index > 0 && <span className="mobile-service-diskette-hand" aria-hidden="true" />}
+              </article>
+            )
+          })}
+
+          <div className="services-mobile-deck-progress" aria-hidden="true">
+            <span>{String(activeStep + 1).padStart(2, '0')} / 06</span>
+            <div>
+              {services.map((service, index) => (
+                <i className={index <= activeStep ? 'is-active' : ''} key={service.title} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export function ServicesPage() {
   const servicesStageRef = useRef<HTMLElement>(null)
 
@@ -94,18 +231,14 @@ export function ServicesPage() {
     if (!stage) return
 
     const cards = Array.from(stage.querySelectorAll<HTMLElement>('[data-service-card]'))
-    const mobile = window.matchMedia('(max-width: 760px)')
+    const desktop = window.matchMedia('(min-width: 761px)')
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
     const desktopViewportOffsets = [.5, .275, .05, -.175, -.4, -.625]
-    const mobileThresholds = [0, .15, .33, .51, .69, .87]
     const removalTimers = new Map<HTMLElement, number>()
 
     let lastScrollY = window.scrollY
     let initial = true
     let raf = 0
-    let mobileVisibleIndex = 0
-    let touchStartY = 0
-    let touchStartedInsideStage = false
 
     const clearRemoval = (card: HTMLElement) => {
       const timer = removalTimers.get(card)
@@ -145,33 +278,16 @@ export function ServicesPage() {
     const update = () => {
       raf = 0
 
-      const rect = stage.getBoundingClientRect()
-      const travel = Math.max(1, stage.offsetHeight - window.innerHeight)
-      const progress = Math.min(1, Math.max(0, -rect.top / travel))
-      const currentScrollY = window.scrollY
-      const scrollingUp = currentScrollY < lastScrollY - 1
-      const scrollingDown = currentScrollY > lastScrollY + 1
-
-      if (mobile.matches) {
-        showCard(cards[0])
-
-        if (scrollingUp) {
-          cards.forEach((card, index) => {
-            if (index === 0) return
-
-            const shouldRemainVisible = progress >= mobileThresholds[index]
-
-            if (!shouldRemainVisible && card.dataset.state === 'landed') {
-              hideCard(card, true)
-              mobileVisibleIndex = Math.min(mobileVisibleIndex, index - 1)
-            }
-          })
-        }
-
-        lastScrollY = currentScrollY
+      if (!desktop.matches) {
+        lastScrollY = window.scrollY
         initial = false
         return
       }
+
+      const rect = stage.getBoundingClientRect()
+      const currentScrollY = window.scrollY
+      const scrollingUp = currentScrollY < lastScrollY - 1
+      const scrollingDown = currentScrollY > lastScrollY + 1
 
       cards.forEach((card, index) => {
         const shouldBeVisible =
@@ -202,46 +318,16 @@ export function ServicesPage() {
       raf = window.requestAnimationFrame(update)
     }
 
-    const onTouchStart = (event: TouchEvent) => {
-      if (!mobile.matches || event.touches.length !== 1) return
-
-      const rect = stage.getBoundingClientRect()
-      touchStartedInsideStage =
-        rect.top < window.innerHeight &&
-        rect.bottom > 0
-
-      touchStartY = event.touches[0].clientY
-    }
-
-    const onTouchEnd = (event: TouchEvent) => {
-      if (!mobile.matches || !touchStartedInsideStage) return
-
-      touchStartedInsideStage = false
-
-      const endY = event.changedTouches[0]?.clientY ?? touchStartY
-      const upwardFingerTravel = touchStartY - endY
-
-      if (upwardFingerTravel < 34) return
-      if (mobileVisibleIndex >= cards.length - 1) return
-
-      mobileVisibleIndex += 1
-      showCard(cards[mobileVisibleIndex])
-    }
-
     update()
     window.addEventListener('scroll', scheduleUpdate, { passive: true })
     window.addEventListener('resize', scheduleUpdate)
-    window.addEventListener('touchstart', onTouchStart, { passive: true })
-    window.addEventListener('touchend', onTouchEnd, { passive: true })
-    mobile.addEventListener('change', scheduleUpdate)
+    desktop.addEventListener('change', scheduleUpdate)
 
     return () => {
       window.cancelAnimationFrame(raf)
       window.removeEventListener('scroll', scheduleUpdate)
       window.removeEventListener('resize', scheduleUpdate)
-      window.removeEventListener('touchstart', onTouchStart)
-      window.removeEventListener('touchend', onTouchEnd)
-      mobile.removeEventListener('change', scheduleUpdate)
+      desktop.removeEventListener('change', scheduleUpdate)
       removalTimers.forEach((timer) => window.clearTimeout(timer))
       removalTimers.clear()
     }
@@ -315,6 +401,8 @@ export function ServicesPage() {
             </div>
           </div>
         </section>
+
+        <MobileServicesDeck />
 
         <section className="services-foundations">
           <div>

@@ -9,6 +9,8 @@ export type Project = {
   description: string
   story: string
   technologies: string[]
+  capabilities?: string[]
+  clientProject?: boolean
   liveUrl?: string
   liveLabel?: string
   variant: ProjectVariant
@@ -64,26 +66,52 @@ export const projects: Project[] = [
   {
     slug: 'spaco-liss',
     title: 'Spaço Liss',
-    eyebrow: 'Case em preparação',
-    category: 'Site & sistema',
+    eyebrow: 'Presença digital, agendamento e gestão para beleza e estética',
+    category: 'Site & sistema de gestão',
     year: '2026',
-    description: 'O case completo do Spaço Liss será apresentado em breve.',
-    story: '',
+    description:
+      'Projeto desenvolvido para unir a presença digital do negócio à rotina de atendimento em uma experiência integrada: apresentação de serviços, agendamento online e uma área interna voltada à organização do dia a dia.',
+    story:
+      'O trabalho começou pela necessidade de conectar comunicação pública e operação sem depender de várias ferramentas desconectadas. A solução evoluiu para acompanhar diferentes serviços, profissionais, horários, clientes e rotinas administrativas, com foco em uso simples, experiência consistente em desktop e celular e autonomia para a equipe conduzir a operação.',
     technologies: [],
+    capabilities: [
+      'Site institucional multipágina',
+      'Experiência responsiva',
+      'Catálogo de serviços',
+      'Agendamento online',
+      'Área interna de gestão',
+      'Organização de agenda e clientes',
+      'Rotinas administrativas',
+      'Comunicação e páginas promocionais',
+    ],
+    clientProject: true,
     variant: 'spaco-liss',
-    comingSoon: true,
   },
   {
     slug: 'mexe-pilates',
     title: 'Mexe_Pilates',
-    eyebrow: 'Case em preparação',
-    category: 'Site & agendamento',
+    eyebrow: 'Site institucional construído ao redor da identidade e da prática do estúdio',
+    category: 'Site institucional',
     year: '2026',
-    description: 'O case completo do Mexe Pilates será apresentado em breve.',
-    story: '',
+    description:
+      'Site multipágina criado para apresentar posicionamento, atendimentos, equipe, estrutura, cursos e horários em uma experiência clara, acolhedora e adaptada a desktop e celular.',
+    story:
+      'O projeto precisava traduzir uma proposta clínica e humana sem cair em uma comunicação genérica de fitness. A solução foi organizada em páginas e seções próprias, com hierarquia editorial, apresentação dos atendimentos e profissionais, cronograma, cursos e um fluxo de contato pensado para reduzir atrito e manter a identidade do estúdio em cada tela.',
     technologies: [],
+    capabilities: [
+      'Site institucional multipágina',
+      'Design responsivo',
+      'Apresentação de atendimentos',
+      'Perfis profissionais',
+      'Cronograma de horários',
+      'Cursos e conteúdos',
+      'Fluxo de contato',
+      'Publicação em domínio próprio',
+    ],
+    clientProject: true,
+    liveUrl: 'https://www.mexepilates.com.br',
+    liveLabel: 'Visitar Mexe Pilates',
     variant: 'mexe-pilates',
-    comingSoon: true,
   },
   {
     slug: 'nuvem-agendas',

@@ -135,7 +135,7 @@ function SpacoBookingScene() {
           <label>Categoria<span>Cabelos⌄</span></label>
           <label>Serviço<span>Mechas⌄</span></label>
           <small>02 · PROFISSIONAL</small>
-          <label>Profissional<span>Rose⌄</span></label>
+          <label>Profissional<span>Disponível⌄</span></label>
           <div className="spaco-booking-row">
             <label>Data<span>14/11/2026</span></label>
             <label>Horário<span>14:30</span></label>
@@ -144,9 +144,9 @@ function SpacoBookingScene() {
         <aside className="spaco-booking-summary">
           <small>SEU DIA NO SPAÇO LISS</small>
           <h4>Resumo</h4>
-          <div><span>Cliente</span><b>Marcus</b></div>
+          <div><span>Cliente</span><b>Exemplo</b></div>
           <div><span>Serviço</span><b>Mechas</b></div>
-          <div><span>Profissional</span><b>Rose</b></div>
+          <div><span>Profissional</span><b>Selecionado</b></div>
           <div><span>Horário</span><b>14:30</b></div>
           <button type="button">Adicionar atendimento</button>
         </aside>
@@ -166,10 +166,10 @@ function SpacoPanelScene() {
         </div>
         <div className="spaco-panel-heading">
           <div><h3>Agenda do Spaço Liss</h3><p>Visualize os atendimentos por data e filtre a agenda de cada profissional.</p></div>
-          <div className="spaco-panel-counter"><strong>119</strong><small>agendamentos no mês</small></div>
+          <div className="spaco-panel-counter"><strong>Resumo</strong><small>visão mensal</small></div>
         </div>
         <div className="spaco-panel-filters">
-          {['Geral','Rose Britto','Katia Curam','Edino Britto','Suelem Aldevino','Freelancer'].map((name,index)=><span className={index===0?'active':''} key={name}><i>{index===0?'G':name.split(' ').map((part)=>part[0]).join('').slice(0,2)}</i>{name}</span>)}
+          {['Geral','Profissional A','Profissional B','Profissional C','Profissional D','Apoio'].map((name,index)=><span className={index===0?'active':''} key={name}><i>{index===0?'G':name.split(' ').map((part)=>part[0]).join('').slice(0,2)}</i>{name}</span>)}
         </div>
         <div className="spaco-panel-layout">
           <section className="spaco-panel-calendar">
@@ -181,9 +181,9 @@ function SpacoPanelScene() {
           </section>
           <section className="spaco-panel-day">
             <header><small>AGENDA DO DIA</small><h4>Terça-Feira, 10 De Novembro De 2026</h4><p>5 agendamentos</p></header>
-            <div className="spaco-panel-grid-head"><b>HORÁRIO</b><span>Rose Britto</span><span>Katia Curam</span><span>Edino Britto</span><span>Suelem</span></div>
+            <div className="spaco-panel-grid-head"><b>HORÁRIO</b><span>Profissional A</span><span>Profissional B</span><span>Profissional C</span><span>Profissional D</span></div>
             <div className="spaco-panel-time-grid">
-              {['07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00'].map((time,index)=><div key={time}><b>{time}</b><span className={index===6?'appointment rose':''}>{index===6?'Coloração raiz':''}</span><span className={index===5?'appointment katia':''}>{index===5?'Manicure e Pedicure':''}</span><span /><span /></div>)}
+              {['07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00'].map((time,index)=><div key={time}><b>{time}</b><span className={index===6?'appointment rose':''}>{index===6?'Serviço agendado':''}</span><span className={index===5?'appointment katia':''}>{index===5?'Atendimento':''}</span><span /><span /></div>)}
             </div>
           </section>
         </div>
@@ -197,14 +197,14 @@ function MexeHomeScene() {
     <BrowserFrame className="mexe-scene mexe-home-scene">
       <div className="mexe-header-mini">
         <span className="mexe-brand-small">MEXE<br /><b>PILATES</b></span>
-        <div><span>Nossa prática</span><span>O Mexe</span><span>Profissionais</span><span>Cursos</span><span>Espaço</span><b>Aula Teste</b></div>
+        <div><span>Nossa prática</span><span>O Mexe</span><span>Profissionais</span><span>Cursos</span><span>Espaço</span><b>Agendamento</b></div>
       </div>
       <div className="mexe-home-grid">
         <div className="mexe-home-copy">
-          <small>MEXE_PILATES · JARDIM BONIFÁCIO</small>
+          <small>MEXE_PILATES · PILATES CLÍNICO · MOVIMENTO</small>
           <h3>Seu <em>corpo</em><br />foi feito para<br />estar em<br /><em>movimento</em></h3>
           <p>Pilates acessível a todos. Sem julgamento, sem corpo perfeito e no seu tempo.</p>
-          <button type="button">Agendar Aula Teste · R$ 10,00</button>
+          <button type="button">Conhecer horários</button>
         </div>
         <div className="mexe-logo-orbit">
           <img src={mexeLogo} alt="" />
@@ -220,14 +220,14 @@ function MexeAmbassadorScene() {
     <BrowserFrame className="mexe-scene mexe-ambassador-scene">
       <div className="mexe-header-mini">
         <span className="mexe-brand-small">MEXE<br /><b>PILATES</b></span>
-        <div><span>Nossa prática</span><span>O Mexe</span><span>Profissionais</span><b>Embaixadora</b><span>Aula Teste</span></div>
+        <div><span>Nossa prática</span><span>O Mexe</span><span>Profissionais</span><b>Embaixadora</b><span>Contato</span></div>
       </div>
       <div className="mexe-ambassador-grid">
         <div className="mexe-ambassador-copy">
-          <small>EMBAIXADORA · CONGRESSO 360 · MOBILIZE PILATES</small>
-          <h3>Karina<br /><em>Marques Dias</em></h3>
-          <p>Fisioterapeuta, mestre em Ciências da Saúde, professora e formadora de profissionais.</p>
-          <div><span>CREFITO 3/71038-F</span><span>FISIOTERAPEUTA · PILATES CLÍNICO · DOCÊNCIA</span></div>
+          <small>EMBAIXADORA · FORMAÇÃO · EXPERIÊNCIA CLÍNICA</small>
+          <h3>Conhecimento<br /><em>em movimento</em></h3>
+          <p>Experiência clínica, docência e formação profissional apresentadas como parte da identidade do estúdio.</p>
+          <div><span>TRAJETÓRIA PROFISSIONAL</span><span>PILATES CLÍNICO · DOCÊNCIA · FORMAÇÃO</span></div>
         </div>
         <div className="mexe-ambassador-photo">
           <div className="licensed-media-card licensed-media-mexe">
@@ -247,9 +247,9 @@ function MexeBookingScene() {
     <BrowserFrame className="mexe-scene mexe-booking-scene">
       <div className="mexe-booking-layout">
         <div className="mexe-booking-intro">
-          <small>AULA TESTE</small>
+          <small>AGENDAMENTO</small>
           <h3>Seu primeiro<br /><em>movimento</em></h3>
-          <div><span>VALOR DA AULA TESTE</span><strong>R$ 10,00</strong><small>Pagamento presencial, diretamente no estúdio.</small></div>
+          <div><span>ESCOLHA SEU HORÁRIO</span><strong>Agenda online</strong><small>Fluxo direto para encontrar disponibilidade.</small></div>
         </div>
         <div className="mexe-booking-calendar">
           <div className="mexe-stepper"><b>01 DATA E HORÁRIO</b><span /><small>02 SEUS DADOS</small></div>

@@ -95,7 +95,7 @@ export function RecruiterPage() {
           <div>
             <span className="section-kicker">Engenharia em evolução</span>
             <h1>Mais do que listar tecnologias, quero mostrar como eu penso quando um projeto começa a ficar difícil.</h1>
-            <p>Esta área concentra contexto, decisões, dificuldades e aprendizados dos projetos. O objetivo é facilitar uma avaliação técnica mais honesta do meu momento como desenvolvedor júnior e da direção em que estou evoluindo.</p>
+            <p>Esta área concentra contexto, decisões, dificuldades e aprendizados dos projetos pessoais. O objetivo é facilitar uma avaliação técnica mais honesta do meu momento como desenvolvedor júnior e da direção em que estou evoluindo. Trabalhos desenvolvidos para clientes permanecem na área pública em nível de produto e entrega, sem repositórios ou detalhes internos.</p>
           </div>
           <div className="recruiter-snapshot">
             <div><strong>03</strong><span>projetos publicados ou consolidados em destaque</span></div>

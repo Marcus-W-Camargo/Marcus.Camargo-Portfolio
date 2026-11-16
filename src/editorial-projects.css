@@ -238,10 +238,10 @@
 }
 
 .project-case-heading h1 {
-  margin: 14px 0 8px;
+  margin: 14px 0 10px;
   font-family: "Segoe UI", Inter, sans-serif;
-  font-size: clamp(68px, 10vw, 154px);
-  line-height: .84;
+  font-size: clamp(64px, 8.4vw, 128px);
+  line-height: .9;
   letter-spacing: -.075em;
 }
 

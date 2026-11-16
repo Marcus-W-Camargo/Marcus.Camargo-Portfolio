@@ -64,13 +64,17 @@ export function ProjectCasePage({ project }: ProjectCasePageProps) {
 
         <section className="project-case-stack">
           <div>
-            <span>Stack & integrações</span>
-            <h2>Tecnologia usada com propósito.</h2>
+            <span>{project.clientProject ? 'Escopo & capacidades' : 'Stack & integrações'}</span>
+            <h2>
+              {project.clientProject
+                ? 'Uma entrega construída ao redor do negócio.'
+                : 'Tecnologia usada com propósito.'}
+            </h2>
           </div>
 
           <div className="project-case-stack-list">
-            {project.technologies.map((technology) => (
-              <span key={technology}>{technology}</span>
+            {(project.clientProject ? project.capabilities ?? [] : project.technologies).map((item) => (
+              <span key={item}>{item}</span>
             ))}
           </div>
         </section>
